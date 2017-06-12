@@ -1,0 +1,19 @@
+{
+    "name": "tanzdervampire-website",
+    "version": "0.0.1",
+    "private": true,
+    "description": "www.tanzdervampire.info",
+    "scripts": {
+        "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+        "frontend": "echo \"Not yet implemented!\"",
+        "backend": "echo \"Not yet implemented!\""
+    },
+    "engines": {
+        "node": "7.10.0"
+    },
+    "author": "Ingo Bürk",
+    "license": "MIT",
+    "dependencies": {
+        "concurrently": "^3.4.0"
+    }
+}
