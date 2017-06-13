@@ -5,7 +5,7 @@
     "description": "www.tanzdervampire.info",
     "scripts": {
         "start": "concurrently \"npm run frontend\" \"npm run backend\"",
-        "frontend": "echo \"Not yet implemented!\"",
+        "frontend": "cd frontend && npm run start",
         "backend": "echo \"Not yet implemented!\""
     },
     "engines": {
