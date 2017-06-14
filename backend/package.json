@@ -1,13 +1,20 @@
 {
-  "name": "backend",
-  "version": "0.0.1",
-  "private": true,
-  "description": "www.tanzdervampire.info API",
-  "scripts": {},
-  "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "fs": "0.0.1-security",
-    "moment": "^2.18.1"
-  }
+    "name": "backend",
+    "version": "0.0.1",
+    "private": true,
+    "description": "www.tanzdervampire.info API",
+    "scripts": {
+        "start": "node server.js",
+        "start-dev": "nodemon server.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.17.2",
+        "express": "^4.15.3",
+        "fs": "0.0.1-security",
+        "moment": "^2.18.1",
+        "mongoose": "^4.10.6"
+    },
+    "devDependencies": {
+        "nodemon": "^1.11.0"
+    }
 }

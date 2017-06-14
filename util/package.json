@@ -1,0 +1,10 @@
+{
+    "name": "tanzdervampire-utils",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {},
+    "dependencies": {
+        "moment": "^2.18.1",
+        "mongodb": "^2.2.28"
+    }
+}
