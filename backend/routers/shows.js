@@ -10,7 +10,7 @@ const findShows = async (req, res) => {
     const { year, month, day } = req.params;
     const fields = req.query.fields ? req.query.fields.split(/,/) : [];
 
-    const base = moment(`${day || '01'}.${month}.${year}`, 'DD.MM.YYYY');
+    const base = moment(`${day || '01'}.${month}.${year}`, 'DD.MM.YYYY', true);
     if (!base.isValid()) {
         res.status(400);
         throw 'Invalid input.';
