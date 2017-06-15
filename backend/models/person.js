@@ -7,4 +7,4 @@ var PersonSchema = new Schema({
     name: String,
 });
 
-module.exports = mongoose.model('Person', PersonSchema);
+module.exports = mongoose.model('Person', PersonSchema, 'persons');
