@@ -28,4 +28,6 @@ app.listen(app.get('port'), () => {
     console.log(`Find the server at: http://localhost:${app.get('port')}/`);
 });
 
-process.on('exit', () => {});
+process.on('exit', () => {
+    mongoose.connection.close();
+});
