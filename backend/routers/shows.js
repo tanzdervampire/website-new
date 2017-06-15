@@ -3,7 +3,6 @@
 const router = require('express').Router();
 const moment = require('moment');
 const Show = require('../models/show');
-const Person = require('../models/person');
 const Production = require('../models/production');
 
 const findShows = async (req, res) => {
