@@ -3,6 +3,13 @@
 const router = require('express').Router();
 const Production = require('../models/production');
 
+/**
+ * /
+ *
+ * GET
+ * Returns a list of productions.
+ * This list is sorted by date.
+ */
 router.route('/')
     .get(async (req, res) => {
         try {
