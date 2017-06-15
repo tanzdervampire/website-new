@@ -10,4 +10,4 @@ var ProductionSchema = new Schema({
     end: Date,
 });
 
-module.exports = mongoose.model('Production', ProductionSchema);
+module.exports = mongoose.model('Production', ProductionSchema, 'productions');
