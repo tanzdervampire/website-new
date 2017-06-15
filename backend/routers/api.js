@@ -4,6 +4,7 @@ const router = require('express').Router();
 
 const routers = {
     productions: require('./productions'),
+    shows: require('./shows'),
 };
 
 router.use((req, res, next) => {
@@ -20,6 +21,7 @@ router.route('/status')
     .get((req, res) => res.json({ 'status': 'OK' }));
 
 router.use('/productions', routers.productions);
+router.use('/shows', routers.shows);
 
 router.use((err, req, res, next) => {
     console.error(`ERROR ${req.url}: ${err.stack}`);

@@ -4,14 +4,13 @@ const router = require('express').Router();
 const Production = require('../models/production');
 
 router.route('/')
-    .get((req, res) => {
-        Production.find({}, (err, items) => {
-            if (err) {
-                return res.status(500).send(err);
-            }
-
-            res.json(items);
-        });
+    .get(async (req, res) => {
+        try {
+            const documents = await Production.find({}).sort({ start: 'ascending' });
+            return res.json(documents);
+        } catch (err) {
+            return res.status(500).send('Internal error.');
+        }
     });
 
 module.exports = router;
