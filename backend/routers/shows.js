@@ -18,7 +18,7 @@ const findShows = async (req, res) => {
 
     const from = base.clone().startOf(day ? 'day' : 'month');
     const until = base.clone().endOf(day ? 'day' : 'month');
-    let query = Show.find().where('date')
+    let query = Show.find().lean().where('date')
         .gte(from.toDate())
         .lte(until.toDate());
 
