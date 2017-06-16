@@ -52,6 +52,7 @@ const findRoles = req => {
     stages.push({ $unwind: '$cast' });
 
     if (roles.length !== 0) {
+        /* Filter by role. */
         stages.push({ $match: { 'cast.role': { $in: roles } } });
     }
 
@@ -109,6 +110,7 @@ router.route('/')
  * Query parameters:
  *  roles
  *      Comma-separated list of roles for which data shall be returned.
+ *      If this is not specified, data for all roles will be returned.
  */
 router.route('/roles')
     .get(async (req, res) => {

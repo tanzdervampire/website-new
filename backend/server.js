@@ -8,10 +8,11 @@ const apiRouter = require('./routers/api');
 
 const app = express();
 app.set('port', (process.env.PORT || 3001));
-app.set('json spaces', 4);
 
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static('../frontend/build'));
+} else {
+    app.set('json spaces', 4);
 }
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tdv');
