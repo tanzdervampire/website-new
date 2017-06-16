@@ -56,6 +56,21 @@ const findRoles = req => {
         stages.push({ $match: { 'cast.role': { $in: roles } } });
     }
 
+    if (req.query.location) {
+        /* Load the production information. */
+        stages.push({
+            $lookup: {
+                from: 'productions',
+                localField: 'production',
+                foreignField: '_id',
+                as: 'production'
+            }
+        });
+
+        /* Filter by location. */
+        stages.push({ $match: { 'production.location': req.query.location } });
+    }
+
     /* Reduce it to the only data we are interested in. */
     stages.push({ $project: { role: '$cast.role', person: '$cast.person' } });
 
@@ -100,7 +115,6 @@ router.route('/')
         }
     });
 
-// TODO FIXME Allow restricting to a production / location / …
 /**
  * /roles
  *
@@ -111,6 +125,9 @@ router.route('/')
  *  roles
  *      Comma-separated list of roles for which data shall be returned.
  *      If this is not specified, data for all roles will be returned.
+ *  location
+ *      Only consider shows in the given location.
+ *      If this is not specified, data for all locations will be returned.
  */
 router.route('/roles')
     .get(async (req, res) => {
