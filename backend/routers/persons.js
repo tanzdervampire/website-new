@@ -43,35 +43,43 @@ const findPersons = async () => {
     ]);
 };
 
-const findRoles = () => {
-    return Show.aggregate([
-        /* We need one entry per cast member. */
-        { $unwind: '$cast' },
+const findRoles = req => {
+    const roles = req.query.roles ? req.query.roles.split(/,/) : [];
 
-        /* Reduce it to the only data we are interested in. */
-        { $project: { role: '$cast.role', person: '$cast.person' } },
+    let stages = [];
 
-        /* Load the actual person information. */
-        {
-            $lookup: {
-                from: 'persons',
-                localField: 'person',
-                foreignField: '_id',
-                as: 'person'
-            }
-        },
+    /* We need one entry per cast member. */
+    stages.push({ $unwind: '$cast' });
 
-        /* $lookup returns person as an array, but it only has one value, so unwind it. */
-        { $unwind: '$person' },
+    if (roles.length !== 0) {
+        stages.push({ $match: { 'cast.role': { $in: roles } } });
+    }
 
-        /* Group by role into a set of persons. */
-        {
-            $group: {
-                _id: '$role',
-                persons: { $addToSet: '$person' }
-            }
+    /* Reduce it to the only data we are interested in. */
+    stages.push({ $project: { role: '$cast.role', person: '$cast.person' } });
+
+    /* Load the actual person information. */
+    stages.push({
+        $lookup: {
+            from: 'persons',
+            localField: 'person',
+            foreignField: '_id',
+            as: 'person'
         }
-    ]);
+    });
+
+    /* $lookup returns person as an array, but it only has one value, so unwind it. */
+    stages.push({ $unwind: '$person' });
+
+    /* Group by role into a set of persons. */
+    stages.push({
+        $group: {
+            _id: '$role',
+            persons: { $addToSet: '$person' }
+        }
+    });
+
+    return Show.aggregate(stages);
 };
 
 /**
@@ -91,18 +99,21 @@ router.route('/')
         }
     });
 
-// TODO FIXME Restrict by role
 // TODO FIXME Allow restricting to a production / location / …
 /**
  * /roles
  *
  * GET
  * Returns a list of roles and which persons have played this role.
+ *
+ * Query parameters:
+ *  roles
+ *      Comma-separated list of roles for which data shall be returned.
  */
 router.route('/roles')
     .get(async (req, res) => {
         try {
-            const documents = await findRoles();
+            const documents = await findRoles(req);
             return res.json(documents);
         } catch (err) {
             return res.send(err);
