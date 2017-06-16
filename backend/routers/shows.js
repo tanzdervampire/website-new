@@ -4,6 +4,7 @@ const router = require('express').Router();
 const moment = require('moment');
 const Show = require('../models/show');
 const Production = require('../models/production');
+require('../models/person');
 
 const findShows = async (req, res) => {
     const { year, month, day } = req.params;
