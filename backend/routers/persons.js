@@ -1,9 +1,10 @@
 // @flow
 
 const router = require('express').Router();
+const Person = require('../models/person');
 const Show = require('../models/show');
 
-const findPersons = async () => {
+const findPersonsWithRoles = async () => {
     return Show.aggregate([
         /* We need one entry per cast member. */
         { $unwind: '$cast' },
@@ -41,6 +42,15 @@ const findPersons = async () => {
         /* Lastly, let's sort the list. */
         { $sort: { name: 1 } }
     ]);
+};
+
+const findPersons = async req => {
+    const fields = req.query.fields ? req.query.fields.split(/,/) : [];
+
+    /* If roles are not requested, we can take a shortcut. */
+    return fields.includes('roles')
+        ? await findPersonsWithRoles()
+        : await Person.find({}).lean().sort({ name: 1 });
 };
 
 const findRoles = req => {
@@ -104,11 +114,16 @@ const findRoles = req => {
  * GET
  * Returns a list of all persons.
  * This list is sorted alphabetically by name.
+ *
+ * Query parameters:
+ *  fields
+ *      Comma-separated list of additional fields to return.
+ *      Possible values are 'roles'.
  */
 router.route('/')
     .get(async (req, res) => {
         try {
-            const documents = await findPersons();
+            const documents = await findPersons(req);
             return res.json(documents);
         } catch (err) {
             return res.send(err);

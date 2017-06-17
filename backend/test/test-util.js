@@ -2,6 +2,7 @@
 
 const moment = require('moment');
 const Production = require('../models/production');
+const Person = require('../models/person');
 
 const allProductions = [
     {
@@ -35,4 +36,12 @@ const prepareProductions = async opts => {
     return Promise.all(promises);
 };
 
-module.exports = { prepareProductions };
+const preparePerson = async name => {
+    await new Person({ name }).save();
+};
+
+const preparePersons = async opts => {
+    throw {};
+};
+
+module.exports = { prepareProductions, preparePerson, preparePersons };
