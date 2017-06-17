@@ -7,16 +7,26 @@ const mongoose = require('mongoose');
 const apiRouter = require('./routers/api');
 
 const app = express();
-app.set('port', (process.env.PORT || 3001));
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('../frontend/build'));
-} else {
-    app.set('json spaces', 4);
-}
-
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/tdv');
 mongoose.Promise = global.Promise;
+switch (process.env.NODE_ENV) {
+    case 'dev':
+        app.set('port', 3001);
+        app.set('json spaces', 4);
+        mongoose.connect('mongodb://localhost/tdv');
+        break;
+    case 'test':
+        app.set('port', 3002);
+        app.set('json spaces', 4);
+        mongoose.connect('mongodb://localhost/tdv-test');
+        break;
+    case 'production':
+        app.set('port', process.env.PORT);
+        app.use(express.static('../frontend/build'));
+        mongoose.connect(process.env.MONGODB_URI);
+        break;
+    default:
+        throw new Error('Unknown environment!');
+}
 
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
@@ -32,3 +42,5 @@ app.listen(app.get('port'), () => {
 process.on('exit', () => {
     mongoose.connection.close();
 });
+
+module.exports = app;
