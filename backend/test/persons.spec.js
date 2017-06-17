@@ -39,5 +39,16 @@ describe('/api/persons', () => {
         res.body[0].should.not.have.property('roles');
     });
 
-    xit('returns persons sorted by name', async () => {});
+    it('returns persons sorted by name', async () => {
+        await preparePerson('B');
+        await preparePerson('A');
+        await preparePerson('C');
+
+        const res = await getPersons();
+        res.body.length.should.be.eql(3);
+
+        res.body[0].should.have.property('name').eql('A');
+        res.body[1].should.have.property('name').eql('B');
+        res.body[2].should.have.property('name').eql('C');
+    });
 });
