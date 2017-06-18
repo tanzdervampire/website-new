@@ -97,11 +97,42 @@ const findRoles = req => {
     /* $lookup returns person as an array, but it only has one value, so unwind it. */
     stages.push({ $unwind: '$person' });
 
-    /* Group by role into a set of persons. */
+    /* Group by role and person so we can also calculate the number of shows. */
+    stages.push({
+        $group: {
+            _id: { role: '$role', person: '$person' },
+            numberOfShows: { $sum: 1 },
+        }
+    });
+
+    /* Move numberOfShows into the person sub-document. */
+    stages.push({ $addFields: { '_id.person.numberOfShows': '$numberOfShows' } });
+
+    /* Get rid of the _id wrapper. */
+    stages.push({ $project: { _id: 0, role: '$_id.role', person: '$_id.person' } });
+
+    /* Group by role to get rid of duplicate persons. */
     stages.push({
         $group: {
             _id: '$role',
-            persons: { $addToSet: '$person' }
+            persons: { $addToSet: '$person' },
+        }
+    });
+
+    /* Rename _id into role. */
+    stages.push({ $project: { persons: 1, role: '$_id', _id: 0 } });
+
+    /* Basically undo the grouping so we can sort by number of shows after having removed duplicates. */
+    stages.push({ $unwind: '$persons' });
+
+    /* Sort by role, number of shows and name. */
+    stages.push({ $sort: { role: 1, 'persons.numberOfShows': -1, 'persons.name': 1 } });
+
+    /* Group once again. This time we use $push to preserve the sorted order; duplicates no longer exist anyway. */
+    stages.push({
+        $group: {
+            _id: '$role',
+            persons: { $push: '$persons' },
         }
     });
 
