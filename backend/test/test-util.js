@@ -141,6 +141,12 @@ const prepareShow = async opts => {
     return new Show({ date: opts.date, production, cast }).save();
 };
 
+const mergeCasts = (first, second) => {
+    return [first.filter(entry => {
+        return !second.some(e => e.role === entry.role);
+    }), ...second];
+};
+
 module.exports = {
     KnownProduction: sampleProductions,
     KnownPerson,
@@ -149,5 +155,6 @@ module.exports = {
     prepareProductions,
     preparePerson,
     preparePersons,
-    prepareShow
+    prepareShow,
+    mergeCasts
 };

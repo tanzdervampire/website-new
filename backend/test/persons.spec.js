@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
 const moment = require('moment');
-const { KnownProduction, KnownCast, prepareShow, preparePerson, preparePersons } = require('./test-util');
+const { KnownProduction, KnownPerson, KnownCast, prepareShow, preparePerson, preparePersons, mergeCasts } = require('./test-util');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -80,7 +80,17 @@ describe('/api/persons', () => {
         resOne.body.should.deep.eql(resTwo.body);
     });
 
-    // TODO FIXME Test roles works if same person does two roles in a show
+    it('considers multiple roles within one show', async () => {
+        const cast = mergeCasts(KnownCast.MAIN, [
+            { role: 'Graf von Krolock', person: KnownPerson['Kirill Zolygin'] },
+            { role: 'Gesangssolisten', person: KnownPerson['Kirill Zolygin'] },
+        ]);
+        await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast });
+
+        const res = await getPersons(['roles']);
+        byName(res.body, 'Kirill Zolygin').roles.should.be.a('array').that.has.length(2);
+        byName(res.body, 'Kirill Zolygin').roles.should.include.members(['Graf von Krolock', 'Gesangssolisten']);
+    });
 
     // TODO FIXME Test across multiple shows (same + different role)
 });
