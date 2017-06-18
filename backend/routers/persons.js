@@ -44,6 +44,7 @@ const findPersonsWithRoles = async () => {
     ]);
 };
 
+// TODO FIXME Get rid of the shortcut and instead make aggregate() smarter.
 const findPersons = async req => {
     const fields = req.query.fields ? req.query.fields.split(/,/) : [];
 
@@ -51,6 +52,15 @@ const findPersons = async req => {
     return fields.includes('roles')
         ? await findPersonsWithRoles()
         : await Person.find({}).lean().sort({ name: 1 });
+};
+
+// TODO FIXME Return
+//   * person
+//   * productions participated in
+//   * numberOfShows total
+//   * numberOfShows per role
+const findPerson = async req => {
+    throw { 'error': 'Not yet implemented.' };
 };
 
 /**
@@ -69,6 +79,22 @@ router.route('/')
     .get(async (req, res) => {
         try {
             const documents = await findPersons(req);
+            return res.json(documents);
+        } catch (err) {
+            return res.send(err);
+        }
+    });
+
+/**
+ * /:id
+ *
+ * GET
+ * Returns detailed information for a specific person.
+ */
+router.route('/:id')
+    .get(async (req, res) => {
+        try {
+            const documents = await findPerson(req);
             return res.json(documents);
         } catch (err) {
             return res.send(err);
