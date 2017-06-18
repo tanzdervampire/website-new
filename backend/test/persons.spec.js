@@ -3,7 +3,7 @@
 process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
-const { preparePerson } = require('./test-util');
+const { preparePerson, preparePersons } = require('./test-util');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -30,12 +30,12 @@ describe('/api/persons', () => {
     });
 
     it('returns a single person', async () => {
-        await preparePerson('Steve Barton');
+        await preparePersons({ numberOfPersons: 1 });
 
         const res = await getPersons();
         res.body.length.should.be.eql(1);
 
-        res.body[0].should.have.property('name').eql('Steve Barton');
+        res.body[0].should.have.property('name').eql('Thomas Borchert');
         res.body[0].should.not.have.property('roles');
     });
 
@@ -51,4 +51,8 @@ describe('/api/persons', () => {
         res.body[1].should.have.property('name').eql('B');
         res.body[2].should.have.property('name').eql('C');
     });
+
+    xit('returns persons with roles', async () => {
+        // TODO FIXME Implement test
+    })
 });
