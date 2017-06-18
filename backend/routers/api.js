@@ -6,6 +6,7 @@ const routers = {
     productions: require('./productions'),
     shows: require('./shows'),
     persons: require('./persons'),
+    roles: require('./roles'),
 };
 
 router.use((req, res, next) => {
@@ -24,6 +25,7 @@ router.route('/status')
 router.use('/productions', routers.productions);
 router.use('/shows', routers.shows);
 router.use('/persons', routers.persons);
+router.use('/roles', routers.roles);
 
 router.use((err, req, res, next) => {
     console.error(`ERROR ${req.url}: ${err.stack}`);
