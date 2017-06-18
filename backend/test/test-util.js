@@ -142,7 +142,7 @@ const prepareShow = async opts => {
 };
 
 const mergeCasts = (first, second) => {
-    return [first.filter(entry => {
+    return [...first.filter(entry => {
         return !second.some(e => e.role === entry.role);
     }), ...second];
 };
