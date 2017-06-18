@@ -81,10 +81,7 @@ describe('/api/persons', () => {
     });
 
     it('considers multiple roles within one show', async () => {
-        const cast = mergeCasts(KnownCast.MAIN, [
-            { role: 'Graf von Krolock', person: KnownPerson['Kirill Zolygin'] },
-            { role: 'Gesangssolisten', person: KnownPerson['Kirill Zolygin'] },
-        ]);
+        const cast = mergeCasts(KnownCast.MAIN, [ { role: 'Graf von Krolock', person: KnownPerson['Kirill Zolygin'] } ]);
         await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast });
 
         const res = await getPersons(['roles']);
@@ -92,5 +89,13 @@ describe('/api/persons', () => {
         byName(res.body, 'Kirill Zolygin').roles.should.include.members(['Graf von Krolock', 'Gesangssolisten']);
     });
 
-    // TODO FIXME Test across multiple shows (same + different role)
+    it('returns roles from all shows', async () => {
+        await prepareShow({ date: moment('01.01.2017 14:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN });
+        const secondCast = mergeCasts(KnownCast.MAIN, [ { role: 'Graf von Krolock', person: KnownPerson['Kirill Zolygin'] } ]);
+        await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: secondCast });
+
+        const res = await getPersons(['roles']);
+        byName(res.body, 'Kirill Zolygin').roles.should.be.a('array').that.has.length(2);
+        byName(res.body, 'Kirill Zolygin').roles.should.include.members(['Graf von Krolock', 'Gesangssolisten']);
+    });
 });
