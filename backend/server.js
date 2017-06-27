@@ -1,6 +1,7 @@
 // @flow
 
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
@@ -28,6 +29,7 @@ switch (process.env.NODE_ENV) {
         throw new Error('Unknown environment!');
 }
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
 
