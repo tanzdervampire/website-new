@@ -49,6 +49,7 @@ const findShows = async (req, res) => {
     return query;
 };
 
+// TODO FIXME Add production parameter.
 /**
  * /:year/:month
  *
@@ -75,6 +76,7 @@ router.route('/:year/:month')
         }
     });
 
+// TODO FIXME Add production parameter.
 /**
  * /:year/:month/:day
  *

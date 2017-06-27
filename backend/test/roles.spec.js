@@ -10,8 +10,22 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 
-const getRoles = async (...params) => {
-    const res = await chai.request(server).get(`/api/roles?${params.join('&')}`);
+const buildUrl = params => {
+    let url = `/api/roles`;
+    if (params.role) {
+        url += `/${params.role}`;
+    }
+
+    url += '?';
+    if (params.location) {
+        url += `location=${params.location}&`;
+    }
+
+    return url;
+};
+
+const getRoles = async (params = {}) => {
+    const res = await chai.request(server).get(buildUrl(params));
     res.should.have.status(200);
     res.body.should.be.a('array');
     return res;
@@ -79,25 +93,32 @@ describe('/api/roles', () => {
         byRole(res.body, 'Gesangssolisten').persons[0].numberOfShows.should.eql(1);
     });
 
-    it('can be restricted to a single role', async () => {
-        await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN });
+    it('can be restricted to a location', async () => {
+        await prepareShow({ date: moment('01.01.2016 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN });
+        await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[1], cast: KnownCast.MAIN });
 
-        const res = await getRoles('roles=Alfred');
-        res.body.length.should.be.eql(1);
+        const res = await getRoles({ location: 'Berlin' });
+        byRole(res.body, 'Graf von Krolock').persons[0].numberOfShows.should.eql(1);
+    });
+});
+
+describe('/api/roles/:role', () => {
+    beforeEach(async () => {
+        await mongoose.connection.dropDatabase();
     });
 
-    it('can be restricted to a list of roles', async () => {
+    it('returns data for a single role', async () => {
         await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN });
 
-        const res = await getRoles('roles=Alfred,Graf+von+Krolock,Professor+Abronsius');
-        res.body.length.should.be.eql(3);
+        const res = await getRoles({ role: 'Graf+von+Krolock' });
+        res.body.length.should.be.eql(1);
     });
 
     it('can be restricted to a location', async () => {
         await prepareShow({ date: moment('01.01.2016 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN });
         await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[1], cast: KnownCast.MAIN });
 
-        const res = await getRoles('location=Berlin');
+        const res = await getRoles({ role: 'Graf+von+Krolock', location: 'Berlin' });
         byRole(res.body, 'Graf von Krolock').persons[0].numberOfShows.should.eql(1);
     });
 });

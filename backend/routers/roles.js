@@ -5,16 +5,14 @@ const Show = require('../models/show');
 
 // TODO FIXME Only return persons (and persons.numberOfShows) on request?
 const findRoles = req => {
-    const roles = req.query.roles ? req.query.roles.split(/,/) : [];
-
     let stages = [];
 
     /* We need one entry per cast member. */
     stages.push({ $unwind: '$cast' });
 
-    if (roles.length !== 0) {
+    if (req.params.role) {
         /* Filter by role. */
-        stages.push({ $match: { 'cast.role': { $in: roles } } });
+        stages.push({ $match: { 'cast.role': req.params.role.replace(/\+/g, ' ') } });
     }
 
     if (req.query.location) {
@@ -100,14 +98,32 @@ const findRoles = req => {
  * Returns a list of roles and which persons have played this role.
  *
  * Query parameters:
- *  roles
- *      Comma-separated list of roles for which data shall be returned.
- *      If this is not specified, data for all roles will be returned.
  *  location
  *      Only consider shows in the given location.
  *      If this is not specified, data for all locations will be returned.
  */
 router.route('/')
+    .get(async (req, res) => {
+        try {
+            const documents = await findRoles(req);
+            return res.json(documents);
+        } catch (err) {
+            return res.send(err);
+        }
+    });
+
+/**
+ * /:role
+ *
+ * GET
+ * Returns a list of persons who have played this role.
+ *
+ * Query parameters:
+ *  location
+ *      Only consider shows in the given location.
+ *      If this is not specified, data for all locations will be returned.
+ */
+router.route('/:role')
     .get(async (req, res) => {
         try {
             const documents = await findRoles(req);
