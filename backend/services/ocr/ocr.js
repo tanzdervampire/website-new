@@ -1,32 +1,19 @@
 // @flow
 
-const { flatten, normalize } = require('./helpers');
+const { FragmentType, Role } = require('./types');
+const {
+    flatten,
+    explodeBoundingBox,
+    mergeWords,
+    matchesAny,
+    matchNames,
+    average,
+    median,
+    sortByX,
+    sortByY,
+} = require('./helpers');
+
 const fetch = require('node-fetch');
-const levenshtein = require('fast-levenshtein');
-
-const FragmentType = {
-    UNKNOWN: 0,
-    ROLE: 1,
-    NAME: 2,
-    OTHER: 3,
-};
-
-const Role = {
-    'Graf von Krolock': { synonyms: [], isMainCast: true, singular: true },
-    'Sarah': { synonyms: [], isMainCast: true, singular: true },
-    'Alfred': { synonyms: [], isMainCast: true, singular: true },
-    'Professor Abronsius': { synonyms: ['Prof. Abronsius'], isMainCast: true, singular: true },
-    'Chagal': { synonyms: [], isMainCast: true, singular: true },
-    'Magda': { synonyms: [], isMainCast: true, singular: true },
-    'Herbert': { synonyms: [], isMainCast: true, singular: true },
-    'Rebecca': { synonyms: [], isMainCast: true, singular: true },
-    'Koukol': { synonyms: [], isMainCast: true, singular: true },
-    'Tanzsolisten': { synonyms: ['Solotänzer'], isMainCast: false, singular: false },
-    'Gesangssolisten': { synonyms: [], isMainCast: false, singular: false },
-    'Tanzensemble': { synonyms: [], isMainCast: false, singular: false },
-    'Gesangsensemble': { synonyms: [], isMainCast: false, singular: false },
-    'Dirigent': { synonyms: [], isMainCast: false, singular: true },
-};
 
 /**
  * Performs an OCR using Microsoft's Cognitive Services.
@@ -50,19 +37,18 @@ const callCognitiveServicesOcr = (stream, key) => {
         .catch(err => console.error(err));
 };
 
-const explodeBoundingBox = obj => {
-    const [x, y, width, height] = obj.boundingBox.split(/,/).map(str => +str);
-    return { x, y, width, height };
-};
-
-const mergeWords = words => words.map(word => word.text).join(' ');
-
+/**
+ * Merges all words into a single string and converts the bounding box.
+ */
 const convertFragment = fragment => {
     const boundingBox = explodeBoundingBox(fragment);
     const text = mergeWords(fragment.words);
     return { boundingBox, text };
 };
 
+/**
+ * Adds additional default information to a fragment.
+ */
 const enrichFragment = fragment => {
     return Object.assign({}, fragment, {
         type: FragmentType.UNKNOWN,
@@ -70,18 +56,21 @@ const enrichFragment = fragment => {
     });
 };
 
-const sortByX = (left, right) => left.boundingBox.x - right.boundingBox.x;
-const sortByY = (left, right) => left.boundingBox.y - right.boundingBox.y;
-
-const convertAverageFragmentHeight = fragments => {
-    const sum = fragments
-        .map(fragment => fragment.boundingBox.height)
-        .reduce((a, b) => a + b, 0);
-    return sum / fragments.length;
+/**
+ * Calculates the average height of the given fragments.
+ */
+const getAverageHeight = fragments => {
+    const heights = fragments
+        .map(fragment => fragment.boundingBox.height);
+    return average(heights);
 };
 
-const getGroupByLineReducer = fragments => {
-    const averageFragmentHeight = convertAverageFragmentHeight(fragments);
+/**
+ * Groups the fragments into lines.
+ * Lines are determined by buckets which are equally spaced with a height of the average fragment height.
+ */
+const reduceByLine = fragments => {
+    const averageFragmentHeight = getAverageHeight(fragments);
     const getBucket = y => Math.floor(y / averageFragmentHeight);
 
     return (accumulated, fragment) => {
@@ -125,7 +114,7 @@ const convertCognitiveServicesResponse = response => {
     }
 
     const fragments = response.regions
-    /* We are not interested in regions, so remove them. */
+        /* We are not interested in regions, so remove them. */
         .map(region => region.lines)
         /* Flatten the resulting array to get an array of fragments. */
         .reduce(flatten, [])
@@ -135,75 +124,49 @@ const convertCognitiveServicesResponse = response => {
         .map(enrichFragment);
 
     const data = [...fragments]
-    /* Sort by y-value so the following reducer always goes top to bottom. */
+        /* Sort by y-value so the following reducer always goes top to bottom. */
         .sort(sortByY)
         /* Calculate the types of each fragment. */
         .map(assignType)
         /* Group fragments into lines by buckets. */
-        .reduce(getGroupByLineReducer(fragments), [])
+        .reduce(reduceByLine(fragments), [])
         /* Remove lines that hold no fragment. */
         .filter(line => line)
         /* Sort fragments within a line by x-value. */
         .map(line => [...line].sort(sortByX));
 
     return data
-        .filter(getHeaderFilter(data));
+        .filter(removeNoise(data));
 };
 
-const matches = (a, b) => {
-    const left = normalize(a);
-    const right = normalize(b);
-    return levenshtein.get(left, right) <= 3;
-};
-
-const matchesAny = (str, roles) => roles.some(role => matches(str, role));
-
+/**
+ * Assigns a type to each fragment.
+ */
 const assignType = fragment => {
     const name = fragment.text;
 
     /* Rule out some noise. */
     if (matchesAny(name, ['Tanz der', 'Vampire', 'Musical'])) {
-        fragment.type = FragmentType.OTHER;
+        return Object.assign({}, fragment, { type: FragmentType.OTHER });
     }
 
-    Object.keys(Role).forEach(role => {
-        if (fragment.type) {
-            return;
-        }
-
-        if (matchesAny(name, [role, ...Role[role].synonyms])) {
-            fragment.type = FragmentType.ROLE;
-            fragment.role = role;
-        }
-    });
+    const matchingRoles = Object.keys(Role)
+        .filter(role => matchesAny(name, [role, ...Role[role].synonyms]));
+    if (matchingRoles.length !== 0) {
+        return Object.assign({}, fragment, {
+            type: FragmentType.ROLE,
+            role: matchingRoles[0],
+        });
+    }
 
     /* If we haven't found anything else, assume it's a name or list of names. */
-    if (!fragment.type) {
-        fragment.type = FragmentType.NAME;
-    }
-
-    return fragment;
+    return Object.assign({}, fragment, { type: FragmentType.NAME });
 };
 
-const matchName = (name, candidates) => {
-    const diffs = candidates
-        .map(current => {
-            return { name: current, distance: levenshtein.get(current, name) };
-        })
-        .sort((a, b) => a.distance - b.distance);
-
-    return diffs[0].name;
-};
-
-const matchNames = (str, candidates) => {
-    return str
-        .split(/\s*[.,]\s*/)
-        .filter(name => name && name.trim().length !== 0)
-        .map(name => matchName(name, candidates))
-        .filter(name => name);
-};
-
-const getHeaderFilter = data => {
+/**
+ * Returns a filter function to get rid of some noise.
+ */
+const removeNoise = data => {
     const roleLines = data
         .filter(line => line.some(fragment => fragment.type === FragmentType.ROLE));
     const first = (roleLines.length !== 0 && roleLines[0].length !== 0) ? roleLines[0][0] : null;
@@ -214,9 +177,9 @@ const getHeaderFilter = data => {
 };
 
 const lineToAverageY = line => {
-    return line
-        .map(fragment => fragment.boundingBox.y + 0.5 * fragment.boundingBox.height)
-        .reduce((avg, y, _, all) => avg + y / all.length, 0);
+    const ys = line
+        .map(fragment => fragment.boundingBox.y + 0.5 * fragment.boundingBox.height);
+    return average(ys);
 };
 
 /**
@@ -225,7 +188,7 @@ const lineToAverageY = line => {
  */
 const getMedianLineSpacing = data => {
     const spaces = data
-    /* We are only interested in name fragments. */
+        /* We are only interested in name fragments. */
         .map(line => line.filter(fragment => fragment.type === FragmentType.NAME))
         /* Filter out lines that no longer contain a fragment. */
         .filter(line => line)
@@ -234,14 +197,9 @@ const getMedianLineSpacing = data => {
         /* Now subtract each coordinate from its successor. */
         .map((y, i, all) => y - (all[i-1] || y))
         /* Remove the first entry as it will always be 0. */
-        .filter((_, i) => i !== 0)
-        /* Sort the differences */
-        .sort((a, b) => a - b);
+        .filter((_, i) => i !== 0);
 
-    const middle = Math.floor(spaces.length / 2);
-    return spaces.length % 2 === 0
-        ? (spaces[middle - 1] + spaces[middle]) / 2
-        : spaces[middle];
+    return median(spaces);
 };
 
 // TODO FIXME Refactor this.
@@ -268,7 +226,7 @@ const extractCast = (data, roleToPersons) => {
     };
 
     const findSecondaryCast = role => {
-        const secondaryRoles = Object.keys(Role).filter(role => !Role[role].isMainCast);
+        const secondaryRoles = Object.keys(Role).filter(role => !Role[role].primary);
         const medianLineSpacing = getMedianLineSpacing(data);
 
         let foundRoleFragment = false;
@@ -323,7 +281,7 @@ const extractCast = (data, roleToPersons) => {
             .persons
             .map(person => person.name);
 
-        const nameFragments = Role[role].isMainCast ? findMainCast(role) : findSecondaryCast(role);
+        const nameFragments = Role[role].primary ? findMainCast(role) : findSecondaryCast(role);
         const names = nameFragments
             .map(fragment => matchNames(fragment.text, candidates))
             .reduce(flatten, [])
