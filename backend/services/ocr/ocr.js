@@ -2,7 +2,7 @@
 
 const { flatten, normalize } = require('./helpers');
 const fetch = require('node-fetch');
-const { levenshtein } = require('fast-levenshtein');
+const levenshtein = require('fast-levenshtein');
 
 const FragmentType = {
     UNKNOWN: 0,
