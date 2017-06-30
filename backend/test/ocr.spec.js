@@ -23,7 +23,8 @@ describe('OCR', () => {
                 const converted = convertCognitiveServicesResponse(input);
                 const actual = extractCast(converted, mapping);
 
-                // TODO FIXME assert
+                actual.should.have.length(expected.length);
+                actual.should.eql(expected);
             });
         });
 });
