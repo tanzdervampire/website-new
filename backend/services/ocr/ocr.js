@@ -202,94 +202,97 @@ const getMedianLineSpacing = data => {
     return median(spaces);
 };
 
-// TODO FIXME Refactor this.
-const extractCast = (data, roleToPersons) => {
-    const findMainCast = role => {
-        const lines = data
-            .filter(line => line.some(fragment => fragment.role === role));
+const findPersonsForPrimaryRole = (data, role) => {
+    const lines = data
+        .filter(line => line.some(fragment => fragment.role === role));
 
-        if (lines.length === 0) {
-            return [];
-        }
+    if (lines.length === 0) {
+        return [];
+    }
 
-        const roleFragment = lines[0]
-            .filter(fragment => fragment.role === role)
-            [0];
+    const roleFragment = lines[0]
+        .filter(fragment => fragment.role === role)
+        [0];
 
-        return lines[0]
-        /* We are only interested in names. */
-            .filter(fragment => fragment.type === FragmentType.NAME)
-            /* Make sure the name is reasonably close to the role fragment. */
-            .filter(fragment => {
-                return fragment.boundingBox.x <= roleFragment.boundingBox.y + 1.5 * roleFragment.boundingBox.width;
-            });
-    };
+    return lines[0]
+    /* We are only interested in names. */
+        .filter(fragment => fragment.type === FragmentType.NAME)
+        /* Make sure the name is reasonably close to the role fragment. */
+        .filter(fragment => {
+            return fragment.boundingBox.x <= roleFragment.boundingBox.y + 1.5 * roleFragment.boundingBox.width;
+        });
+};
 
-    const findSecondaryCast = role => {
-        const secondaryRoles = Object.keys(Role).filter(role => !Role[role].primary);
-        const medianLineSpacing = getMedianLineSpacing(data);
+const findPersonsforSecondaryRole = (data, role) => {
+    const secondaryRoles = Object.keys(Role).filter(role => !Role[role].primary);
+    const medianLineSpacing = getMedianLineSpacing(data);
 
-        let foundRoleFragment = false;
-        let foundNextRoleFragment = false;
-        let exceededSpacing = false;
-        const lines = data
+    let foundRoleFragment = false;
+    let foundNextRoleFragment = false;
+    let exceededSpacing = false;
+    const lines = data
         /* First we filter lines between role fragments as much as we can. */
-            .filter(line => {
-                foundNextRoleFragment |= foundRoleFragment
-                    && line.some(fragment => fragment.role && secondaryRoles.includes(fragment.role));
-                foundRoleFragment |= line.some(fragment => fragment.role === role);
-                return foundRoleFragment && !foundNextRoleFragment;
-            })
-            /* Now we also pay attention to line spacing as the next role fragment may not have been recognized. */
-            .filter((line, i, all) => {
-                /* We always take the first two lines since it includes the role fragment, but sometimes
-                 * the conductor appears on the same line so we need to keep it. For the other cases the
-                 * second line is the first line of name fragments. */
-                if (i === 0 || i === 1) {
-                    return true;
-                }
+        .filter(line => {
+            foundNextRoleFragment |= foundRoleFragment
+                && line.some(fragment => fragment.role && secondaryRoles.includes(fragment.role));
+            foundRoleFragment |= line.some(fragment => fragment.role === role);
+            return foundRoleFragment && !foundNextRoleFragment;
+        })
+        /* Now we also pay attention to line spacing as the next role fragment may not have been recognized. */
+        .filter((line, i, all) => {
+            /* We always take the first two lines since it includes the role fragment, but sometimes
+             * the conductor appears on the same line so we need to keep it. For the other cases the
+             * second line is the first line of name fragments. */
+            if (i === 0 || i === 1) {
+                return true;
+            }
 
-                const last = lineToAverageY(all[i - 1]);
-                const current = lineToAverageY(line);
-                exceededSpacing |= Math.abs(last - current) > 2 * medianLineSpacing;
-                return !exceededSpacing;
-            });
+            const last = lineToAverageY(all[i - 1]);
+            const current = lineToAverageY(line);
+            exceededSpacing |= Math.abs(last - current) > 2 * medianLineSpacing;
+            return !exceededSpacing;
+        });
 
-        if (lines.length === 0) {
-            return [];
-        }
+    if (lines.length === 0) {
+        return [];
+    }
 
-        const roleFragment = lines[0]
-            .filter(fragment => fragment.role === role)
-            [0];
+    const roleFragment = lines[0]
+        .filter(fragment => fragment.role === role)
+        [0];
 
-        return lines
-            .reduce(flatten, [])
-            .filter(fragment => fragment.type === FragmentType.NAME)
-            /* Make sure to only catch fragments reasonably close to the role fragment. */
-            .filter(fragment => {
-                const centerRoleFragment = roleFragment.boundingBox.x + roleFragment.boundingBox.width / 2;
-                const centerFragment = fragment.boundingBox.x + fragment.boundingBox.width / 2;
-                return Math.abs(centerRoleFragment - centerFragment) <= 1.5 * roleFragment.boundingBox.width;
-            });
-    };
+    return lines
+        .reduce(flatten, [])
+        .filter(fragment => fragment.type === FragmentType.NAME)
+        /* Make sure to only catch fragments reasonably close to the role fragment. */
+        .filter(fragment => {
+            const centerRoleFragment = roleFragment.boundingBox.x + roleFragment.boundingBox.width / 2;
+            const centerFragment = fragment.boundingBox.x + fragment.boundingBox.width / 2;
+            return Math.abs(centerRoleFragment - centerFragment) <= 1.5 * roleFragment.boundingBox.width;
+        });
+};
 
-    return Object.keys(Role).map(role => {
-        const candidates = roleToPersons
-            .filter(obj => obj.role === role)
-            [0]
-            .persons
-            .map(person => person.name);
+const extractCast = (data, roleToPersons) => {
+    return Object.keys(Role)
+        .map(role => {
+            const nameFragments = Role[role].primary
+                ? findPersonsForPrimaryRole(data, role)
+                : findPersonsforSecondaryRole(data, role);
 
-        const nameFragments = Role[role].primary ? findMainCast(role) : findSecondaryCast(role);
-        const names = nameFragments
-            .map(fragment => matchNames(fragment.text, candidates))
-            .reduce(flatten, [])
-            .filter((name, i, all) => all.indexOf(name) === i)
-            .filter((name, i) => !Role[role].singular || i === 0 );
+            const candidates = roleToPersons
+                .filter(obj => obj.role === role)
+                [0]
+                .persons
+                .map(person => person.name);
 
-        return { role, names };
-    });
+            return nameFragments
+                .map(fragment => matchNames(fragment.text, candidates))
+                .reduce(flatten, [])
+                .filter((name, i, all) => all.indexOf(name) === i)
+                .filter((name, i) => !Role[role].singular || i === 0 )
+                .map(name => { return { role, name }; });
+        })
+        .reduce(flatten, []);
 };
 
 module.exports = { callCognitiveServicesOcr, convertCognitiveServicesResponse, extractCast };
