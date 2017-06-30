@@ -1,10 +1,8 @@
 // @flow
 
-const { analyzeImage } = require('../services/ocr');
+const { analyzeImageBuffer } = require('../services/images-service');
 const router = require('express').Router();
 const multer = require('multer');
-const streamifier = require('streamifier');
-const fileType = require('file-type');
 const path = require('path');
 
 // TODO FIXME Replace with diskStorage and use req.file.path; ditch streamifier.
@@ -31,8 +29,7 @@ const upload = multer({
 router.route('/analysis')
     .post(upload.single('image'), async (req, res) => {
         try {
-            const stream = streamifier.createReadStream(req.file.buffer);
-            const result = await analyzeImage(stream);
+            const result = await analyzeImageBuffer(req.file.buffer);
             return res.json(result);
         } catch (err) {
             return res.send(err);

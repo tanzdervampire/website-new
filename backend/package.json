@@ -13,7 +13,6 @@
         "dotenv": "^4.0.0",
         "express": "^4.15.3",
         "fast-levenshtein": "^2.0.6",
-        "file-type": "^5.2.0",
         "fs": "0.0.1-security",
         "moment": "^2.18.1",
         "mongoose": "^4.10.6",
