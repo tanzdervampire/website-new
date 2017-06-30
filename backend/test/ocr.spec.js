@@ -9,6 +9,8 @@ const fs = require('fs');
 chai.should();
 
 describe('OCR', () => {
+    const mapping = JSON.parse(fs.readFileSync('./test/resources/mapping.json'));
+
     fs.readdirSync('./test/resources/')
         .filter(fn => fn.substr(-1 * ('.cast.json'.length)) === '.cast.json')
         .map(fn => `./test/resources/${fn}`)
@@ -18,19 +20,6 @@ describe('OCR', () => {
             const expected = JSON.parse(fs.readFileSync(fn, 'utf8'));
 
             it(`correctly reads the cast for ${inputFn}`, () => {
-                // TODO FIXME Inject some wrong names.
-                const mapping = expected
-                    .reduce((acc, entry) => {
-                        const bucket = acc.filter(x => x.role === entry.role);
-                        if (bucket.length === 0) {
-                            acc.push({ role: entry.role, persons: [{ name: entry.name }] });
-                        } else {
-                            bucket[0].persons.push({ name: entry.name });
-                        }
-
-                        return acc;
-                    }, []);
-
                 const converted = convertCognitiveServicesResponse(input);
                 const actual = extractCast(converted, mapping);
 

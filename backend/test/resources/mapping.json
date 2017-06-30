@@ -1,0 +1,2917 @@
+[
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e51",
+                "name": "Kevin Schmid",
+                "numberOfShows": 328
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcc",
+                "name": "Alessandra Bizzarri",
+                "numberOfShows": 273
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e87",
+                "name": "Máté Gyenei",
+                "numberOfShows": 188
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dff",
+                "name": "Csaba Nagy",
+                "numberOfShows": 162
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de0",
+                "name": "Astrid Gollob",
+                "numberOfShows": 60
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e49",
+                "name": "Katie Allday",
+                "numberOfShows": 45
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3c",
+                "name": "Joe Nolan",
+                "numberOfShows": 40
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8a",
+                "name": "Nicola Trazzi",
+                "numberOfShows": 25
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb9",
+                "name": "Stefan Mosonyi",
+                "numberOfShows": 25
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9a",
+                "name": "Paula Ferreira",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecb",
+                "name": "Tibor Nagy",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea2",
+                "name": "Pierre Damen",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e57",
+                "name": "Kym Boyson",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e02",
+                "name": "David Baranya",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecf",
+                "name": "Toby Poole",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd6",
+                "name": "Andrew Chadwick",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef8",
+                "name": "Ross McDermott",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e40",
+                "name": "Judit Szoboszlay",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eee",
+                "name": "Amanda Huke",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efb",
+                "name": "Csaba Farago",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e76",
+                "name": "Matteo Vigna",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ead",
+                "name": "Sandra Milly",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee7",
+                "name": "Zoltán Fekete",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd0",
+                "name": "Alexander di Capri",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de7",
+                "name": "Bettina Oswald",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef9",
+                "name": "Daniel Rákász",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0e",
+                "name": "Femke Soetenga",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e13",
+                "name": "Frank Winkels",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e37",
+                "name": "Jesse Webb",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3f",
+                "name": "Joseph Dockree",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4b",
+                "name": "Katrin Löbbert",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4f",
+                "name": "Kevin Hudson",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5e",
+                "name": "Lucas Theisen",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e82",
+                "name": "Michel Driesse",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e86",
+                "name": "Mona Graw",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e91",
+                "name": "Oliver Heim",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efc",
+                "name": "Paul Knights",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e99",
+                "name": "Paul Walthaus",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebc",
+                "name": "Stephanie Sturm",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebd",
+                "name": "Stephanie Tschöppe",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec5",
+                "name": "Thomas Höfner",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee5",
+                "name": "Yves Adang",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Tanzsolisten"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e8c",
+                "name": "Nicole Ollio",
+                "numberOfShows": 342
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edd",
+                "name": "Veronika Enders",
+                "numberOfShows": 328
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8a",
+                "name": "Nicola Trazzi",
+                "numberOfShows": 309
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ede",
+                "name": "Vicki Douglas",
+                "numberOfShows": 291
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb9",
+                "name": "Stefan Mosonyi",
+                "numberOfShows": 280
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3c",
+                "name": "Joe Nolan",
+                "numberOfShows": 271
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e49",
+                "name": "Katie Allday",
+                "numberOfShows": 269
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4d",
+                "name": "Kerstin Zwanzig",
+                "numberOfShows": 105
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb3",
+                "name": "Silvano Marraffa",
+                "numberOfShows": 103
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9c",
+                "name": "Peter Horemans",
+                "numberOfShows": 99
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e57",
+                "name": "Kym Boyson",
+                "numberOfShows": 97
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eab",
+                "name": "Samantha Harris-Hughes",
+                "numberOfShows": 95
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7f",
+                "name": "Michael Eckel",
+                "numberOfShows": 93
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5f",
+                "name": "Lucy Costelloe",
+                "numberOfShows": 91
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e00",
+                "name": "Daniel Ruiz",
+                "numberOfShows": 89
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea1",
+                "name": "Phillip Kempster",
+                "numberOfShows": 86
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfa",
+                "name": "Christopher Tölle",
+                "numberOfShows": 84
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb5",
+                "name": "Silvia Lambertoni",
+                "numberOfShows": 83
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5a",
+                "name": "Leigh-Anne Vizer",
+                "numberOfShows": 79
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eae",
+                "name": "Sanne Buskermolen",
+                "numberOfShows": 76
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4c",
+                "name": "Kelly Edwards",
+                "numberOfShows": 74
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4e",
+                "name": "Kevin Foster",
+                "numberOfShows": 71
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e43",
+                "name": "Julie Newman",
+                "numberOfShows": 69
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de0",
+                "name": "Astrid Gollob",
+                "numberOfShows": 66
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2a",
+                "name": "Jacob Fearey",
+                "numberOfShows": 63
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcd",
+                "name": "Alex Hyne",
+                "numberOfShows": 51
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e25",
+                "name": "Horst Kulmbrein",
+                "numberOfShows": 51
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e87",
+                "name": "Máté Gyenei",
+                "numberOfShows": 51
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec5",
+                "name": "Thomas Höfner",
+                "numberOfShows": 50
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6b",
+                "name": "Maria Anna Russo",
+                "numberOfShows": 47
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e62",
+                "name": "Lynsey Reid",
+                "numberOfShows": 46
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e02",
+                "name": "David Baranya",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee3",
+                "name": "Wolf Bader",
+                "numberOfShows": 33
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ead",
+                "name": "Sandra Milly",
+                "numberOfShows": 22
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e40",
+                "name": "Judit Szoboszlay",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4f",
+                "name": "Kevin Hudson",
+                "numberOfShows": 19
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edf",
+                "name": "Vicky Riddoch",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd6",
+                "name": "Andrew Chadwick",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3f",
+                "name": "Joseph Dockree",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee5",
+                "name": "Yves Adang",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dda",
+                "name": "Anna Lopusny",
+                "numberOfShows": 14
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e76",
+                "name": "Matteo Vigna",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eee",
+                "name": "Amanda Huke",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcb",
+                "name": "Alan Kelly",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dea",
+                "name": "Brett Hibberd",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee7",
+                "name": "Zoltán Fekete",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea3",
+                "name": "Raphaela Pekovsek",
+                "numberOfShows": 8
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e22",
+                "name": "Helen Morris",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e48",
+                "name": "Kati Heidebrecht",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5e",
+                "name": "Lucas Theisen",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8e",
+                "name": "Nina Ungerer",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efc",
+                "name": "Paul Knights",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f07",
+                "name": "Samantha Turton",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f12",
+                "name": "Johan Vandamme",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea0",
+                "name": "Phillip Kampster",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efd",
+                "name": "Els Smekens",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1b",
+                "name": "Gemma West",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f06",
+                "name": "Isabel Dan",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2c",
+                "name": "Jacquie Biggs",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f11",
+                "name": "Lieselot Meurisse",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f16",
+                "name": "Luisa Mancarella",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6a",
+                "name": "Margherita Huisman",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb4",
+                "name": "Silvia Diletto",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f0c",
+                "name": "Cale Stanojevic",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e58",
+                "name": "Laura Greer",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea8",
+                "name": "Robert Johansson",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebf",
+                "name": "Stéphane Le Breton",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f15",
+                "name": "Taryn Nelson",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efe",
+                "name": "Veronique Spiteri",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efb",
+                "name": "Csaba Farago",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e11",
+                "name": "Florian Theiler",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e21",
+                "name": "Hannah Carter",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e53",
+                "name": "Kimberly Trees",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e61",
+                "name": "Lyndsey Stokes",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e84",
+                "name": "Milena Alaze",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef8",
+                "name": "Ross McDermott",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eeb",
+                "name": "Sarah Bowden",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec4",
+                "name": "Thomas Huber",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecb",
+                "name": "Tibor Nagy",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecd",
+                "name": "Tiziana Doneda",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecf",
+                "name": "Toby Poole",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Tanzensemble"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7de1",
+                "name": "Barbara Köhler",
+                "numberOfShows": 489
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e38",
+                "name": "Jessica Kessler",
+                "numberOfShows": 360
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edc",
+                "name": "Veronica Appeddu",
+                "numberOfShows": 237
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6e",
+                "name": "Marion Furtner",
+                "numberOfShows": 220
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6f",
+                "name": "Marjan Shaki-Pätzoldt",
+                "numberOfShows": 148
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e19",
+                "name": "Gabriella Mezöfi",
+                "numberOfShows": 118
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4b",
+                "name": "Katrin Löbbert",
+                "numberOfShows": 71
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd8",
+                "name": "Anja Wendzel",
+                "numberOfShows": 63
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e23",
+                "name": "Henriette Grawwert",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e65",
+                "name": "Maike Switzer",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6d",
+                "name": "Marina Maniglio",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb7",
+                "name": "Sonja Schatz",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e07",
+                "name": "Dominika Szymanska",
+                "numberOfShows": 42
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd3",
+                "name": "Amélie Dobler",
+                "numberOfShows": 29
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e71",
+                "name": "Martha Koltai",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7c",
+                "name": "Mercedesz Csampai",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de7",
+                "name": "Bettina Oswald",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df2",
+                "name": "Christina Brückner",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5c",
+                "name": "Lillemor Spitzer",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dee",
+                "name": "Cecilia Skarby",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dde",
+                "name": "Antje Eckermann",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef3",
+                "name": "Nele-Liis Vaiksoo",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f08",
+                "name": "Sabrina Auer",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df3",
+                "name": "Christina Köb",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd7",
+                "name": "Angelina Markiefka",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e08",
+                "name": "Dorothea Baumann",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3b",
+                "name": "Joana Henrique",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e60",
+                "name": "Lucy Scherer",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f09",
+                "name": "Senta-Sofia Delliponti",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Sarah"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e6a",
+                "name": "Margherita Huisman",
+                "numberOfShows": 799
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 765
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebf",
+                "name": "Stéphane Le Breton",
+                "numberOfShows": 647
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9c",
+                "name": "Peter Horemans",
+                "numberOfShows": 590
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4f",
+                "name": "Kevin Hudson",
+                "numberOfShows": 460
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2c",
+                "name": "Jacquie Biggs",
+                "numberOfShows": 407
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecd",
+                "name": "Tiziana Doneda",
+                "numberOfShows": 358
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e06",
+                "name": "Dominik Büttner",
+                "numberOfShows": 349
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2b",
+                "name": "Jacqueline van der Pol",
+                "numberOfShows": 334
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4d",
+                "name": "Kerstin Zwanzig",
+                "numberOfShows": 299
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5a",
+                "name": "Leigh-Anne Vizer",
+                "numberOfShows": 297
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4e",
+                "name": "Kevin Foster",
+                "numberOfShows": 293
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e67",
+                "name": "Marc Bollmeyer",
+                "numberOfShows": 204
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd6",
+                "name": "Andrew Chadwick",
+                "numberOfShows": 197
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee3",
+                "name": "Wolf Bader",
+                "numberOfShows": 180
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb3",
+                "name": "Silvano Marraffa",
+                "numberOfShows": 165
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5b",
+                "name": "Liane Maynard",
+                "numberOfShows": 132
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec6",
+                "name": "Thomas Kienast",
+                "numberOfShows": 106
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfa",
+                "name": "Christopher Tölle",
+                "numberOfShows": 96
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e00",
+                "name": "Daniel Ruiz",
+                "numberOfShows": 83
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec7",
+                "name": "Thomas Klotz",
+                "numberOfShows": 73
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1a",
+                "name": "Gary Jackman",
+                "numberOfShows": 70
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed4",
+                "name": "Torsten Moll",
+                "numberOfShows": 63
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e57",
+                "name": "Kym Boyson",
+                "numberOfShows": 54
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea8",
+                "name": "Robert Johansson",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb5",
+                "name": "Silvia Lambertoni",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de2",
+                "name": "Ben Kazlauskas",
+                "numberOfShows": 50
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e03",
+                "name": "David Hartland",
+                "numberOfShows": 45
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e61",
+                "name": "Lyndsey Stokes",
+                "numberOfShows": 45
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0a",
+                "name": "Eric Thomé",
+                "numberOfShows": 38
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7f",
+                "name": "Michael Eckel",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3e",
+                "name": "Jonathan Tilley",
+                "numberOfShows": 32
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee2",
+                "name": "Witalij Kühne",
+                "numberOfShows": 26
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec4",
+                "name": "Thomas Huber",
+                "numberOfShows": 22
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e28",
+                "name": "Isabelle Massé",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7b",
+                "name": "Melanie Gemeiner",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed1",
+                "name": "Torie Bedwin",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea1",
+                "name": "Phillip Kempster",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1e",
+                "name": "Gregor Tscherne",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb4",
+                "name": "Silvia Diletto",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e25",
+                "name": "Horst Kulmbrein",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e47",
+                "name": "Kathryn Broadribb",
+                "numberOfShows": 8
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb1",
+                "name": "Selma Rudalics",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd4",
+                "name": "Andreas Björkman",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9b",
+                "name": "Peter Horemanns",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dca",
+                "name": "Akos Tihanyi",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1b",
+                "name": "Gemma West",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6c",
+                "name": "Marianne Tarnowskij",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e75",
+                "name": "Matteo Gastaldo",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8d",
+                "name": "Nikolaus Meder",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9e",
+                "name": "Philip Ranson",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Solotänzer"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e94",
+                "name": "Pascal Höwing",
+                "numberOfShows": 279
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd8",
+                "name": "Anja Wendzel",
+                "numberOfShows": 276
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e6d",
+                "name": "Marina Maniglio",
+                "numberOfShows": 259
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0f",
+                "name": "Fleur Alders",
+                "numberOfShows": 245
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e46",
+                "name": "Karolin Konert",
+                "numberOfShows": 239
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eae",
+                "name": "Sanne Buskermolen",
+                "numberOfShows": 157
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de0",
+                "name": "Astrid Gollob",
+                "numberOfShows": 142
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8f",
+                "name": "Noah Wili",
+                "numberOfShows": 141
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eab",
+                "name": "Samantha Harris-Hughes",
+                "numberOfShows": 141
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1d",
+                "name": "Gonzalo Campos",
+                "numberOfShows": 119
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4f",
+                "name": "Kevin Hudson",
+                "numberOfShows": 102
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e92",
+                "name": "Pamela Zottele",
+                "numberOfShows": 95
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5c",
+                "name": "Lillemor Spitzer",
+                "numberOfShows": 90
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebd",
+                "name": "Stephanie Tschöppe",
+                "numberOfShows": 89
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e66",
+                "name": "Manuel Stoff",
+                "numberOfShows": 86
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed2",
+                "name": "Torsten Ankert",
+                "numberOfShows": 86
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e86",
+                "name": "Mona Graw",
+                "numberOfShows": 85
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec2",
+                "name": "Thijs Kobes",
+                "numberOfShows": 81
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e97",
+                "name": "Patrick Mares",
+                "numberOfShows": 78
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e98",
+                "name": "Paul Erkamp",
+                "numberOfShows": 75
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e82",
+                "name": "Michel Driesse",
+                "numberOfShows": 72
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7e",
+                "name": "Michael Anzalone",
+                "numberOfShows": 70
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebc",
+                "name": "Stephanie Sturm",
+                "numberOfShows": 68
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edb",
+                "name": "Veit Schäfermeier",
+                "numberOfShows": 66
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e99",
+                "name": "Paul Walthaus",
+                "numberOfShows": 63
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcd",
+                "name": "Alex Hyne",
+                "numberOfShows": 61
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9f",
+                "name": "Philipp Hägeli",
+                "numberOfShows": 60
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0e",
+                "name": "Femke Soetenga",
+                "numberOfShows": 57
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd0",
+                "name": "Alexander di Capri",
+                "numberOfShows": 55
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb7",
+                "name": "Sonja Schatz",
+                "numberOfShows": 54
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e23",
+                "name": "Henriette Grawwert",
+                "numberOfShows": 53
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4b",
+                "name": "Katrin Löbbert",
+                "numberOfShows": 52
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7a",
+                "name": "Max Niemeyer",
+                "numberOfShows": 46
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd6",
+                "name": "Andrew Chadwick",
+                "numberOfShows": 45
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e87",
+                "name": "Máté Gyenei",
+                "numberOfShows": 41
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e25",
+                "name": "Horst Kulmbrein",
+                "numberOfShows": 36
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eba",
+                "name": "Stefan Poslovski",
+                "numberOfShows": 33
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec5",
+                "name": "Thomas Höfner",
+                "numberOfShows": 32
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee3",
+                "name": "Wolf Bader",
+                "numberOfShows": 28
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e48",
+                "name": "Kati Heidebrecht",
+                "numberOfShows": 26
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2a",
+                "name": "Jacob Fearey",
+                "numberOfShows": 23
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5d",
+                "name": "Linda Veenhuizen",
+                "numberOfShows": 22
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec0",
+                "name": "Sven Prüwer",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eca",
+                "name": "Tibor Heger",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e05",
+                "name": "Dennis Jankowiak",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd7",
+                "name": "Angelina Markiefka",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfc",
+                "name": "Claudie Reinhard",
+                "numberOfShows": 14
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e08",
+                "name": "Dorothea Baumann",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e41",
+                "name": "Judith Jandl",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfd",
+                "name": "Conny Braun",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e43",
+                "name": "Julie Newman",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e14",
+                "name": "Franz Frickel",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed6",
+                "name": "Udo Eickelmann",
+                "numberOfShows": 8
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e22",
+                "name": "Helen Morris",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3b",
+                "name": "Joana Henrique",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8e",
+                "name": "Nina Ungerer",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec9",
+                "name": "Thomas Schweins",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2d",
+                "name": "Jakub Wocial",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e85",
+                "name": "Miriam Lotz",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea3",
+                "name": "Raphaela Pekovsek",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e42",
+                "name": "Juliane Bischoff",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f00",
+                "name": "Sandra Bleicher",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb3",
+                "name": "Silvano Marraffa",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee7",
+                "name": "Zoltán Fekete",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eee",
+                "name": "Amanda Huke",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dda",
+                "name": "Anna Lopusny",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dde",
+                "name": "Antje Eckermann",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e78",
+                "name": "Matthias Stockinger",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebf",
+                "name": "Stéphane Le Breton",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f13",
+                "name": "Tim Edwards",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed9",
+                "name": "Ute Geske",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f01",
+                "name": "Anne Hoth",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de7",
+                "name": "Bettina Oswald",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eea",
+                "name": "Esther Hehl",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eff",
+                "name": "Eva Maria Bender",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1b",
+                "name": "Gemma West",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e37",
+                "name": "Jesse Webb",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e58",
+                "name": "Laura Greer",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f0a",
+                "name": "Michaela Schober",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebb",
+                "name": "Stefan Stara",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f02",
+                "name": "Timea Kecskes",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df1",
+                "name": "Christian Stadlhofer",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef7",
+                "name": "Janaina Bianchi",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f12",
+                "name": "Johan Vandamme",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e61",
+                "name": "Lyndsey Stokes",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f08",
+                "name": "Sabrina Auer",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f03",
+                "name": "Sanne Mieloo",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecf",
+                "name": "Toby Poole",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee4",
+                "name": "Yousef Sheikh",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ddc",
+                "name": "Anna-Catherina Löbbert",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df4",
+                "name": "Christina Ogink",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfa",
+                "name": "Christopher Tölle",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e09",
+                "name": "Elke Buyle",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e13",
+                "name": "Frank Winkels",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e39",
+                "name": "Jessica Oisson-Lantto",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e50",
+                "name": "Kevin Köhler",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5a",
+                "name": "Leigh-Anne Vizer",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eec",
+                "name": "Myrthes Monteiro",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e91",
+                "name": "Oliver Heim",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef8",
+                "name": "Ross McDermott",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f07",
+                "name": "Samantha Turton",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eac",
+                "name": "Sander van Wissen",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb0",
+                "name": "Schirin Kazemi",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb5",
+                "name": "Silvia Lambertoni",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec1",
+                "name": "Svenja Kühl",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efe",
+                "name": "Veronique Spiteri",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Gesangsensemble"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7dc9",
+                "name": "Adrian Werum",
+                "numberOfShows": 484
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de5",
+                "name": "Bernhard Volk",
+                "numberOfShows": 289
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ded",
+                "name": "Carsten Paap",
+                "numberOfShows": 260
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de6",
+                "name": "Bernhard Wünsch",
+                "numberOfShows": 229
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e59",
+                "name": "Leif Klinkhardt",
+                "numberOfShows": 174
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df8",
+                "name": "Christoph Wohlleben",
+                "numberOfShows": 136
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea9",
+                "name": "Robert Paul",
+                "numberOfShows": 83
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dec",
+                "name": "Carsten Bowien",
+                "numberOfShows": 66
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de8",
+                "name": "Bob Edwards",
+                "numberOfShows": 56
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e24",
+                "name": "Holger Kolodziej",
+                "numberOfShows": 50
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de9",
+                "name": "Boris Ritter",
+                "numberOfShows": 46
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb2",
+                "name": "Shay Cohen",
+                "numberOfShows": 39
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3d",
+                "name": "John Thrower",
+                "numberOfShows": 32
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e56",
+                "name": "Krisztián Balassa",
+                "numberOfShows": 25
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de3",
+                "name": "Bernd Ruf",
+                "numberOfShows": 24
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea7",
+                "name": "Robert Emery",
+                "numberOfShows": 22
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd1",
+                "name": "Alexandros Diamantis",
+                "numberOfShows": 21
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e32",
+                "name": "Jan Paffrath",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7de4",
+                "name": "Bernd Steixner",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef0",
+                "name": "Klaus Wilhelm",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eed",
+                "name": "Andreas Pabst",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df5",
+                "name": "Christoph Bönecker",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfb",
+                "name": "Claudia Born",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f0f",
+                "name": "Guido Löflad",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f0d",
+                "name": "Martin Gallery",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed7",
+                "name": "Ulrich Talle",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Dirigent"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7eb8",
+                "name": "Stefan Büdenbender",
+                "numberOfShows": 905
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e45",
+                "name": "Kai Helm",
+                "numberOfShows": 435
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e93",
+                "name": "Paolo Bianca",
+                "numberOfShows": 344
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebf",
+                "name": "Stéphane Le Breton",
+                "numberOfShows": 79
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee4",
+                "name": "Yousef Sheikh",
+                "numberOfShows": 57
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee3",
+                "name": "Wolf Bader",
+                "numberOfShows": 47
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3e",
+                "name": "Jonathan Tilley",
+                "numberOfShows": 30
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9d",
+                "name": "Peter Stassen",
+                "numberOfShows": 30
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e82",
+                "name": "Michel Driesse",
+                "numberOfShows": 27
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e35",
+                "name": "Jeroen Mosselman",
+                "numberOfShows": 26
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9f",
+                "name": "Philipp Hägeli",
+                "numberOfShows": 25
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfe",
+                "name": "Cornelius Baltus",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcd",
+                "name": "Alex Hyne",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1f",
+                "name": "HG Schramm",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2a",
+                "name": "Jacob Fearey",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec4",
+                "name": "Thomas Huber",
+                "numberOfShows": 9
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7e",
+                "name": "Michael Anzalone",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee7",
+                "name": "Zoltán Fekete",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcf",
+                "name": "Alexander Wengel",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e67",
+                "name": "Marc Bollmeyer",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5e",
+                "name": "Lucas Theisen",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e78",
+                "name": "Matthias Stockinger",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec0",
+                "name": "Sven Prüwer",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed3",
+                "name": "Torsten Flach",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Koukol"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e36",
+                "name": "Jerzy Jeszke",
+                "numberOfShows": 520
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2f",
+                "name": "James Sbano",
+                "numberOfShows": 407
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebe",
+                "name": "Steven Loss",
+                "numberOfShows": 306
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8b",
+                "name": "Nicolas Tenerani",
+                "numberOfShows": 294
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2e",
+                "name": "James Daniel Frost",
+                "numberOfShows": 106
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfe",
+                "name": "Cornelius Baltus",
+                "numberOfShows": 97
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e77",
+                "name": "Matthias Dressel",
+                "numberOfShows": 79
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7e",
+                "name": "Michael Anzalone",
+                "numberOfShows": 57
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e98",
+                "name": "Paul Erkamp",
+                "numberOfShows": 44
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e37",
+                "name": "Jesse Webb",
+                "numberOfShows": 40
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9f",
+                "name": "Philipp Hägeli",
+                "numberOfShows": 28
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e13",
+                "name": "Frank Winkels",
+                "numberOfShows": 21
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea4",
+                "name": "Raymond Sepe",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edb",
+                "name": "Veit Schäfermeier",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e54",
+                "name": "Kirill Zolygin",
+                "numberOfShows": 14
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed2",
+                "name": "Torsten Ankert",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df6",
+                "name": "Christoph Leszczynski",
+                "numberOfShows": 8
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcf",
+                "name": "Alexander Wengel",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e14",
+                "name": "Franz Frickel",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e10",
+                "name": "Florian Soyka",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee9",
+                "name": "Kai Hüsgen",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec9",
+                "name": "Thomas Schweins",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed8",
+                "name": "Ulrich Wiggers",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Chagal"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e17",
+                "name": "Fredrik Wickerts",
+                "numberOfShows": 744
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed0",
+                "name": "Tom van der Ven",
+                "numberOfShows": 285
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7a",
+                "name": "Max Niemeyer",
+                "numberOfShows": 192
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eba",
+                "name": "Stefan Poslovski",
+                "numberOfShows": 172
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e18",
+                "name": "Fritz Schmid",
+                "numberOfShows": 116
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df7",
+                "name": "Christoph Trauth",
+                "numberOfShows": 97
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eaa",
+                "name": "Rutger Bulsing",
+                "numberOfShows": 90
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec7",
+                "name": "Thomas Klotz",
+                "numberOfShows": 62
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e44",
+                "name": "Jurko van Veenendaal",
+                "numberOfShows": 49
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8f",
+                "name": "Noah Wili",
+                "numberOfShows": 39
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e97",
+                "name": "Patrick Mares",
+                "numberOfShows": 38
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e90",
+                "name": "Norbert Kohler",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea5",
+                "name": "René Roseburg",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec2",
+                "name": "Thijs Kobes",
+                "numberOfShows": 20
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e66",
+                "name": "Manuel Stoff",
+                "numberOfShows": 19
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1d",
+                "name": "Gonzalo Campos",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebb",
+                "name": "Stefan Stara",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e80",
+                "name": "Michael Heller",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd6",
+                "name": "Andrew Chadwick",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e55",
+                "name": "Krisha Dalke",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e50",
+                "name": "Kevin Köhler",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e05",
+                "name": "Dennis Jankowiak",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eca",
+                "name": "Tibor Heger",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efa",
+                "name": "Riccardo Greco",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dce",
+                "name": "Alexander Klaws",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee8",
+                "name": "Anton Zetterholm",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ddf",
+                "name": "Aris Sas",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df1",
+                "name": "Christian Stadlhofer",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Alfred"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7ea6",
+                "name": "Robert D. Marx",
+                "numberOfShows": 440
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ecc",
+                "name": "Tim Reichwein",
+                "numberOfShows": 347
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec8",
+                "name": "Thomas Mülner",
+                "numberOfShows": 328
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e90",
+                "name": "Norbert Kohler",
+                "numberOfShows": 231
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e83",
+                "name": "Milan van Waardenburg",
+                "numberOfShows": 219
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e79",
+                "name": "Max Meister",
+                "numberOfShows": 117
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e82",
+                "name": "Michel Driesse",
+                "numberOfShows": 72
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0b",
+                "name": "Espen Nowacki",
+                "numberOfShows": 62
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e99",
+                "name": "Paul Walthaus",
+                "numberOfShows": 56
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 47
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7deb",
+                "name": "Carl van Wegberg",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ece",
+                "name": "Tobias Weis",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eac",
+                "name": "Sander van Wissen",
+                "numberOfShows": 27
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e68",
+                "name": "Marc Liebisch",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e54",
+                "name": "Kirill Zolygin",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef1",
+                "name": "Florian Fetterle",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eba",
+                "name": "Stefan Poslovski",
+                "numberOfShows": 11
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfa",
+                "name": "Christopher Tölle",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dcf",
+                "name": "Alexander Wengel",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2d",
+                "name": "Jakub Wocial",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed6",
+                "name": "Udo Eickelmann",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e20",
+                "name": "Haldor Laegreid",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eaf",
+                "name": "Sascha Th. G. Krebs",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f0b",
+                "name": "Sven Tummeleer",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Herbert"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e31",
+                "name": "Jan Merchant",
+                "numberOfShows": 686
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd2",
+                "name": "Alyssa Preston",
+                "numberOfShows": 374
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee6",
+                "name": "Yvonne Köstler",
+                "numberOfShows": 335
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb6",
+                "name": "Simone Pohl",
+                "numberOfShows": 286
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebd",
+                "name": "Stephanie Tschöppe",
+                "numberOfShows": 112
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebc",
+                "name": "Stephanie Sturm",
+                "numberOfShows": 77
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e33",
+                "name": "Jeanne-Marie Nigl",
+                "numberOfShows": 56
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e96",
+                "name": "Patricia Gressley",
+                "numberOfShows": 27
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ddd",
+                "name": "Anne Welte",
+                "numberOfShows": 26
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0f",
+                "name": "Fleur Alders",
+                "numberOfShows": 16
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd9",
+                "name": "Anja Wessel",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7d",
+                "name": "Merel Zeeman",
+                "numberOfShows": 15
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e48",
+                "name": "Kati Heidebrecht",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e92",
+                "name": "Pamela Zottele",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed5",
+                "name": "Tzipporah Gerson",
+                "numberOfShows": 10
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e27",
+                "name": "Isabella Prühs",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef7",
+                "name": "Janaina Bianchi",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eef",
+                "name": "Barbara Raunegger",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e42",
+                "name": "Juliane Bischoff",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfc",
+                "name": "Claudie Reinhard",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dfd",
+                "name": "Conny Braun",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e04",
+                "name": "Debby Boekema",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eff",
+                "name": "Eva Maria Bender",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef4",
+                "name": "Heike Wiltrud Schmitz",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e64",
+                "name": "Maike Katrin Schmidt",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f04",
+                "name": "Martine de Jager",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e85",
+                "name": "Miriam Lotz",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Rebecca"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7eac",
+                "name": "Sander van Wissen",
+                "numberOfShows": 264
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e54",
+                "name": "Kirill Zolygin",
+                "numberOfShows": 255
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7e",
+                "name": "Michael Anzalone",
+                "numberOfShows": 133
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb9",
+                "name": "Stefan Mosonyi",
+                "numberOfShows": 43
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e79",
+                "name": "Max Meister",
+                "numberOfShows": 32
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e83",
+                "name": "Milan van Waardenburg",
+                "numberOfShows": 23
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df9",
+                "name": "Christopher Busse",
+                "numberOfShows": 21
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e10",
+                "name": "Florian Soyka",
+                "numberOfShows": 17
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e05",
+                "name": "Dennis Jankowiak",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e82",
+                "name": "Michel Driesse",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eda",
+                "name": "Vanni Viscusi",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7efa",
+                "name": "Riccardo Greco",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebf",
+                "name": "Stéphane Le Breton",
+                "numberOfShows": 4
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e46",
+                "name": "Karolin Konert",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f05",
+                "name": "Maciej Salamon",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f10",
+                "name": "Rune Høck Møller",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2d",
+                "name": "Jakub Wocial",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e50",
+                "name": "Kevin Köhler",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec5",
+                "name": "Thomas Höfner",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed6",
+                "name": "Udo Eickelmann",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f14",
+                "name": "Andrea Casati",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd4",
+                "name": "Andreas Björkman",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef1",
+                "name": "Florian Fetterle",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1b",
+                "name": "Gemma West",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4d",
+                "name": "Kerstin Zwanzig",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5a",
+                "name": "Leigh-Anne Vizer",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5f",
+                "name": "Lucy Costelloe",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e8f",
+                "name": "Noah Wili",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e95",
+                "name": "Patric Scott",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9f",
+                "name": "Philipp Hägeli",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea8",
+                "name": "Robert Johansson",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eb4",
+                "name": "Silvia Diletto",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec4",
+                "name": "Thomas Huber",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eca",
+                "name": "Tibor Heger",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Gesangssolisten"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e52",
+                "name": "Kevin Tarte",
+                "numberOfShows": 589
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec3",
+                "name": "Thomas Borchert",
+                "numberOfShows": 301
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0d",
+                "name": "Felix Martin",
+                "numberOfShows": 213
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e30",
+                "name": "Jan Ammann",
+                "numberOfShows": 136
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e73",
+                "name": "Mathias Edenborn",
+                "numberOfShows": 129
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e72",
+                "name": "Martin Berger",
+                "numberOfShows": 116
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e81",
+                "name": "Michael Nicholson",
+                "numberOfShows": 116
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e26",
+                "name": "Ian Jon Bourg",
+                "numberOfShows": 88
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd0",
+                "name": "Alexander di Capri",
+                "numberOfShows": 63
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea4",
+                "name": "Raymond Sepe",
+                "numberOfShows": 60
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e54",
+                "name": "Kirill Zolygin",
+                "numberOfShows": 59
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e70",
+                "name": "Mark Seibert",
+                "numberOfShows": 49
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e69",
+                "name": "Marcel Kucera",
+                "numberOfShows": 43
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edb",
+                "name": "Veit Schäfermeier",
+                "numberOfShows": 35
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e16",
+                "name": "Fredrik Lexfors",
+                "numberOfShows": 27
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e99",
+                "name": "Paul Walthaus",
+                "numberOfShows": 26
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed2",
+                "name": "Torsten Ankert",
+                "numberOfShows": 18
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e29",
+                "name": "Ivan Ozhogin",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ed6",
+                "name": "Udo Eickelmann",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7def",
+                "name": "Charles Fornara",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e10",
+                "name": "Florian Soyka",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9f",
+                "name": "Philipp Hägeli",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Graf von Krolock"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7e04",
+                "name": "Debby Boekema",
+                "numberOfShows": 331
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e7d",
+                "name": "Merel Zeeman",
+                "numberOfShows": 279
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0c",
+                "name": "Fawn Arnold",
+                "numberOfShows": 240
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e15",
+                "name": "Franziska Forster",
+                "numberOfShows": 234
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ddb",
+                "name": "Anna Thorén",
+                "numberOfShows": 225
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0e",
+                "name": "Femke Soetenga",
+                "numberOfShows": 142
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e01",
+                "name": "Danielle Veneman",
+                "numberOfShows": 137
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e89",
+                "name": "Natascha-Cecillia Hill",
+                "numberOfShows": 121
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e3a",
+                "name": "Jessie Roggemann",
+                "numberOfShows": 106
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e0f",
+                "name": "Fleur Alders",
+                "numberOfShows": 59
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e86",
+                "name": "Mona Graw",
+                "numberOfShows": 46
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e46",
+                "name": "Karolin Konert",
+                "numberOfShows": 40
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e63",
+                "name": "Maaike Schuurmans",
+                "numberOfShows": 33
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e88",
+                "name": "Natalie Sindern",
+                "numberOfShows": 24
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ebc",
+                "name": "Stephanie Sturm",
+                "numberOfShows": 22
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e1c",
+                "name": "Goele de Raedt",
+                "numberOfShows": 14
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef2",
+                "name": "Linda Konrad",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e07",
+                "name": "Dominika Szymanska",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e5d",
+                "name": "Linda Veenhuizen",
+                "numberOfShows": 6
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eea",
+                "name": "Esther Hehl",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e41",
+                "name": "Judith Jandl",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e27",
+                "name": "Isabella Prühs",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e4a",
+                "name": "Katja Berg",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7f02",
+                "name": "Timea Kecskes",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Magda"
+    },
+    {
+        "persons": [
+            {
+                "_id": "594f5b396e644d6dea4c7ee1",
+                "name": "Werner Bauer",
+                "numberOfShows": 429
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ee0",
+                "name": "Victor Petersen",
+                "numberOfShows": 323
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df0",
+                "name": "Christian Paumgarten",
+                "numberOfShows": 306
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7dd5",
+                "name": "Andreas Bühring",
+                "numberOfShows": 257
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e91",
+                "name": "Oliver Heim",
+                "numberOfShows": 199
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e34",
+                "name": "Jens Janke",
+                "numberOfShows": 173
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eba",
+                "name": "Stefan Poslovski",
+                "numberOfShows": 98
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e90",
+                "name": "Norbert Kohler",
+                "numberOfShows": 94
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7edb",
+                "name": "Veit Schäfermeier",
+                "numberOfShows": 43
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e77",
+                "name": "Matthias Dressel",
+                "numberOfShows": 37
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e94",
+                "name": "Pascal Höwing",
+                "numberOfShows": 32
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e25",
+                "name": "Horst Kulmbrein",
+                "numberOfShows": 25
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eac",
+                "name": "Sander van Wissen",
+                "numberOfShows": 23
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e9d",
+                "name": "Peter Stassen",
+                "numberOfShows": 13
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7df1",
+                "name": "Christian Stadlhofer",
+                "numberOfShows": 12
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e2e",
+                "name": "James Daniel Frost",
+                "numberOfShows": 7
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e12",
+                "name": "Frank Rainer Röbling",
+                "numberOfShows": 5
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ef6",
+                "name": "Gernot Kranner",
+                "numberOfShows": 3
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ea5",
+                "name": "René Roseburg",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec0",
+                "name": "Sven Prüwer",
+                "numberOfShows": 2
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e14",
+                "name": "Franz Frickel",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7e74",
+                "name": "Mathias Schlung",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7ec9",
+                "name": "Thomas Schweins",
+                "numberOfShows": 1
+            },
+            {
+                "_id": "594f5b396e644d6dea4c7eca",
+                "name": "Tibor Heger",
+                "numberOfShows": 1
+            }
+        ],
+        "role": "Professor Abronsius"
+    }
+]
