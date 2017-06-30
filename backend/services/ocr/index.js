@@ -1,12 +1,13 @@
 // @flow
 
+require('dotenv').config();
+
 const { callCognitiveServicesOcr, convertCognitiveServicesResponse, extractCast } = require('./ocr');
 const { queryRoles } = require('../roles-service');
 
 const analyzeImage = async stream => {
-    // TODO FIXME process.env.COGNITIVE_SERVICES_API_KEY
     const [ response, mapping ] = await Promise.all([
-        callCognitiveServicesOcr(stream, '<RETRACTED>'),
+        callCognitiveServicesOcr(stream, process.env.COGNITIVE_SERVICES_API_KEY),
         queryRoles({}),
     ]);
 
