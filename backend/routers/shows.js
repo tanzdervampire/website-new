@@ -1,53 +1,7 @@
 // @flow
 
 const router = require('express').Router();
-const moment = require('moment');
-const Show = require('../models/show');
-const Production = require('../models/production');
-require('../models/person');
-
-const findShows = async (req, res) => {
-    const { year, month, day } = req.params;
-    const fields = req.query.fields ? req.query.fields.split(/,/) : [];
-    const doCount = !!req.query.count;
-
-    const base = moment(`${day || '01'}.${month}.${year}`, 'DD.MM.YYYY', true);
-    if (!base.isValid()) {
-        res.status(400);
-        throw 'Invalid input.';
-    }
-
-    const from = base.clone().startOf(day ? 'day' : 'month');
-    const until = base.clone().endOf(day ? 'day' : 'month');
-    let query = Show.find().lean().where('date')
-        .gte(from.toDate())
-        .lte(until.toDate());
-
-    if (req.query.location) {
-        const productions = await Production.find({ location: req.query.location });
-        query.where('production').in(productions.map(p => p._id));
-    }
-
-    if (fields.includes('production')) {
-        query.populate('production');
-    } else {
-        query.select({ production: false });
-    }
-
-    if (fields.includes('cast')) {
-        query.populate('cast.person');
-    } else {
-        query.select({ cast: false });
-    }
-
-    if (doCount) {
-        query.count();
-    } else {
-        query.sort({ date: 'ascending' });
-    }
-
-    return query;
-};
+const { queryShows } = require('../services/shows-service');
 
 // TODO FIXME Add production parameter.
 /**
@@ -69,7 +23,14 @@ const findShows = async (req, res) => {
 router.route('/:year/:month')
     .get(async (req, res) => {
         try {
-            const documents = await findShows(req, res);
+            const documents = await queryShows({
+                year: req.params.year,
+                month: req.params.month,
+                fields: req.query.fields,
+                location: req.query.location,
+                count: !!req.query.count,
+            });
+
             return res.json(documents);
         } catch (err) {
             return res.send(err);
@@ -96,7 +57,15 @@ router.route('/:year/:month')
 router.route('/:year/:month/:day')
     .get(async (req, res) => {
         try {
-            const documents = await findShows(req, res);
+            const documents = await queryShows({
+                year: req.params.year,
+                month: req.params.month,
+                day: req.params.day,
+                fields: req.query.fields,
+                location: req.query.location,
+                count: !!req.query.count,
+            });
+
             return res.json(documents);
         } catch (err) {
             return res.send(err);
