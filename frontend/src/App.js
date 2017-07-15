@@ -1,49 +1,35 @@
 // @flow
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-
-import { increment } from './actions';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import theme from './theme';
+import AppBar from 'material-ui/AppBar';
+import { Tabs, Tab } from 'material-ui/Tabs';
 
 class App extends Component {
 
-    static propTypes = {
-        count: PropTypes.number,
-        onClick: PropTypes.func,
-    };
-
-    handleClick = event => {
-        event.preventDefault();
-        this.props.onClick();
-    };
-
     render() {
         return (
-            <div>
-                <p>Hello, World!</p>
-                <p>{this.props.count}</p>
-                <input type="button" onClick={this.handleClick} value="Increment!"/>
-            </div>
+            <MuiThemeProvider muiTheme={theme}>
+                <div>
+                    <AppBar
+                        title="Tanz der Vampire"
+                        zDepth={0}
+                    />
+
+                    <Tabs>
+                        <Tab label="Lorem">
+                            <p>Foo!</p>
+                        </Tab>
+                        <Tab label="Ipsum">
+                            <p>Bar?</p>
+                        </Tab>
+                    </Tabs>
+                </div>
+            </MuiThemeProvider>
         );
     }
+
 }
 
-const mapStateToProps = state => {
-    return {
-        count: state.count,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onClick: () => {
-            dispatch(increment());
-        }
-    }
-}
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps,
-)(App);
+export default App;

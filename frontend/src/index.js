@@ -1,5 +1,7 @@
 // @flow
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -8,7 +10,11 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import { Route } from 'react-router';
 import reducers from './reducers';
+
 import App from './App';
+import './index.css';
+
+injectTapEventPlugin();
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
