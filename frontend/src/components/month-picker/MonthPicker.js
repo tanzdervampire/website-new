@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import 'moment/locale/de';
+
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import { Toolbar, ToolbarGroup, ToolbarTitle } from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
