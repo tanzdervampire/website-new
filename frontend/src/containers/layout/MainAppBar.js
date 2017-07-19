@@ -21,17 +21,23 @@ class MainAppBar extends Component {
         this.props.uiToggleDrawer();
     };
 
-    getTitle() {
+    getRoute() {
         const { location } = this.props;
         const route = routes.filter(route => route.path === location.pathname);
-        if (route.length === 1 && route[0].drawerEntry) {
-            return route[0].drawerEntry.text;
-        }
+        return route.length === 1 ? route[0] : null;
+    }
 
-        return null;
+    getTitle() {
+        const route = this.getRoute();
+        return route && route.drawerEntry ? route.drawerEntry.text : null;
     }
 
     renderSearchIcon() {
+        const route = this.getRoute();
+        if (!route || !route.supportsSearch) {
+            return null;
+        }
+
         return (
             <IconButton>
                 <Search />

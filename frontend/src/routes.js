@@ -21,6 +21,7 @@ const root = {
     exact: true,
     headComponent: null,
     contentComponent: null,
+    supportsSearch: false,
     drawerEntry: {
         icon: (<IconHome />),
         text: 'Startseite',
@@ -34,6 +35,7 @@ const shows = {
     exact: false,
     headComponent: PageShowHead,
     contentComponent: PageShowBody,
+    supportsSearch: false,
     drawerEntry: {
         icon: (<IconPeople />),
         text: 'Vorstellungen',
@@ -47,6 +49,7 @@ const productions = {
     exact: false,
     headComponent: null,
     contentComponent: null,
+    supportsSearch: true,
     drawerEntry: {
         icon: (<IconAccountBalance />),
         text: 'Produktionen',
@@ -60,6 +63,7 @@ const actors = {
     exact: false,
     headComponent: null,
     contentComponent: null,
+    supportsSearch: true,
     drawerEntry: {
         icon: (<IconFace />),
         text: 'Darsteller',
@@ -73,6 +77,7 @@ const legal = {
     exact: true,
     headComponent: null,
     contentComponent: null,
+    supportsSearch: false,
     drawerEntry: {
         icon: null,
         text: 'Impressum',
@@ -86,6 +91,7 @@ const github = {
     exact: false,
     headComponent: null,
     contentComponent: null,
+    supportsSearch: false,
     drawerEntry: {
         icon: (<IconGithub />),
         text: 'Github',
