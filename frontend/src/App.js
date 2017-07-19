@@ -14,32 +14,10 @@ import NavigationDrawer from './containers/layout/NavigationDrawer';
 import MainAppBar from './containers/layout/MainAppBar';
 
 import { Switch, Route } from 'react-router-dom';
-import routes from './routes';
+import PageShowHead from './containers/pages/shows/PageShowHead';
+import PageShowBody from './containers/pages/shows/PageShowBody';
 
 class App extends Component {
-
-    renderRoute(route, component, keyPrefix) {
-        if (!route.path) {
-            return null;
-        }
-
-        return (
-            <Route
-                key={`${keyPrefix}-${route.path}`}
-                path={route.path}
-                exact={route.exact}
-                component={component}
-            />
-        );
-    }
-
-    renderHeadRoute(route) {
-        return this.renderRoute(route, route.headComponent, 'head');
-    }
-
-    renderContentRoute(route) {
-        return this.renderRoute(route, route.contentComponent, 'content');
-    }
 
     render() {
         return (
@@ -47,16 +25,27 @@ class App extends Component {
                 <div>
                     <div className="app--head">
                         <Route component={NavigationDrawer} />
-                        <Route component={MainAppBar} />
 
                         <Switch>
-                            { routes.map(this.renderHeadRoute.bind(this)) }
+                            <Route path="/shows" exact render={props => <MainAppBar {...props} title="Vorstellungen" />} />
+                            <Route path="/productions" exact render={props => <MainAppBar {...props} title="Produktionen" supportsSearch />} />
+                            <Route path="/actors" exact render={props => <MainAppBar {...props} title="Darsteller" supportsSearch />} />
+                            <Route path="/legal" exact render={props => <MainAppBar {...props} title="Impressum" />} />
+                            <Route component={MainAppBar} />
+                        </Switch>
+
+                        <Switch>
+                            <Route path='/shows' exact component={PageShowHead} />
                         </Switch>
                     </div>
 
                     <div className="app--content">
                         <Switch>
-                            { routes.map(this.renderContentRoute.bind(this)) }
+                            <Route path='/' exact component={null} />
+                            <Route path='/shows' component={PageShowBody} />
+                            <Route path='/productions' component={null} />
+                            <Route path='/actors' component={null} />
+                            <Route path='/legal' exact component={null} />
                         </Switch>
                     </div>
 

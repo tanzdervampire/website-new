@@ -9,32 +9,23 @@ import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import Search from 'material-ui/svg-icons/action/search';
 
-import routes from '../../routes';
-
 class MainAppBar extends Component {
 
     static propTypes = {
-        location: PropTypes.object.isRequired,
+        title: PropTypes.string,
+        supportsSearch: PropTypes.bool,
+    };
+
+    static defaultProps = {
+        supportsSearch: false,
     };
 
     onMenuButton = () => {
         this.props.uiToggleDrawer();
     };
 
-    getRoute() {
-        const { location } = this.props;
-        const route = routes.filter(route => route.path === location.pathname);
-        return route.length === 1 ? route[0] : null;
-    }
-
-    getTitle() {
-        const route = this.getRoute();
-        return route && route.drawerEntry ? route.drawerEntry.text : null;
-    }
-
     renderSearchIcon() {
-        const route = this.getRoute();
-        if (!route || !route.supportsSearch) {
+        if (!this.props.supportsSearch) {
             return null;
         }
 
@@ -45,12 +36,11 @@ class MainAppBar extends Component {
         );
     }
 
-    // TODO FIXME Title should depend on the route.
     render() {
         return (
             <AppBar
                 zDepth={0}
-                title={this.getTitle()}
+                title={this.props.title}
                 onLeftIconButtonTouchTap={this.onMenuButton}
                 iconElementRight={this.renderSearchIcon()}
             />
