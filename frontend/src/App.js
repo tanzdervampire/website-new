@@ -45,16 +45,20 @@ class App extends Component {
         return (
             <MuiThemeProvider muiTheme={theme}>
                 <div>
-                    <NavigationDrawer />
-                    <Route component={MainAppBar} />
+                    <div className="app--head">
+                        <Route component={NavigationDrawer} />
+                        <Route component={MainAppBar} />
 
-                    <Switch>
-                        { routes.map(this.renderHeadRoute.bind(this)) }
-                    </Switch>
+                        <Switch>
+                            { routes.map(this.renderHeadRoute.bind(this)) }
+                        </Switch>
+                    </div>
 
-                    <Switch>
-                        { routes.map(this.renderContentRoute.bind(this)) }
-                    </Switch>
+                    <div className="app--content">
+                        <Switch>
+                            { routes.map(this.renderContentRoute.bind(this)) }
+                        </Switch>
+                    </div>
 
                     {/* TODO FIXME Turn into »scroll up« button (secondary?) when scrolled */}
                     <FloatingActionButton style={{ zIndex: 1, position: 'fixed', bottom: spacing.desktopGutterLess, right: spacing.desktopGutterLess }}>
