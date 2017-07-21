@@ -16,10 +16,6 @@ class MainAppBar extends Component {
         supportsSearch: PropTypes.bool,
     };
 
-    static defaultProps = {
-        supportsSearch: false,
-    };
-
     onMenuButton = () => {
         this.props.uiToggleDrawer();
     };
@@ -50,7 +46,10 @@ class MainAppBar extends Component {
 }
 
 const mapStateToProps = state => {
-    return {};
+    return {
+        title: state.ui.title,
+        supportsSearch: state.ui.showSearchIcon,
+    };
 };
 
 export default connect(

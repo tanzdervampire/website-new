@@ -25,14 +25,7 @@ class App extends Component {
                 <div>
                     <div className="app--head">
                         <Route component={NavigationDrawer} />
-
-                        <Switch>
-                            <Route path="/shows" exact render={props => <MainAppBar {...props} title="Vorstellungen" />} />
-                            <Route path="/productions" exact render={props => <MainAppBar {...props} title="Produktionen" supportsSearch />} />
-                            <Route path="/actors" exact render={props => <MainAppBar {...props} title="Darsteller" supportsSearch />} />
-                            <Route path="/legal" exact render={props => <MainAppBar {...props} title="Impressum" />} />
-                            <Route component={MainAppBar} />
-                        </Switch>
+                        <Route component={MainAppBar} />
 
                         <Switch>
                             <Route path='/shows' exact component={PageShowHead} />

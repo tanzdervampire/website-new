@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Page from '../Page';
 
 import ShowList from '../../../components/show-list/ShowList';
 
@@ -34,9 +35,11 @@ class PageShowBody extends Component {
 
     render() {
         return (
-            <ShowList
-                items={this.getFakeItems()}
-            />
+            <Page title="Vorstellungen">
+                <ShowList
+                    items={this.getFakeItems()}
+                />
+            </Page>
         );
     }
 
