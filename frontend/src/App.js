@@ -3,6 +3,7 @@
 import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProviderNext from 'material-ui-next/styles/MuiThemeProvider';
 import spacing from 'material-ui/styles/spacing';
 
 import theme from './theme';
@@ -14,12 +15,36 @@ import NavigationDrawer from './containers/layout/NavigationDrawer';
 import MainAppBar from './containers/layout/MainAppBar';
 
 import { Switch, Route } from 'react-router-dom';
-import PageShowHead from './containers/pages/shows/PageShowHead';
-import PageShowBody from './containers/pages/shows/PageShowBody';
+import PageShowHead from './containers/pages/shows/PageShowsHead';
+import PageShowBody from './containers/pages/shows/PageShowsBody';
+
+import createMuiTheme from 'material-ui-next/styles/theme'
+import { red, indigo } from 'material-ui-next/colors'
+import createPalette from 'material-ui-next/styles/palette'
+
+// TODO FIXME Clean this up.
+const ThemeProvider = props => {
+    const nextTheme = createMuiTheme({
+        palette: createPalette({
+            primary: red,
+            accent: indigo,
+            error: red,
+            type: 'light',
+        })
+    });
+
+    return (
+        <MuiThemeProvider muiTheme={theme}>
+            <MuiThemeProviderNext theme={nextTheme}>
+                { props.children }
+            </MuiThemeProviderNext>
+        </MuiThemeProvider>
+    );
+};
 
 export default () => {
     return (
-        <MuiThemeProvider muiTheme={theme}>
+        <ThemeProvider>
             <div>
                 <div className="app--head">
                     <Route component={NavigationDrawer} />
@@ -47,6 +72,6 @@ export default () => {
                     <ContentAdd />
                 </FloatingActionButton>
             </div>
-        </MuiThemeProvider>
+        </ThemeProvider>
     );
 };

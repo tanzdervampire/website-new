@@ -6,7 +6,7 @@ import { uiChangeShowListDate, uiResetShowListDate } from '../../../actions/';
 
 import MonthPicker from '../../../components/month-picker/MonthPicker';
 
-class PageShowHead extends Component {
+class PageShowsHead extends Component {
 
     componentWillUnmount() {
         this.props.uiResetShowListDate();
@@ -33,4 +33,4 @@ const mapStateToProps = state => {
 export default connect(
     mapStateToProps,
     { uiChangeShowListDate, uiResetShowListDate },
-)(PageShowHead);
+)(PageShowsHead);

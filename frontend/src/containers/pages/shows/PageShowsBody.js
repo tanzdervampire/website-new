@@ -6,7 +6,7 @@ import Page from '../Page';
 
 import ShowList from '../../../components/show-list/ShowList';
 
-class PageShowBody extends Component {
+class PageShowsBody extends Component {
 
     getFakeItems() {
         const toItem = (day, hour, minute) => {
@@ -35,7 +35,7 @@ class PageShowBody extends Component {
 
     render() {
         return (
-            <Page title="Vorstellungen">
+            <Page title="Vorstellungen" supportsSearch>
                 <ShowList
                     items={this.getFakeItems()}
                 />
@@ -53,4 +53,4 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-)(PageShowBody);
+)(PageShowsBody);
