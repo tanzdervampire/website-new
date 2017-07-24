@@ -45,8 +45,8 @@ const ThemeProvider = props => {
 export default () => {
     return (
         <ThemeProvider>
-            <div>
-                <div className="app--head">
+            <div className="app-container">
+                <div className="app-container--head">
                     <Route component={NavigationDrawer} />
                     <Route component={MainAppBar} />
 
@@ -55,7 +55,7 @@ export default () => {
                     </Switch>
                 </div>
 
-                <div className="app--content">
+                <div className="app-container--content">
                     <Switch>
                         <Route path='/' exact component={null} />
                         <Route path='/shows' component={PageShowBody} />

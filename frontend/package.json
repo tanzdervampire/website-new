@@ -2,6 +2,7 @@
     "name": "frontend",
     "version": "0.1.0",
     "private": true,
+    "proxy": "http://localhost:3001/",
     "dependencies": {
         "flow": "^0.2.3",
         "history": "^4.6.3",
@@ -17,7 +18,8 @@
         "react-router-redux": "next",
         "react-scripts": "1.0.10",
         "react-tap-event-plugin": "^2.0.1",
-        "redux": "^3.7.2"
+        "redux": "^3.7.2",
+        "redux-thunk": "^2.2.0"
     },
     "scripts": {
         "start": "react-scripts start",

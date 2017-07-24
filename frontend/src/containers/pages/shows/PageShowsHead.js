@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { uiChangeShowListDate, uiResetShowListDate } from '../../../actions/';
+import { uiChangeShowListDate, uiResetShowListDate } from '../../../actions';
 
 import MonthPicker from '../../../components/month-picker/MonthPicker';
 

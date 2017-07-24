@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uiToggleDrawer } from '../../actions/index';
+import { uiToggleDrawer } from '../../actions';
 import { push } from 'react-router-redux'
 
 import muiThemeable from 'material-ui/styles/muiThemeable';

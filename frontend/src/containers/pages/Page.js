@@ -3,7 +3,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { uiSetTitle, uiInvalidateTitle, uiShowSearchIcon } from '../../actions/index';
+import { uiSetTitle, uiInvalidateTitle, uiShowSearchIcon } from '../../actions';
 
 /**
  * This is a higher-order component to wrap high-level pages.
@@ -39,13 +39,7 @@ class Page extends Component {
 
 }
 
-const mapStateToProps = state => {
-    return {
-        month: state.ui.showListDate,
-    };
-};
-
 export default connect(
-    mapStateToProps,
+    null,
     { uiSetTitle, uiInvalidateTitle, uiShowSearchIcon },
 )(Page);

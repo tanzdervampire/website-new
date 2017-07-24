@@ -6,6 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';
 import reducers from './reducers/';
@@ -16,13 +17,13 @@ import './index.css';
 injectTapEventPlugin();
 
 const history = createHistory();
-const middleware = routerMiddleware(history);
+const router = routerMiddleware(history);
 const store = createStore(
     combineReducers({
         ...reducers,
         router: routerReducer,
     }),
-    applyMiddleware(middleware),
+    applyMiddleware(router, thunk),
 );
 
 ReactDOM.render(

@@ -9,7 +9,7 @@ import {
     UI_SET_TITLE,
     UI_INVALIDATE_TITLE,
     UI_SHOW_SEARCH_ICON,
-} from '../actions/';
+} from '../actions';
 
 const initialState = {
     /* Whether the navigation drawer is currently open. */
