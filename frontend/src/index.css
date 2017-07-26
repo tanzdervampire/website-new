@@ -16,11 +16,9 @@ html, body, #root {
 }
 
 .app-container--content {
+    flex-grow: 1;
+
     width: 100%;
     max-width: 750px;
     margin: auto;
-
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
 }

@@ -15,15 +15,11 @@ import Refresh from 'material-ui/svg-icons/navigation/refresh';
 const getStyles = theme => {
     return {
         centerContainer: {
-            /*width: '100%',
-             position: 'absolute',
-             top: '50%',
-             textAlign: 'center',*/
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
+            position: 'fixed',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            textAlign: 'center',
         },
         refreshIcon: {
             width: 48,
@@ -68,7 +64,7 @@ class PageShowsBody extends Component {
 
     renderPage(children) {
         return (
-            <Page title="Vorstellungen" supportsSearch>
+            <Page title="Vorstellungen" supportsSearch fab>
                 {children}
             </Page>
         );

@@ -4,12 +4,8 @@ import React from 'react';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MuiThemeProviderNext from 'material-ui-next/styles/MuiThemeProvider';
-import spacing from 'material-ui/styles/spacing';
 
 import theme from './theme';
-
-import FloatingActionButton from 'material-ui/FloatingActionButton';
-import ContentAdd from 'material-ui/svg-icons/content/add';
 
 import NavigationDrawer from './containers/layout/NavigationDrawer';
 import MainAppBar from './containers/layout/MainAppBar';
@@ -65,12 +61,6 @@ export default () => {
                         {/* TODO FIXME Add a 404 page. */}
                     </Switch>
                 </div>
-
-                {/* TODO FIXME Turn this into a component within Page? */}
-                {/* TODO FIXME Turn into »scroll up« button (secondary?) when scrolled */}
-                <FloatingActionButton style={{ zIndex: 1, position: 'fixed', bottom: spacing.desktopGutterLess, right: spacing.desktopGutterLess }}>
-                    <ContentAdd />
-                </FloatingActionButton>
             </div>
         </ThemeProvider>
     );
