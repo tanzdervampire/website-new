@@ -10,24 +10,26 @@ const apiRouter = require('./routers/api');
 
 const app = express();
 app.use(cors());
-app.options('*', cors());
 
 mongoose.Promise = global.Promise;
+const options = { useMongoClient: true };
 switch (process.env.NODE_ENV) {
     case 'dev':
+        app.options('*', cors());
         app.set('port', 3001);
         app.set('json spaces', 4);
-        mongoose.connect('mongodb://localhost/tdv');
+        mongoose.connect('mongodb://localhost/tdv', options);
         break;
     case 'test':
+        app.options('*', cors());
         app.set('port', 3002);
         app.set('json spaces', 4);
-        mongoose.connect('mongodb://localhost/tdv-test');
+        mongoose.connect('mongodb://localhost/tdv-test', options);
         break;
     case 'production':
         app.set('port', process.env.PORT);
-        app.use(express.static('../frontend/build'));
-        mongoose.connect(process.env.MONGODB_URI);
+        app.use(express.static('../frontend/www'));
+        mongoose.connect(process.env.MONGODB_URI, options);
         break;
     default:
         throw new Error('Unknown environment!');
@@ -38,7 +40,7 @@ app.use(bodyParser.json());
 app.use('/api', apiRouter);
 
 app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'build', 'index.html'));
+    res.sendFile(path.resolve(__dirname, '..', 'frontend', 'www', 'index.html'));
 });
 
 app.listen(app.get('port'), () => {

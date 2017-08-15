@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>Vorstellungen</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <div *ngFor="let month of ['Juni', 'Juli']">
+        <ion-item-group>
+            <ion-item-divider>
+                <h1>{{month}} 2017</h1>
+            </ion-item-divider>
+        </ion-item-group>
+        <ion-item-group *ngFor="let group of [2,3,4]">
+            <ion-item-divider color="light">
+                <h2 item-start>{{ group }}. {{month}} 2017</h2>
+                <ion-note item-end>Montag</ion-note>
+            </ion-item-divider>
+
+            <ion-item *ngFor="let item of [0,0]">
+                <ion-avatar item-start>
+                    <ion-text-avatar>F</ion-text-avatar>
+                </ion-avatar>
+
+                <h2>19:30 Uhr</h2>
+                <p>Palladium-Theater, Stuttgart</p>
+                <p>Mark Seibert, Veronica Appeddu, Tom van der Ven, Paolo Bianca</p>
+            </ion-item>
+        </ion-item-group>
+    </div>
+
+    <ion-fab bottom right>
+        <button ion-fab>
+            <ion-icon name="calendar"></ion-icon>
+        </button>
+    </ion-fab>
+
+</ion-content>

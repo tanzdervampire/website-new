@@ -1,0 +1,23 @@
+<ion-split-pane>
+
+    <ion-menu [content]="content">
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Menü</ion-title>
+            </ion-toolbar>
+        </ion-header>
+
+        <ion-content>
+            <ion-list>
+                <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
+                    <ion-icon *ngIf="page.icon" [name]="page.icon" item-start></ion-icon>
+                    {{page.title}}
+                </button>
+            </ion-list>
+        </ion-content>
+
+    </ion-menu>
+
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>
+
+</ion-split-pane>

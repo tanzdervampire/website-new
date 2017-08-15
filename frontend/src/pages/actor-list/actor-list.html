@@ -1,0 +1,53 @@
+<ion-header>
+    <ion-navbar *ngIf="!showSearchBar">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>Darsteller</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="onAddNewPerson()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+
+            <button ion-button icon-only (click)="onShowFilter()">
+                <ion-icon name="funnel"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+
+    <ion-toolbar color="primary" no-border-top *ngIf="showSearchBar">
+        <ion-searchbar
+            auto-focus
+            color="primary"
+            placeholder="Suchen"
+            [(ngModel)]="searchText"
+            (ionInput)="updateActors()"
+            (ionCancel)="toggleSearchBar(false)"
+            (ionBlur)="onSearchBarBlur()"
+            [showCancelButton]="showSearchBar"
+            spellcheck="false"
+            [@toggleSearchBar]
+        ></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-refresher (ionRefresh)="updateActors($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list no-lines>
+        <ion-item *ngFor="let actor of actors">
+            <h2>{{ actor.name }}</h2>
+            <p>{{ actor.roles.join(', ') }}</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab bottom right>
+        <button ion-fab (click)="toggleSearchBar()">
+            <ion-icon name="search"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

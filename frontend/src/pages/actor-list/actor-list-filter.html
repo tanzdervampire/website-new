@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Filter
+        </ion-title>
+        <ion-buttons start>
+            <button ion-button (click)="dismiss(false)">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-item *ngFor="let role of rolesProvider.roles">
+            <ion-label>{{ role }}</ion-label>
+            <ion-checkbox [checked]="isChecked(role)" (ionChange)="toggle(role)"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab bottom right>
+        <button ion-fab (click)="dismiss(true)">
+            <ion-icon name="checkmark"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>
