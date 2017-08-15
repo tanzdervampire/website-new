@@ -13,7 +13,7 @@
 
 <ion-content>
     <ion-list>
-        <ion-item *ngFor="let role of rolesProvider.roles">
+        <ion-item *ngFor="let role of rolesProvider.getRoles()">
             <ion-label>{{ role }}</ion-label>
             <ion-checkbox [checked]="isChecked(role)" (ionChange)="toggle(role)"></ion-checkbox>
         </ion-item>
