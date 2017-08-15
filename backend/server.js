@@ -1,6 +1,7 @@
 // @flow
 
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,6 +9,9 @@ const mongoose = require('mongoose');
 const apiRouter = require('./routers/api');
 
 const app = express();
+app.use(cors());
+app.options('*', cors());
+
 mongoose.Promise = global.Promise;
 switch (process.env.NODE_ENV) {
     case 'dev':
