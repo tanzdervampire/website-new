@@ -10,7 +10,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../server');
 
-const buildUrl = (year, month, day, params) => {
+const buildShowsUrl = (year, month, day, params) => {
     let url = `/api/shows/${year}/${month}`;
     if (day) {
         url += `/${day}`;
@@ -20,7 +20,22 @@ const buildUrl = (year, month, day, params) => {
         return url;
     }
 
-    url += '?';
+    return `${url}?${buildParameters(params)}`;
+};
+
+const buildLatestShowsUrl = (before, params) => {
+    const formattedBefore = before ? before.format('YYYY-MM-DD') : '';
+    let url = `/api/shows/by-month/latest?before=${formattedBefore}`;
+    if (!params) {
+        return url;
+    }
+
+    url += '&' + buildParameters(params);
+    return url;
+};
+
+const buildParameters = params => {
+    let url = '';
     if (params.fields) {
         url += `fields=${params.fields.join(',')}&`;
     }
@@ -37,7 +52,13 @@ const buildUrl = (year, month, day, params) => {
 };
 
 const getShows = async (year, month, day, params) => {
-    const res = await chai.request(server).get(buildUrl(year, month, day, params));
+    const res = await chai.request(server).get(buildShowsUrl(year, month, day, params));
+    res.should.have.status(200);
+    return res;
+};
+
+const getLatestShows = async (before, params) => {
+    const res = await chai.request(server).get(buildLatestShowsUrl(before, params));
     res.should.have.status(200);
     return res;
 };
@@ -169,5 +190,31 @@ describe('/api/shows/:year/:month/:day', () => {
 
         const res = await getShows('2017', '01', '01', { count: true });
         res.body.should.be.eql(2);
+    });
+});
+
+describe('/api/shows/by-month/latest', () => {
+    beforeEach(async () => {
+        await mongoose.connection.dropDatabase();
+    });
+
+    it('can return the latest month', async () => {
+        await Promise.all([
+            await prepareShow({ date: moment().toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+        ]);
+
+        const res = await getLatestShows();
+        res.body.length.should.be.eql(1);
+    });
+
+    it('can return the latest month before a given one', async () => {
+        await Promise.all([
+            await prepareShow({ date: moment('15.03.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+            await prepareShow({ date: moment('01.01.2017 14:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+            await prepareShow({ date: moment('01.01.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+        ]);
+
+        const res = await getLatestShows(moment('15.03.2017 19:30', 'DD.MM.YYYY HH:mm'));
+        res.body.length.should.be.eql(2);
     });
 });

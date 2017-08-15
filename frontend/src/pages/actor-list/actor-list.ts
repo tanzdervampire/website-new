@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ModalController, Refresher } from 'ionic-angular';
 
-import { Actor, ActorFilters, ActorsProvider } from '../../providers/actors/actors';
+import { ActorFilters, ActorsProvider } from '../../providers/actors/actors';
 import { ActorListFilter } from './actor-list-filter';
 import { RolesProvider } from '../../providers/roles/roles';
+import { Actor } from '../../models/models';
 
 @Component({
     selector: 'page-actor-list',
@@ -35,7 +36,7 @@ export class ActorListPage {
     }
 
     ionViewDidLoad() {
-        this.rolesFilter = [...this.rolesProvider.roles];
+        this.rolesFilter = [...this.rolesProvider.getRoles()];
         this.updateActors();
     }
 

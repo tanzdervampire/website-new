@@ -17,6 +17,8 @@ import { AutoFocusDirective } from '../directives/auto-focus/auto-focus';
 import { ActorListFilter } from '../pages/actor-list/actor-list-filter';
 import { RolesProvider } from '../providers/roles/roles';
 import { IonTextAvatar } from 'ionic-text-avatar';
+import { ShowsProvider } from '../providers/shows/shows';
+import { SpinnerComponent } from '../components/spinner/spinner';
 
 @NgModule({
     declarations: [
@@ -27,6 +29,7 @@ import { IonTextAvatar } from 'ionic-text-avatar';
         ActorListFilter,
         AutoFocusDirective,
         IonTextAvatar,
+        SpinnerComponent,
     ],
     imports: [
         BrowserModule,
@@ -54,6 +57,7 @@ import { IonTextAvatar } from 'ionic-text-avatar';
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         ActorsProvider,
     RolesProvider,
+    ShowsProvider,
     ],
 })
 export class AppModule {

@@ -16,29 +16,35 @@
 
 <ion-content>
 
-    <div *ngFor="let month of ['Juni', 'Juli']">
+    <spinner *ngIf="!shows"></spinner>
+
+    <div *ngFor="let monthSection of shows">
         <ion-item-group>
             <ion-item-divider>
-                <h1>{{month}} 2017</h1>
+                <h1>{{ monthSection.title }}</h1>
             </ion-item-divider>
         </ion-item-group>
-        <ion-item-group *ngFor="let group of [2,3,4]">
+        <ion-item-group *ngFor="let daySection of monthSection.items">
             <ion-item-divider color="light">
-                <h2 item-start>{{ group }}. {{month}} 2017</h2>
-                <ion-note item-end>Montag</ion-note>
+                <h2 item-start>{{ daySection.title }}</h2>
+                <ion-note item-end>{{ daySection.weekday }}</ion-note>
             </ion-item-divider>
 
-            <ion-item *ngFor="let item of [0,0]">
+            <ion-item *ngFor="let show of daySection.items">
                 <ion-avatar item-start>
-                    <ion-text-avatar>F</ion-text-avatar>
+                    <ion-text-avatar>{{ daySection.weekday.substr(0, 2) }}</ion-text-avatar>
                 </ion-avatar>
 
-                <h2>19:30 Uhr</h2>
-                <p>Palladium-Theater, Stuttgart</p>
-                <p>Mark Seibert, Veronica Appeddu, Tom van der Ven, Paolo Bianca</p>
+                <h2>{{ show.formattedTime }} Uhr</h2>
+                <p>{{ show.theater }}, {{ show.location }}</p>
+                <p>{{ show.castPreview }}</p>
             </ion-item>
         </ion-item-group>
     </div>
+
+    <ion-infinite-scroll (ionInfinite)="onInfiniteScroll($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
     <ion-fab bottom right>
         <button ion-fab>

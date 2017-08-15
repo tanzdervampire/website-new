@@ -5,6 +5,23 @@ const Show = require('../models/show');
 const Production = require('../models/production');
 require('../models/person');
 
+const queryShowsBefore = async opts => {
+    const before = opts.before ? moment(opts.before, 'YYYY-MM-DD', true).startOf('month') : moment();
+    const latest = await Show.findOne().lean()
+        .where('date').lt(before.toDate())
+        .sort({ date: 'descending' })
+        .limit(1);
+    if (!latest) {
+        return [];
+    }
+
+    const searchDate = moment(latest.date);
+    return queryShows(Object.assign({}, opts, {
+        year: searchDate.format('YYYY'),
+        month: searchDate.format('MM'),
+    }));
+};
+
 const queryShows = async opts => {
     const { year, month, day } = opts;
     const fields = opts.fields ? opts.fields.split(/,/) : [];
@@ -49,4 +66,4 @@ const queryShows = async opts => {
     return query;
 };
 
-module.exports = { queryShows };
+module.exports = { queryShows, queryShowsBefore };

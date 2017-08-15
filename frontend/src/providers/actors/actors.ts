@@ -4,11 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 import { Http } from '@angular/http';
-
-export interface Actor {
-    name: string;
-    roles: string[];
-}
+import { Actor } from '../../models/models';
 
 export interface ActorFilters {
     contains?: string;
@@ -25,7 +21,7 @@ export class ActorsProvider {
 
     load(force: boolean = false): Observable<Actor[]> {
         if (!this._cache || force) {
-            this._cache = this.http.get('http://localhost:3001/api/persons?fields=roles')
+            this._cache = this.http.get('/api/persons?fields=roles')
                 .map(response => response.json());
         }
 
