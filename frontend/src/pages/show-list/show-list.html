@@ -30,7 +30,7 @@
                 <ion-note item-end>{{ daySection.weekday }}</ion-note>
             </ion-item-divider>
 
-            <ion-item *ngFor="let show of daySection.items">
+            <button ion-item *ngFor="let show of daySection.items" (click)="gotoShowDetail(show)">
                 <ion-avatar item-start>
                     <ion-text-avatar>{{ daySection.weekday.substr(0, 2) }}</ion-text-avatar>
                 </ion-avatar>
@@ -38,7 +38,7 @@
                 <h2>{{ show.formattedTime }} Uhr</h2>
                 <p>{{ show.theater }}, {{ show.location }}</p>
                 <p>{{ show.castPreview }}</p>
-            </ion-item>
+            </button>
         </ion-item-group>
     </div>
 

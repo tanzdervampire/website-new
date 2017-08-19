@@ -19,12 +19,14 @@ import { RolesProvider } from '../providers/roles/roles';
 import { IonTextAvatar } from 'ionic-text-avatar';
 import { ShowsProvider } from '../providers/shows/shows';
 import { SpinnerComponent } from '../components/spinner/spinner';
+import { ShowDetailPage } from '../pages/show-detail/show-detail';
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
         ShowListPage,
+        ShowDetailPage,
         ActorListPage,
         ActorListFilter,
         AutoFocusDirective,
@@ -39,6 +41,7 @@ import { SpinnerComponent } from '../components/spinner/spinner';
             links: [
                 { component: HomePage, name: 'HomePage', segment: 'home' },
                 { component: ShowListPage, name: 'ShowListPage', segment: 'shows' },
+                { component: ShowDetailPage, name: 'ShowDetailPage', segment: 'shows/:location/:year/:month/:day/:time', defaultHistory: [ShowListPage] },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },
             ],
         }),
@@ -48,6 +51,7 @@ import { SpinnerComponent } from '../components/spinner/spinner';
         MyApp,
         HomePage,
         ShowListPage,
+        ShowDetailPage,
         ActorListPage,
         ActorListFilter,
     ],

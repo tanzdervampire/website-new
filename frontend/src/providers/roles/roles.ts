@@ -4,6 +4,7 @@ import { CastItem } from '../../models/models';
 
 interface RoleDefinition {
     name: string;
+    category: string;
     primary: boolean;
     index: number;
 }
@@ -12,25 +13,27 @@ interface RoleDefinition {
 export class RolesProvider {
 
     private _config: RoleDefinition[] = [
-        { name: 'Graf von Krolock', primary: true, index: 1 },
-        { name: 'Sarah', primary: true, index: 2 },
-        { name: 'Alfred', primary: true, index: 3 },
-        { name: 'Professor Abronsius', primary: true, index: 4 },
-        { name: 'Chagal', primary: true, index: 5 },
-        { name: 'Magda', primary: true, index: 6 },
-        { name: 'Herbert', primary: true, index: 7 },
-        { name: 'Rebecca', primary: true, index: 8 },
-        { name: 'Koukol', primary: true, index: 9 },
-        { name: 'Tanzsolisten', primary: false, index: 10 },
-        { name: 'Gesangssolisten', primary: false, index: 11 },
-        { name: 'Tanzensemble', primary: false, index: 12 },
-        { name: 'Gesangsensemble', primary: false, index: 13 },
-        { name: 'Dirigent', primary: false, index: 14 },
+        { name: 'Graf von Krolock', category: 'Hauptrollen', primary: true, index: 1 },
+        { name: 'Sarah', category: 'Hauptrollen', primary: true, index: 2 },
+        { name: 'Alfred', category: 'Hauptrollen', primary: true, index: 3 },
+        { name: 'Professor Abronsius', category: 'Hauptrollen', primary: true, index: 4 },
+        { name: 'Chagal', category: 'Hauptrollen', primary: true, index: 5 },
+        { name: 'Magda', category: 'Hauptrollen', primary: true, index: 6 },
+        { name: 'Herbert', category: 'Hauptrollen', primary: true, index: 7 },
+        { name: 'Rebecca', category: 'Hauptrollen', primary: true, index: 8 },
+        { name: 'Koukol', category: 'Hauptrollen', primary: true, index: 9 },
+        { name: 'Tanzsolisten', category: 'Tanzsolisten', primary: false, index: 10 },
+        { name: 'Gesangssolisten', category: 'Gesangssolisten', primary: false, index: 11 },
+        { name: 'Tanzensemble', category: 'Tanzensemble', primary: false, index: 12 },
+        { name: 'Gesangsensemble', category: 'Gesangsensemble', primary: false, index: 13 },
+        { name: 'Dirigent', category: 'Dirigent', primary: false, index: 14 },
     ];
 
     private _roles: string[];
     private _primaryRoles: string[];
     private _nameToIndex: any;
+    private _categories: string[];
+    private _nameToCategory: any;
 
     constructor() {
         this._roles = this._config
@@ -43,6 +46,16 @@ export class RolesProvider {
             .reduce((acc, definition) => {
                 return { ...acc, [definition.name]: definition.index };
             }, {});
+
+        this._categories = this._config
+            .map(entry => entry.category);
+        this._categories = this._categories
+            .filter((entry, i) => this._categories.lastIndexOf(entry) === i);
+
+        this._nameToCategory = this._config
+            .reduce((acc, definition) => {
+                return { ...acc, [definition.name]: definition.category };
+            }, {});
     }
 
     getRoles(): string[] {
@@ -51,6 +64,14 @@ export class RolesProvider {
 
     getPrimaryRoles(): string[] {
         return this._primaryRoles;
+    }
+
+    getRoleCategories(): string[] {
+        return this._categories;
+    }
+
+    getCategoryForRole(role: string): string {
+        return this._nameToCategory[role];
     }
 
     isPrimary(role: string): boolean {

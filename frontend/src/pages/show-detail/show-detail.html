@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{ formatTitle() }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <spinner *ngIf="!show"></spinner>
+
+    <div *ngIf="show">
+        <ion-list *ngFor="let category of rolesProvider.getRoleCategories()">
+            <ion-list-header>
+                {{ category }}
+            </ion-list-header>
+
+            <ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
+                <ion-avatar item-start>
+                    <ion-text-avatar>{{ getLetterAvatar(castItem) }}</ion-text-avatar>
+                </ion-avatar>
+
+                <div *ngIf="rolesProvider.isPrimary(castItem.role)">
+                    <h2>{{ castItem.role }}</h2>
+                    <p>{{ castItem.person.name }}</p>
+                </div>
+                <div *ngIf="!rolesProvider.isPrimary(castItem.role)">
+                    <h2>{{ castItem.person.name }}</h2>
+                </div>
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>

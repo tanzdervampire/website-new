@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ShowsProvider } from '../../providers/shows/shows';
-import moment, { Moment } from 'moment';
+import { Moment } from 'moment';
 import 'moment/locale/de';
 import { RolesProvider } from '../../providers/roles/roles';
 import { Show } from '../../models/models';
-import { InfiniteScroll } from 'ionic-angular';
+import { InfiniteScroll, NavController } from 'ionic-angular';
+import { ShowDetailPage } from '../show-detail/show-detail';
 
 interface ShowItem {
     date: Moment;
@@ -35,6 +36,7 @@ export class ShowListPage implements OnInit {
     shows: MonthSection[] = [];
 
     constructor(
+        private navCtrl: NavController,
         private showsProvider: ShowsProvider,
         private rolesProvider: RolesProvider) {
     }
@@ -57,6 +59,15 @@ export class ShowListPage implements OnInit {
             });
     }
 
+    gotoShowDetail(show: ShowItem): void {
+        const [year, month, day, time] = show.date.format('YYYY MM DD HHmm').split(' ');
+
+        this.navCtrl.push(ShowDetailPage, {
+            location: show.location,
+            year, month, day, time
+        });
+    }
+
     pushShowsForMonth(shows: Show[]): void {
         if (!shows || shows.length === 0) {
             return;
@@ -68,7 +79,6 @@ export class ShowListPage implements OnInit {
         };
 
         this.shows.push(section);
-        console.log(this.shows);
     }
 
     groupShowsByDay(shows: Show[]): DaySection[] {

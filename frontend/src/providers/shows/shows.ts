@@ -5,6 +5,19 @@ import moment, { Moment } from 'moment';
 import { Observable } from 'rxjs/Observable';
 import { Show } from '../../models/models';
 
+interface QueryParameters {
+    location?: string;
+    fields?: ['production' | 'cast'];
+    count?: boolean;
+}
+
+interface ShowEndpointParameters {
+    year: string;
+    month: string;
+    day?: string;
+    params?: QueryParameters;
+}
+
 @Injectable()
 export class ShowsProvider {
 
@@ -22,9 +35,50 @@ export class ShowsProvider {
         const year = date.format('YYYY');
         const month = date.format('MM');
 
-        return this.http.get(`/api/shows/${year}/${month}?fields=production,cast`)
+        const params: QueryParameters = { fields: ['production', 'cast'] };
+        return this.fetchShows({ year, month, params });
+    }
+
+    fetchShow(date: Moment, location?: string): Observable<Show> {
+        const year = date.format('YYYY');
+        const month = date.format('MM');
+        const day = date.format('DD');
+
+        const params: QueryParameters = { location, fields: [ 'production', 'cast' ] };
+        return this.fetchShows({ year, month, day, params })
+            .map((shows: Show[]): Show => {
+                return shows.find(show => date.isSame(show.date));
+            });
+    }
+
+    fetchShows(args: ShowEndpointParameters): Observable<Show[]> {
+        let url = `/api/shows/${args.year}/${args.month}`;
+        if (args.day) {
+            url += `/${args.day}`;
+        }
+
+        if (args.params) {
+            url += '?' + this.convertParams(args.params);
+        }
+
+        return this.http.get(url)
             .map(response => response.json())
             .map(this.momentify);
+    }
+
+    convertParams(params: QueryParameters): string {
+        let url = '';
+        if (params.location) {
+            url += 'location=' + params.location + '&';
+        }
+        if (params.fields) {
+            url += 'fields=' + params.fields.join(',') + '&';
+        }
+        if (params.count) {
+            url += 'count=true&';
+        }
+
+        return url;
     }
 
     momentify(rawShows: any[]): Show[] {

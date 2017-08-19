@@ -26,5 +26,5 @@ export interface Show extends ShowBase {
 export interface Actor {
     _id: string;
     name: string;
-    roles: string[];
+    roles?: string[];
 }
