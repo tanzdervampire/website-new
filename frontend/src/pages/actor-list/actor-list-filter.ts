@@ -2,36 +2,63 @@ import { Component } from '@angular/core';
 import { NavParams, ViewController } from 'ionic-angular';
 import { RolesProvider } from '../../providers/roles/roles';
 
+interface RoleItem {
+    name: string;
+    selected: boolean;
+}
+
 @Component({
     templateUrl: 'actor-list-filter.html',
 })
 export class ActorListFilter {
 
-    selected: string[];
+    roles: RoleItem[];
+    private onChange: (selectedRoles: string[]) => void;
 
     constructor(
         public viewCtrl: ViewController,
         public rolesProvider: RolesProvider,
         public params: NavParams
     ) {
-        this.selected = this.params.get('selectedRoles');
+        this.onChange = this.params.data.onChange;
+
+        const selected = this.params.data.selectedRoles;
+        this.roles = this.rolesProvider.getRoles()
+            .map(role => {
+                return {
+                    name: role,
+                    selected: selected.includes(role),
+                };
+            });
     }
 
-    isChecked(role: string): boolean {
-        return this.selected.indexOf(role) !== -1;
+    selectAll(): void {
+        this.roles = this.roles.map(entry => {
+            return { ...entry, selected: true };
+        });
+
+        this.triggerChange();
     }
 
-    toggle(role: string): void {
-        const idx = this.selected.indexOf(role);
-        if (idx === -1) {
-            this.selected.push(role);
-        } else {
-            this.selected.splice(idx, 1);
-        }
+    selectNone(): void {
+        this.roles = this.roles.map(entry => {
+            return { ...entry, selected: false };
+        });
+
+        this.triggerChange();
     }
 
-    dismiss(submit: boolean) {
-        this.viewCtrl.dismiss(submit ? this.selected : null);
+    toggle(role: RoleItem): void {
+        role.selected = !role.selected;
+        this.triggerChange();
+    }
+
+    triggerChange() {
+        const selected = this.roles
+            .filter(entry => entry.selected)
+            .map(entry => entry.name);
+
+        this.onChange(selected);
     }
 
 }

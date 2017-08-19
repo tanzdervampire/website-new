@@ -59,15 +59,15 @@ export class RolesProvider {
     }
 
     getRoles(): string[] {
-        return this._roles;
+        return [...this._roles];
     }
 
     getPrimaryRoles(): string[] {
-        return this._primaryRoles;
+        return [...this._primaryRoles];
     }
 
     getRoleCategories(): string[] {
-        return this._categories;
+        return [...this._categories];
     }
 
     getCategoryForRole(role: string): string {

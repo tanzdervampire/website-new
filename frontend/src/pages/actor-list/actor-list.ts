@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ModalController, Refresher } from 'ionic-angular';
+import { ModalController, PopoverController, Refresher } from 'ionic-angular';
 
 import { ActorFilters, ActorsProvider } from '../../providers/actors/actors';
 import { ActorListFilter } from './actor-list-filter';
@@ -32,7 +32,7 @@ export class ActorListPage {
     constructor(
         public actorsProvider: ActorsProvider,
         public rolesProvider: RolesProvider,
-        public modalCtrl: ModalController) {
+        public popoverCtrl: PopoverController) {
     }
 
     ionViewDidLoad() {
@@ -57,14 +57,16 @@ export class ActorListPage {
         this.toggleSearchBar(false);
     }
 
-    onShowFilter() {
-        const modal = this.modalCtrl.create(ActorListFilter, { selectedRoles: [...this.rolesFilter] });
-        modal.onDidDismiss(newFilter => {
-            this.rolesFilter = newFilter === null ? this.rolesFilter : newFilter;
-            this.updateActors();
+    onShowFilter(event: any) {
+        const modal = this.popoverCtrl.create(ActorListFilter, {
+            selectedRoles: [...this.rolesFilter],
+            onChange: (selectedRoles) => {
+                this.rolesFilter = selectedRoles;
+                this.updateActors();
+            }
         });
 
-        modal.present();
+        modal.present({ ev: event });
     }
 
     onAddNewPerson() {}
