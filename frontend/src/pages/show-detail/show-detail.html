@@ -1,6 +1,6 @@
 <ion-header>
     <ion-navbar>
-        <ion-title>{{ formatTitle() }}</ion-title>
+        <ion-title>Vorstellung</ion-title>
     </ion-navbar>
 </ion-header>
 
@@ -8,6 +8,16 @@
     <spinner *ngIf="!show"></spinner>
 
     <div *ngIf="show">
+        <ion-list>
+            <ion-item>
+                <ion-avatar item-start>
+                    <ion-text-avatar>{{ show.date.locale('de').format('dddd').substr(0,2) }}</ion-text-avatar>
+                </ion-avatar>
+                <h2 ion-text>{{ show.date.format('DD. MMMM YYYY') }} um {{ show.date.format('HH:mm') }} Uhr</h2>
+                <p>{{ show.production.theater }}, {{ show.production.location }}</p>
+            </ion-item>
+        </ion-list>
+
         <ion-list *ngFor="let category of rolesProvider.getRoleCategories()">
             <ion-list-header>
                 {{ category }}
@@ -15,7 +25,7 @@
 
             <ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
                 <ion-avatar item-start>
-                    <ion-text-avatar>{{ getLetterAvatar(castItem) }}</ion-text-avatar>
+                    <ion-text-avatar color="light">{{ getLetterAvatar(castItem) }}</ion-text-avatar>
                 </ion-avatar>
 
                 <div *ngIf="rolesProvider.isPrimary(castItem.role)">

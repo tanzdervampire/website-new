@@ -36,15 +36,6 @@ export class ShowDetailPage {
             .sort(this.rolesProvider.sortByRole.bind(this.rolesProvider));
     }
 
-    formatTitle(): string {
-        const { location } = this.navParams.data;
-        const date = this.getDateFromParams();
-        const formattedDate = date.format('DD.MM.YYYY');
-        const formattedTime = date.format('HH:mm');
-
-        return `Vorstellung am ${formattedDate} um ${formattedTime} (${location})`;
-    }
-
     getDateFromParams(): Moment {
         const { year, month, day, time } = this.navParams.data;
         return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm', true);
