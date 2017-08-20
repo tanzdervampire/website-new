@@ -1,26 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ShowsProvider } from '../../providers/shows/shows';
 import { Moment } from 'moment';
 import 'moment/locale/de';
 import { RolesProvider } from '../../providers/roles/roles';
 import { Show } from '../../models/models';
-import { InfiniteScroll, NavController } from 'ionic-angular';
+import { DateTime, InfiniteScroll, NavController } from 'ionic-angular';
 import { ShowDetailPage } from '../show-detail/show-detail';
-
-interface ShowItem {
-    date: Moment;
-    formattedTime: string;
-    location: string;
-    theater: string;
-    castPreview: string;
-}
+import { ShowDateSearchPage } from '../show-date-search/show-date-search';
+import moment from 'moment';
 
 interface Section<T> {
     title: string;
     items: T[];
 }
 
-interface DaySection extends Section<ShowItem> {
+interface DaySection extends Section<Show> {
     weekday: string;
 }
 
@@ -33,17 +27,29 @@ interface MonthSection extends Section<DaySection> {
 })
 export class ShowListPage implements OnInit {
 
+    @ViewChild('datePicker') datePicker: DateTime;
     shows: MonthSection[] = [];
+
+    selectedDate: string = moment().toISOString();
+    maxDate: string = moment().format('YYYY-MM-DD');
 
     constructor(
         private navCtrl: NavController,
-        private showsProvider: ShowsProvider,
-        private rolesProvider: RolesProvider) {
+        private showsProvider: ShowsProvider) {
     }
 
     ngOnInit(): void {
         this.showsProvider.fetchLatestMonth()
             .subscribe(this.pushShowsForMonth.bind(this));
+    }
+
+    onDatePickerChange(event: any): void {
+        const date = moment(`${event.day}.${event.month}.${event.year}`, 'DD.MM.YYYY');
+        const [day, month, year] = date.format('DD MM YYYY').split(' ');
+
+        this.navCtrl.push(ShowDateSearchPage, {
+            year, month, day
+        });
     }
 
     onInfiniteScroll(infiniteScroll: InfiniteScroll): void {
@@ -59,11 +65,11 @@ export class ShowListPage implements OnInit {
             });
     }
 
-    gotoShowDetail(show: ShowItem): void {
+    gotoShowDetail(show: Show): void {
         const [year, month, day, time] = show.date.format('YYYY MM DD HHmm').split(' ');
 
         this.navCtrl.push(ShowDetailPage, {
-            location: show.location,
+            location: show.production.location,
             year, month, day, time
         });
     }
@@ -89,12 +95,7 @@ export class ShowListPage implements OnInit {
                 return acc;
             }, [])
             .filter((day: Show[]): boolean => !!day)
-            .map((day: Show[]): ShowItem[] => {
-                return day.map((show: Show): ShowItem => {
-                    return this.convertShow(show);
-                });
-            })
-            .map((day: ShowItem[]): DaySection => {
+            .map((day: Show[]): DaySection => {
                 return {
                     title: this.formatDay(day[0].date),
                     items: day,
@@ -104,22 +105,8 @@ export class ShowListPage implements OnInit {
             .reverse();
     }
 
-    convertShow(show: Show): ShowItem {
-        return {
-            date: show.date,
-            formattedTime: this.formatTime(show.date),
-            location: show.production.location,
-            theater: show.production.theater,
-            castPreview: this.formatCast(show),
-        };
-    }
-
     formatWeekday(date: Moment): string {
         return date.locale('de').format('dddd');
-    }
-
-    formatTime(date: Moment): string {
-        return date.format('HH:mm');
     }
 
     formatDay(date: Moment): string {
@@ -128,15 +115,6 @@ export class ShowListPage implements OnInit {
 
     formatMonth(date: Moment): string {
         return date.locale('de').format('MMMM YYYY');
-    }
-
-    formatCast(show: Show): string {
-        return show.cast
-            .filter(entry => this.rolesProvider.isPrimary(entry.role))
-            .sort(this.rolesProvider.sortByRole.bind(this.rolesProvider))
-            .map(entry => entry.person)
-            .map(person => person.name)
-            .join(', ');
     }
 
 }

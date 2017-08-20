@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Vorstellungen am {{ formatDate() }}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <spinner *ngIf="!shows"></spinner>
+
+    <p class="no-entries" *ngIf="shows && shows.length === 0">
+        Für diesen Tag liegt leider kein Eintrag vor.
+    </p>
+
+    <ion-list *ngIf="shows">
+        <show-item
+            *ngFor="let show of shows"
+            [show]="show"
+            (click)="gotoShowDetail(show)"
+        ></show-item>
+    </ion-list>
+
+</ion-content>

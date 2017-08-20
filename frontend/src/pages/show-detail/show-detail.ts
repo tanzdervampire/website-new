@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavParams } from 'ionic-angular';
 import { ShowsProvider } from '../../providers/shows/shows';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import { CastItem, Show } from '../../models/models';
 import { RolesProvider } from '../../providers/roles/roles';
 
@@ -22,8 +22,8 @@ export class ShowDetailPage {
     }
 
     ionViewDidLoad() {
-        const { location, year, month, day, time } = this.navParams.data;
-        const date = moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
+        const { location } = this.navParams.data;
+        const date = this.getDateFromParams();
 
         this.showsProvider.fetchShow(date, location).subscribe(show => {
             this.show = show;
@@ -37,11 +37,17 @@ export class ShowDetailPage {
     }
 
     formatTitle(): string {
-        if (!this.show) {
-            return 'Vorstellung';
-        }
+        const { location } = this.navParams.data;
+        const date = this.getDateFromParams();
+        const formattedDate = date.format('DD.MM.YYYY');
+        const formattedTime = date.format('HH:mm');
 
-        return `${this.show.date.format('DD.MM.YYYY')} um ${this.show.date.format('HH:mm')}, ${this.show.production.location}`;
+        return `Vorstellung am ${formattedDate} um ${formattedTime} (${location})`;
+    }
+
+    getDateFromParams(): Moment {
+        const { year, month, day, time } = this.navParams.data;
+        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm', true);
     }
 
     getLetterAvatar(castItem: CastItem): string {

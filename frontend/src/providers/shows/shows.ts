@@ -39,13 +39,17 @@ export class ShowsProvider {
         return this.fetchShows({ year, month, params });
     }
 
-    fetchShow(date: Moment, location?: string): Observable<Show> {
+    fetchShowsForDay(date: Moment, location?: string): Observable<Show[]> {
         const year = date.format('YYYY');
         const month = date.format('MM');
         const day = date.format('DD');
 
-        const params: QueryParameters = { location, fields: [ 'production', 'cast' ] };
-        return this.fetchShows({ year, month, day, params })
+        const params: QueryParameters = { location, fields: ['production', 'cast'] };
+        return this.fetchShows({ year, month, day, params });
+    }
+
+    fetchShow(date: Moment, location?: string): Observable<Show> {
+        return this.fetchShowsForDay(date, location)
             .map((shows: Show[]): Show => {
                 return shows.find(show => date.isSame(show.date));
             });

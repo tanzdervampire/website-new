@@ -20,6 +20,9 @@ import { IonTextAvatar } from 'ionic-text-avatar';
 import { ShowsProvider } from '../providers/shows/shows';
 import { SpinnerComponent } from '../components/spinner/spinner';
 import { ShowDetailPage } from '../pages/show-detail/show-detail';
+import moment from 'moment';
+import { ShowItemComponent } from '../components/show-item/show-item';
+import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
 
 @NgModule({
     declarations: [
@@ -27,20 +30,28 @@ import { ShowDetailPage } from '../pages/show-detail/show-detail';
         HomePage,
         ShowListPage,
         ShowDetailPage,
+        ShowDateSearchPage,
         ActorListPage,
         ActorListFilter,
         AutoFocusDirective,
         IonTextAvatar,
         SpinnerComponent,
+        ShowItemComponent,
     ],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
         HttpModule,
-        IonicModule.forRoot(MyApp, {}, {
+        IonicModule.forRoot(MyApp, {
+            monthNames: moment.localeData('de').months(),
+            monthShortNames: moment.localeData('de').monthsShort(),
+            dayNames: moment.localeData('de').weekdays(),
+            dayShortNames: moment.localeData('de').weekdaysShort(),
+        }, {
             links: [
                 { component: HomePage, name: 'HomePage', segment: 'home' },
                 { component: ShowListPage, name: 'ShowListPage', segment: 'shows' },
+                { component: ShowDateSearchPage, name: 'ShowDateSearchPage', segment: 'shows/:year/:month/:day', defaultHistory: [ShowListPage] },
                 { component: ShowDetailPage, name: 'ShowDetailPage', segment: 'shows/:location/:year/:month/:day/:time', defaultHistory: [ShowListPage] },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },
             ],
@@ -52,6 +63,7 @@ import { ShowDetailPage } from '../pages/show-detail/show-detail';
         HomePage,
         ShowListPage,
         ShowDetailPage,
+        ShowDateSearchPage,
         ActorListPage,
         ActorListFilter,
     ],
