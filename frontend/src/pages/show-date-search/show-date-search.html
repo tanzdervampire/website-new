@@ -8,9 +8,9 @@
 
     <spinner *ngIf="!shows"></spinner>
 
-    <p class="no-entries" *ngIf="shows && shows.length === 0">
+    <ion-list-header *ngIf="shows && shows.length === 0">
         Für diesen Tag liegt leider kein Eintrag vor.
-    </p>
+    </ion-list-header>
 
     <ion-list *ngIf="shows">
         <show-item

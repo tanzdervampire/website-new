@@ -25,7 +25,7 @@
             </ion-item-divider>
         </ion-item-group>
         <ion-item-group *ngFor="let daySection of monthSection.items">
-            <ion-item-divider color="light">
+            <ion-item-divider color="light" sticky>
                 <h2 item-start>{{ daySection.title }}</h2>
                 <ion-note item-end>{{ daySection.weekday }}</ion-note>
             </ion-item-divider>

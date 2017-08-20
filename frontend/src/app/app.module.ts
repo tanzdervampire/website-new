@@ -4,7 +4,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ShowListPage } from '../pages/show-list/show-list';
 import { ActorListPage } from '../pages/actor-list/actor-list';
 
@@ -27,7 +26,6 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
 @NgModule({
     declarations: [
         MyApp,
-        HomePage,
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,
@@ -49,7 +47,6 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
             dayShortNames: moment.localeData('de').weekdaysShort(),
         }, {
             links: [
-                { component: HomePage, name: 'HomePage', segment: 'home' },
                 { component: ShowListPage, name: 'ShowListPage', segment: 'shows' },
                 { component: ShowDateSearchPage, name: 'ShowDateSearchPage', segment: 'shows/:year/:month/:day', defaultHistory: [ShowListPage] },
                 { component: ShowDetailPage, name: 'ShowDetailPage', segment: 'shows/:location/:year/:month/:day/:time', defaultHistory: [ShowListPage] },
@@ -60,7 +57,6 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
     bootstrap: [ IonicApp ],
     entryComponents: [
         MyApp,
-        HomePage,
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,

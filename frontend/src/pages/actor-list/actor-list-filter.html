@@ -10,6 +10,6 @@
 
     <ion-item *ngFor="let role of roles">
         <ion-label>{{ role.name }}</ion-label>
-        <ion-checkbox [checked]="role.selected" (ionChange)="toggle(role)"></ion-checkbox>
+        <ion-toggle [checked]="role.selected" (ionChange)="toggle(role)"></ion-toggle>
     </ion-item>
 </ion-list>

@@ -3,7 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 import { ShowListPage } from '../pages/show-list/show-list';
 import { ActorListPage } from '../pages/actor-list/actor-list';
 
@@ -13,7 +12,7 @@ import { ActorListPage } from '../pages/actor-list/actor-list';
 export class MyApp {
     @ViewChild(Nav) nav: Nav;
 
-    rootPage: any = HomePage;
+    rootPage: any = ShowListPage;
 
     pages: Array<{ title: string, icon?: string, component: any }>;
 
@@ -21,7 +20,6 @@ export class MyApp {
         this.initializeApp();
 
         this.pages = [
-            { title: 'Startseite', icon: 'home', component: HomePage },
             { title: 'Vorstellungen', icon: 'film', component: ShowListPage },
             { title: 'Darsteller', icon: 'people', component: ActorListPage },
         ];
