@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavParams } from 'ionic-angular';
+import { Component, NgZone, ViewChild } from '@angular/core';
+import { Content, IonicPage, NavParams, ScrollEvent } from 'ionic-angular';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
 import { CastItem, Show } from '../../models/models';
 import { RolesProvider } from '../../providers/roles/roles';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @IonicPage({
     segment: 'shows/:location/:year/:month/:day/:time'
@@ -11,12 +12,27 @@ import { RolesProvider } from '../../providers/roles/roles';
 @Component({
     selector: 'page-show-detail',
     templateUrl: 'show-detail.html',
+    animations: [
+        trigger('fab', [
+            transition(':enter', [
+                style({ transform: 'scale(0)' }),
+                animate('.225s', style({ transform: 'scale(1)' })),
+            ]),
+            transition(':leave', [
+                style({ transform: 'scale(1)' }),
+                animate('.195s', style({ transform: 'scale(0)' })),
+            ]),
+        ]),
+    ],
 })
 export class ShowDetailPage {
 
     show: Show;
+    @ViewChild(Content) content: Content;
+    showScrollToTop: boolean = false;
 
     constructor(private navParams: NavParams,
+                public zone: NgZone,
                 private showsProvider: ShowsProvider,
                 public rolesProvider: RolesProvider) {
     }
@@ -28,6 +44,16 @@ export class ShowDetailPage {
         this.showsProvider.fetchShow(date, location).subscribe(show => {
             this.show = show;
         });
+    }
+
+    onScroll(event: ScrollEvent): void {
+        this.zone.run(() => {
+            this.showScrollToTop = event.scrollTop > 250;
+        });
+    }
+
+    onScrollToTop(): void {
+        this.content.scrollToTop(250);
     }
 
     getCastItemsForCategory(category: string): CastItem[] {
