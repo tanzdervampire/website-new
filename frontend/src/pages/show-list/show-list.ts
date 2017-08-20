@@ -1,13 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
 import { ShowsProvider } from '../../providers/shows/shows';
 import { Moment } from 'moment';
 import 'moment/locale/de';
-import { RolesProvider } from '../../providers/roles/roles';
 import { Show } from '../../models/models';
-import { DateTime, InfiniteScroll, NavController } from 'ionic-angular';
+import { Content, DateTime, InfiniteScroll, NavController, ScrollEvent } from 'ionic-angular';
 import { ShowDetailPage } from '../show-detail/show-detail';
 import { ShowDateSearchPage } from '../show-date-search/show-date-search';
 import moment from 'moment';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 interface Section<T> {
     title: string;
@@ -24,23 +24,43 @@ interface MonthSection extends Section<DaySection> {
 @Component({
     selector: 'page-show-list',
     templateUrl: 'show-list.html',
+    animations: [
+        trigger('fab', [
+            transition(':enter', [
+                style({ transform: 'scale(0)' }),
+                animate('.225s', style({ transform: 'scale(1)' })),
+            ]),
+            transition(':leave', [
+                style({ transform: 'scale(1)' }),
+                animate('.195s', style({ transform: 'scale(0)' })),
+            ]),
+        ]),
+    ],
 })
 export class ShowListPage implements OnInit {
 
     @ViewChild('datePicker') datePicker: DateTime;
+    @ViewChild(Content) content: Content;
     shows: MonthSection[] = [];
-
     selectedDate: string = moment().toISOString();
     maxDate: string = moment().format('YYYY-MM-DD');
+    showScrollToTop: boolean = false;
 
     constructor(
         private navCtrl: NavController,
-        private showsProvider: ShowsProvider) {
+        private showsProvider: ShowsProvider,
+        public zone: NgZone) {
     }
 
     ngOnInit(): void {
         this.showsProvider.fetchLatestMonth()
             .subscribe(this.pushShowsForMonth.bind(this));
+    }
+
+    onScroll(event: ScrollEvent): void {
+        this.zone.run(() => {
+            this.showScrollToTop = event.scrollTop > 500;
+        });
     }
 
     onDatePickerChange(event: any): void {
@@ -50,6 +70,10 @@ export class ShowListPage implements OnInit {
         this.navCtrl.push(ShowDateSearchPage, {
             year, month, day
         });
+    }
+
+    onScrollToTop(): void {
+        this.content.scrollToTop(250);
     }
 
     onInfiniteScroll(infiniteScroll: InfiniteScroll): void {

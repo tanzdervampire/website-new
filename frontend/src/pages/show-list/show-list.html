@@ -14,8 +14,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content (ionScroll)="onScroll($event)">
     <spinner *ngIf="!shows"></spinner>
 
     <div *ngFor="let monthSection of shows">
@@ -42,9 +41,15 @@
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
 
-    <ion-fab bottom right>
+    <ion-fab bottom right *ngIf="!showScrollToTop" [@fab]>
         <button ion-fab (click)="datePicker.open()">
             <ion-icon name="calendar"></ion-icon>
+        </button>
+    </ion-fab>
+
+    <ion-fab bottom right *ngIf="showScrollToTop" [@fab]>
+        <button ion-fab color="light" (click)="onScrollToTop()">
+            <ion-icon name="ios-arrow-up"></ion-icon>
         </button>
     </ion-fab>
 
@@ -57,5 +62,4 @@
         [max]="maxDate"
         (ionChange)="onDatePickerChange($event)"
     ></ion-datetime>
-
 </ion-content>
