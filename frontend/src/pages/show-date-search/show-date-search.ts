@@ -22,8 +22,13 @@ export class ShowDateSearchPage {
     }
 
     ionViewDidLoad() {
-        const date = this.getDateFromParams();
+        /* If we get the already loaded shows passed in, use those instead. */
+        if (this.navParams.data.shows) {
+            this.shows = this.navParams.data.shows;
+            return;
+        }
 
+        const date = this.getDateFromParams();
         this.showsProvider.fetchShowsForDay(date).subscribe(shows => {
             this.shows = shows;
         });

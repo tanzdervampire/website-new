@@ -38,9 +38,14 @@ export class ShowDetailPage {
     }
 
     ionViewDidLoad() {
+        /* If we get the already loaded show passed in, use it instead. */
+        if (this.navParams.data.show) {
+            this.show = this.navParams.data.show;
+            return;
+        }
+
         const { location } = this.navParams.data;
         const date = this.getDateFromParams();
-
         this.showsProvider.fetchShow(date, location).subscribe(show => {
             this.show = show;
         });

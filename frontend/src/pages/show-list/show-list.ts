@@ -65,10 +65,16 @@ export class ShowListPage implements OnInit {
 
     onDatePickerChange(event: any): void {
         const date = moment(`${event.day}.${event.month}.${event.year}`, 'DD.MM.YYYY');
-        const [day, month, year] = date.format('DD MM YYYY').split(' ');
+        const [year, month, day] = date.format('YYYY MM DD HHmm').split(' ');
 
-        this.navCtrl.push(ShowDateSearchPage, {
-            year, month, day
+        this.showsProvider.fetchShowsForDay(date).subscribe(shows => {
+            /* If there's only one show on that day, jump to it directly. */
+            if (shows.length === 1) {
+                const [show] = shows;
+                this.gotoShowDetail(show);
+            } else {
+                this.navCtrl.push(ShowDateSearchPage, { year, month, day, shows });
+            }
         });
     }
 
@@ -94,7 +100,7 @@ export class ShowListPage implements OnInit {
 
         this.navCtrl.push(ShowDetailPage, {
             location: show.production.location,
-            year, month, day, time
+            year, month, day, time, show
         });
     }
 
