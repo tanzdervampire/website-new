@@ -10,7 +10,7 @@
         <ion-content>
             <ion-list no-lines>
                 <button menuClose ion-item *ngFor="let page of pages" (click)="openPage(page)">
-                    <ion-icon *ngIf="page.icon" [name]="page.icon" item-start></ion-icon>
+                    <ion-icon *ngIf="page.icon" [name]="page.icon" [color]="isActive(page)" item-start></ion-icon>
                     {{page.title}}
                 </button>
 
