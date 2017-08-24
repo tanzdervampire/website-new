@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Show } from '../../models/models';
 import { RolesProvider } from '../../providers/roles/roles';
 import 'moment/locale/de';
@@ -32,7 +32,7 @@ export class ShowItemComponent {
     formatCast(): string {
         return this.show.cast
             .filter(entry => this.rolesProvider.isPrimary(entry.role))
-            .sort(this.rolesProvider.sortByRole.bind(this.rolesProvider))
+            .sort(this.rolesProvider.sortCastItemByRole.bind(this.rolesProvider))
             .map(entry => entry.person)
             .map(person => person.name)
             .join(', ');

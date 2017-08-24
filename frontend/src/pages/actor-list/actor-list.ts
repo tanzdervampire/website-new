@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { ModalController, PopoverController, Refresher } from 'ionic-angular';
+import { PopoverController, Refresher } from 'ionic-angular';
 
 import { ActorFilters, ActorsProvider } from '../../providers/actors/actors';
 import { ActorListFilter } from './actor-list-filter';

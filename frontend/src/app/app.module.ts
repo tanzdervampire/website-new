@@ -22,6 +22,9 @@ import { ShowDetailPage } from '../pages/show-detail/show-detail';
 import moment from 'moment';
 import { ShowItemComponent } from '../components/show-item/show-item';
 import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
+import { ShowSubmitStartPage } from '../pages/show-submit-start/show-submit-start';
+import { ShowSubmitCastPage } from '../pages/show-submit-cast/show-submit-cast';
+import { ProductionsProvider } from '../providers/productions/productions';
 
 @NgModule({
     declarations: [
@@ -29,6 +32,8 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,
+        ShowSubmitStartPage,
+        ShowSubmitCastPage,
         ActorListPage,
         ActorListFilter,
         AutoFocusDirective,
@@ -49,6 +54,8 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
             links: [
                 { component: ShowListPage, name: 'ShowListPage', segment: 'shows' },
                 { component: ShowDateSearchPage, name: 'ShowDateSearchPage', segment: 'shows/:year/:month/:day', defaultHistory: [ShowListPage] },
+                { component: ShowSubmitStartPage, name: 'ShowSubmitStartPage', segment: 'shows/submit', defaultHistory: [ShowListPage] },
+                { component: ShowSubmitCastPage, name: 'ShowSubmitCastPage', segment: 'shows/:location/:year/:month/:day/:time/submit', defaultHistory: [ShowListPage] },
                 { component: ShowDetailPage, name: 'ShowDetailPage', segment: 'shows/:location/:year/:month/:day/:time', defaultHistory: [ShowListPage] },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },
             ],
@@ -60,6 +67,8 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,
+        ShowSubmitStartPage,
+        ShowSubmitCastPage,
         ActorListPage,
         ActorListFilter,
     ],
@@ -70,6 +79,7 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
         ActorsProvider,
     RolesProvider,
     ShowsProvider,
+    ProductionsProvider,
     ],
 })
 export class AppModule {

@@ -1,0 +1,107 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Neue Vorstellung</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <!-- TODO Show toast if not everything has been selected -->
+    <ion-fab bottom right>
+        <button ion-fab (click)="gotoCastSelection()" [color]="showDate && showTime && production ? null : 'light'">
+            <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+    </ion-fab>
+
+    <ion-card>
+        <ion-card-header>
+            <h2>Wann fand die Vorstellung statt?</h2>
+        </ion-card-header>
+
+        <ion-list>
+            <ion-item>
+                <ion-icon name="calendar" [color]="showDate ? null : 'danger'" item-start></ion-icon>
+                <ion-label>Datum</ion-label>
+                <ion-datetime
+                    displayFormat="DD. MMMM YYYY"
+                    min="1997-10-04"
+                    [max]="today"
+                    [(ngModel)]="showDate"
+                    (ngModelChange)="onShowDateChange($event)"
+                    cancelText="Abbrechen"
+                    doneText="OK"
+                    placeholder="DD.MM.YYYY"
+                    (swipe)="onSwipeShowDate($event)"
+                ></ion-datetime>
+
+                <button ion-button small clear icon-only item-end *ngIf="!showDate" (click)="selectToday()">
+                    <ion-icon name="refresh" color="secondary"></ion-icon>
+                </button>
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name="time" [color]="showTime ? null : 'danger'" item-start></ion-icon>
+                <ion-label>Uhrzeit</ion-label>
+                <ion-select interface="popover" [(ngModel)]="showTime" cancelText="Abbrechen">
+                    <ion-option value="14:00">14:00 Uhr</ion-option>
+                    <ion-option value="14:30">14:30 Uhr</ion-option>
+                    <ion-option value="15:00">15:00 Uhr</ion-option>
+                    <ion-option value="18:30">18:30 Uhr</ion-option>
+                    <ion-option value="19:00">19:00 Uhr</ion-option>
+                    <ion-option value="19:30">19:30 Uhr</ion-option>
+                    <ion-option value="20:00">20:00 Uhr</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-item *ngIf="showDate">
+                <ion-icon name="pin" [color]="production ? null : 'danger'" item-start></ion-icon>
+                <ion-label>Stadt</ion-label>
+
+                <!-- Displayed while loading. -->
+                <ion-spinner item-end *ngIf="!productions"></ion-spinner>
+
+                <!-- Displayed if the request has failed. -->
+                <button ion-button small outline item-end
+                        *ngIf="productions && productions.length === 0"
+                        (click)="onShowDateChange(showDate)"
+                >Erneut versuchen</button>
+
+                <!-- Displayed if request was successful and there is only one production. -->
+                <p item-end *ngIf="productions && productions.length === 1">{{ production?.location }}</p>
+
+                <!-- Displayed if request was successful and there is more than one production. -->
+                <ion-select interface="popover" *ngIf="productions && productions.length > 1" [(ngModel)]="production" cancelText="Abbrechen">
+                    <ion-option *ngFor="let p of productions" [value]="p">{{ p.location }}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ion-row text-center>
+                <ion-col>
+                    <button ion-button full clear icon-left small color="secondary" disabled>
+                        <ion-icon name="image"></ion-icon>
+                        Foto importieren
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-list>
+    </ion-card>
+
+    <ion-card text-left>
+        <ion-item>
+            <ion-icon name="md-bulb" item-start></ion-icon>
+            <ion-label>Schon gewusst?</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+            <p>Du kannst die Besetzung automatisch anhand eines Fotos der Castliste erkennen lassen.</p>
+            <p>Klicke hierzu einfach oben auf »Foto importieren« und wähle das Bild aus.</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button clear small color="secondary">
+                    Mehr
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>

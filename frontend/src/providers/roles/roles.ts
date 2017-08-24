@@ -36,16 +36,18 @@ export class RolesProvider {
     private _nameToCategory: any;
 
     constructor() {
-        this._roles = this._config
-            .map(entry => entry.name);
-        this._primaryRoles = this._config
-            .filter(entry => entry.primary)
-            .map(entry => entry.name);
-
         this._nameToIndex = this._config
             .reduce((acc, definition) => {
                 return { ...acc, [definition.name]: definition.index };
             }, {});
+
+        this._roles = this._config
+            .map(entry => entry.name)
+            .sort(this.sortByRole.bind(this));
+        this._primaryRoles = this._config
+            .filter(entry => entry.primary)
+            .map(entry => entry.name)
+            .sort(this.sortByRole.bind(this));
 
         this._categories = this._config
             .map(entry => entry.category);
@@ -78,8 +80,12 @@ export class RolesProvider {
         return this._primaryRoles.indexOf(role) !== -1;
     }
 
-    sortByRole(left: CastItem, right: CastItem): number {
-        return this._nameToIndex[left.role] - this._nameToIndex[right.role];
+    sortCastItemByRole(left: CastItem, right: CastItem): number {
+        return this.sortByRole(left.role, right.role);
+    }
+
+    sortByRole(left: string, right: string): number {
+        return this._nameToIndex[left] - this._nameToIndex[right];
     }
 
 }

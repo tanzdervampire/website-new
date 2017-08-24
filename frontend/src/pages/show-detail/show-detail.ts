@@ -64,7 +64,7 @@ export class ShowDetailPage {
     getCastItemsForCategory(category: string): CastItem[] {
         return this.show.cast
             .filter(item => this.rolesProvider.getCategoryForRole(item.role) === category)
-            .sort(this.rolesProvider.sortByRole.bind(this.rolesProvider));
+            .sort(this.rolesProvider.sortCastItemByRole.bind(this.rolesProvider));
     }
 
     getDateFromParams(): Moment {

@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar no-border>
+        <ion-buttons left>
+            <!-- TODO Confirmation -->
+            <button ion-button navPop icon-only>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>TODO</ion-title>
+    </ion-toolbar>
+
+    <ion-toolbar>
+        <ion-searchbar auto-focus></ion-searchbar>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-fab bottom right>
+        <button ion-fab (click)="slideNext()">
+            <ion-icon name="arrow-forward"></ion-icon>
+        </button>
+    </ion-fab>
+
+    <ion-slides>
+        <ion-slide *ngFor="let role of rolesProvider.getRoles()" text-left>
+            <ion-row>
+                <ion-col>
+                    <ion-chip *ngFor="let _ of [1,2,3,4,5,6,7,8]">
+                        <ion-avatar>
+                            <ion-text-avatar color="secondary">F</ion-text-avatar>
+                        </ion-avatar>
+                        <ion-label>John Doe</ion-label>
+                        <button ion-button clear color="dark">
+                            <ion-icon name="close"></ion-icon>
+                        </button>
+                    </ion-chip>
+                </ion-col>
+            </ion-row>
+
+            <ion-list>
+                <ion-item *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13]">
+                    <h2>John Doe</h2>
+                </ion-item>
+            </ion-list>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

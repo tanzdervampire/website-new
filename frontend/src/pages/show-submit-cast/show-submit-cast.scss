@@ -1,0 +1,17 @@
+page-show-submit-cast {
+    /* Pagination bullet color. */
+    .swiper-pagination-bullet-active {
+        background: color($colors, primary);
+    }
+
+    /* Align slides to the top. */
+    ion-slide.swiper-slide {
+        align-items: flex-start;
+    }
+
+    /* Allow slide to scroll */
+    .slide-zoom {
+        height: 100%;
+        overflow-y: scroll;
+    }
+}
