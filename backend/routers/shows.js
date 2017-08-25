@@ -1,7 +1,7 @@
 // @flow
 
 const router = require('express').Router();
-const { queryShows, queryShowsBefore } = require('../services/shows-service');
+const { queryShows, queryShowBefore, queryShowsBefore } = require('../services/shows-service');
 
 /**
  * /by-month/latest
@@ -39,7 +39,6 @@ router.route('/by-month/latest')
         }
     });
 
-// TODO FIXME Add production parameter.
 /**
  * /:year/:month
  *
@@ -73,7 +72,6 @@ router.route('/:year/:month')
         }
     });
 
-// TODO FIXME Add production parameter.
 /**
  * /:year/:month/:day
  *
@@ -94,6 +92,39 @@ router.route('/:year/:month/:day')
     .get(async (req, res) => {
         try {
             const documents = await queryShows({
+                year: req.params.year,
+                month: req.params.month,
+                day: req.params.day,
+                fields: req.query.fields,
+                location: req.query.location,
+                count: !!req.query.count,
+            });
+
+            return res.json(documents);
+        } catch (err) {
+            return res.send(err);
+        }
+    });
+
+/**
+ * /:year/:month/:day/previous
+ *
+ * GET
+ * Returns a list of shows before the given date.
+ *
+ * Query parameters:
+ *  location
+ *      Only return shows performed in the given location.
+ *  fields
+ *      Comma-separated list of additional fields to be returned.
+ *      Possible values are 'production' and 'cast'.
+ *  count
+ *      If set, only the number of matching shows will be returned.
+ */
+router.route('/:year/:month/:day/previous')
+    .get(async (req, res) => {
+        try {
+            const documents = await queryShowBefore({
                 year: req.params.year,
                 month: req.params.month,
                 day: req.params.day,

@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
 const moment = require('moment');
-const { KnownProduction, KnownPerson, KnownCast, prepareShow } = require('./test-util');
+const { KnownProduction, KnownCast, prepareShow } = require('./test-util');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
@@ -216,5 +216,27 @@ describe('/api/shows/by-month/latest', () => {
 
         const res = await getLatestShows(moment('15.03.2017 19:30', 'DD.MM.YYYY HH:mm'));
         res.body.length.should.be.eql(2);
+    });
+});
+
+describe('/api/shows/:year/:month/:day/previous', () => {
+    beforeEach(async () => {
+        await mongoose.connection.dropDatabase();
+    });
+
+    it('can return the previous show', async () => {
+        await Promise.all([
+            await prepareShow({ date: moment('14.03.2017 14:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+            await prepareShow({ date: moment('14.03.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[0], cast: KnownCast.MAIN }),
+            await prepareShow({ date: moment('15.03.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[1], cast: KnownCast.MAIN }),
+            await prepareShow({ date: moment('15.03.2017 19:30', 'DD.MM.YYYY HH:mm').toDate(), production: KnownProduction[1], cast: KnownCast.MAIN }),
+        ]);
+
+        const res = await chai.request(server).get('/api/shows/2017/03/16/previous?location=' + KnownProduction[0].location);
+        res.should.have.status(200);
+
+        res.body.length.should.be.eql(1);
+        const actualDate = moment(res.body[0].date).format('DD.MM.YYYY HH:mm');
+        actualDate.should.be.eql('14.03.2017 19:30');
     });
 });

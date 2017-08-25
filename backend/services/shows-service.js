@@ -22,6 +22,36 @@ const queryShowsBefore = async opts => {
     }));
 };
 
+const queryShowBefore = async opts => {
+    const { year, month, day } = opts;
+    const beforeDate = moment(`${day}.${month}.${year}`, 'DD.MM.YYYY', true);
+
+    const query = Show.findOne().lean()
+        .where('date').lt(beforeDate.toDate());
+
+    if (opts.location) {
+        const productions = await Production.find({ location: opts.location });
+        query.where('production').in(productions.map(p => p._id));
+    }
+
+    const latest = await query
+        .sort({ date: 'descending' })
+        .limit(1);
+    if (!latest) {
+        return [];
+    }
+
+    const searchDate = moment(latest.date);
+    const documents = await queryShows(Object.assign({}, opts, {
+        year: searchDate.format('YYYY'),
+        month: searchDate.format('MM'),
+        day: searchDate.format('DD'),
+    }));
+
+    /* Only return the latest one. */
+    return [documents.pop()];
+};
+
 const queryShows = async opts => {
     const { year, month, day } = opts;
     const fields = opts.fields ? opts.fields.split(/,/) : [];
@@ -66,4 +96,4 @@ const queryShows = async opts => {
     return query;
 };
 
-module.exports = { queryShows, queryShowsBefore };
+module.exports = { queryShows, queryShowBefore, queryShowsBefore };
