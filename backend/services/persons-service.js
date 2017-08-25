@@ -11,11 +11,22 @@ const queryPersonsWithRoles = async () => {
         /* Reduce it to the only data we are interested in. */
         { $project: { role: '$cast.role', person: '$cast.person' } },
 
-        /* Group by person into a set of roles. */
+        /* Group with the role as part of the group key to count the number of shows in this role and remove duplicates. */
         {
             $group: {
-                _id: '$person',
-                roles: { $addToSet: '$role' }
+                _id: { person: '$person', role: '$role' },
+                count: { $sum: 1 },
+            }
+        },
+
+        /* Sort by the number of shows. */
+        { $sort: { _id: 1, count: -1 } },
+
+        /* Roll up further to get one entry per person with an ordered roles array. */
+        {
+            $group: {
+                _id: '$_id.person',
+                roles: { $push: '$_id.role' },
             }
         },
 
