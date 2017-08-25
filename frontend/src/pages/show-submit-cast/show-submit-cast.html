@@ -7,42 +7,57 @@
             </button>
         </ion-buttons>
 
-        <ion-title>TODO</ion-title>
+        <ion-title>{{ roles[roleIndex] }}</ion-title>
+
+        <ion-buttons right>
+            <button ion-button clear *ngIf="roleIndex > 0" (click)="gotoPreviousRole()">Zurück</button>
+            <button ion-button clear [disabled]="roleIndex === roles.length - 1" (click)="gotoNextRole()">Weiter</button>
+        </ion-buttons>
     </ion-toolbar>
 
-    <ion-toolbar>
-        <ion-searchbar auto-focus></ion-searchbar>
+    <ion-toolbar no-border>
+        <ion-searchbar
+            auto-focus
+            placeholder="Suchen"
+            showCancelButton="true"
+            spellcheck="false"
+            [(ngModel)]="searchText"
+            (ionInput)="updateCurrentSuggestions()"
+            (search)="onSearch($event)"
+        ></ion-searchbar>
+    </ion-toolbar>
+
+    <ion-toolbar no-border color="light" *ngIf="cast[roleIndex] && cast[roleIndex].length > 0">
+        <ion-chip *ngFor="let actor of cast[roleIndex]">
+            <ion-avatar>
+                <ion-text-avatar color="secondary">{{ actor.name.charAt(0).toUpperCase() }}</ion-text-avatar>
+            </ion-avatar>
+            <ion-label>{{ actor.name.split(' ').pop() }}</ion-label>
+            <button ion-button clear color="dark" (click)="toggleActor(actor)">
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-chip>
     </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-fab bottom right>
-        <button ion-fab (click)="slideNext()">
-            <ion-icon name="arrow-forward"></ion-icon>
+    <spinner *ngIf="!suggestions"></spinner>
+
+    <div *ngIf="currentSuggestions">
+        <ion-list-header *ngIf="currentSuggestions.length === 0 && searchText?.length > 0">
+            Kein Darsteller mit diesem Namen gefunden.
+        </ion-list-header>
+
+        <ion-list *ngIf="currentSuggestions">
+            <ion-item *ngFor="let actor of currentSuggestions" (click)="toggleActor(actor)">
+                <h2>{{ actor.name }}</h2>
+            </ion-item>
+        </ion-list>
+    </div>
+
+    <ion-fab bottom right *ngIf="roleIndex === roles.length - 1">
+        <button ion-fab>
+            <ion-icon name="send"></ion-icon>
         </button>
     </ion-fab>
-
-    <ion-slides>
-        <ion-slide *ngFor="let role of rolesProvider.getRoles()" text-left>
-            <ion-row>
-                <ion-col>
-                    <ion-chip *ngFor="let _ of [1,2,3,4,5,6,7,8]">
-                        <ion-avatar>
-                            <ion-text-avatar color="secondary">F</ion-text-avatar>
-                        </ion-avatar>
-                        <ion-label>John Doe</ion-label>
-                        <button ion-button clear color="dark">
-                            <ion-icon name="close"></ion-icon>
-                        </button>
-                    </ion-chip>
-                </ion-col>
-            </ion-row>
-
-            <ion-list>
-                <ion-item *ngFor="let x of [1,2,3,4,5,6,7,8,9,10,11,12,13]">
-                    <h2>John Doe</h2>
-                </ion-item>
-            </ion-list>
-        </ion-slide>
-    </ion-slides>
 </ion-content>
