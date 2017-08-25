@@ -14,18 +14,21 @@ export interface ActorFilters {
 @Injectable()
 export class ActorsProvider {
 
-    private _cache: Observable<Actor[]>;
+    private _cache: Actor[];
 
     constructor(private http: Http) {
     }
 
     load(force: boolean = false): Observable<Actor[]> {
         if (!this._cache || force) {
-            this._cache = this.http.get('/api/persons?fields=roles')
+            const request = this.http.get('/api/persons?fields=roles')
                 .map(response => response.json());
+
+            request.subscribe(response => { this._cache = response; });
+            return request;
         }
 
-        return this._cache;
+        return Observable.of(this._cache);
     }
 
     getListOfActors(force: boolean = false, filter: ActorFilters = {}): Observable<Actor[]> {

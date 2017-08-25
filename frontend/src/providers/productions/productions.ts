@@ -8,19 +8,22 @@ import moment, { Moment } from 'moment';
 @Injectable()
 export class ProductionsProvider {
 
-    private _cache: Observable<Production[]>;
+    private _cache: Production[];
 
     constructor(public http: Http) {
     }
 
     load(force: boolean = false): Observable<Production[]> {
         if (!this._cache || force) {
-            this._cache = this.http.get('/api/productions')
+            const request = this.http.get('/api/productions')
                 .map(response => response.json())
                 .map(this.momentify);
+
+            request.subscribe(response => { this._cache = response; });
+            return request;
         }
 
-        return this._cache;
+        return Observable.of(this._cache);
     }
 
     getProductions(): Observable<Production[]> {
