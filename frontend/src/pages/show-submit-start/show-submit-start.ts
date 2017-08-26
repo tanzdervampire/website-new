@@ -20,6 +20,7 @@ export class ShowSubmitStartPage {
 
     today = moment().toISOString();
     productions: Production[];
+    hadRequestError: boolean = false;
 
     constructor(
         public navCtrl: NavController,
@@ -37,9 +38,11 @@ export class ShowSubmitStartPage {
         switch (direction) {
             case /* LEFT */ 2:
                 this.showDate = currentDate.add(1, 'day').toISOString();
+                this.onShowDateChange(this.showDate);
                 break;
             case /* RIGHT */ 4:
                 this.showDate = currentDate.subtract(1, 'day').toISOString();
+                this.onShowDateChange(this.showDate);
                 break;
         }
     }
@@ -52,6 +55,7 @@ export class ShowSubmitStartPage {
     onShowDateChange(date: string): void {
         this.production = undefined;
         this.productions = undefined;
+        this.hadRequestError = false;
 
         this.productionsProvider.getProductionsFor(moment(date)).subscribe(productions => {
             this.productions = productions;
@@ -68,6 +72,7 @@ export class ShowSubmitStartPage {
             }
         }, () => {
             this.productions = [];
+            this.hadRequestError = true;
             this.showErrorToast('Es gab ein Problem mit der Verbindung');
         });
     }

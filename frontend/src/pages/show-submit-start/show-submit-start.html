@@ -61,7 +61,7 @@
 
                 <!-- Displayed if the request has failed. -->
                 <button ion-button small outline item-end
-                        *ngIf="productions && productions.length === 0"
+                        *ngIf="hadRequestError"
                         (click)="onShowDateChange(showDate)"
                 >Erneut versuchen</button>
 
