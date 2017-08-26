@@ -10,7 +10,7 @@
         "heroku-postbuild": "cd frontend/ && npm install && npm run build --prod"
     },
     "engines": {
-        "node": "7.10.0"
+        "node": "8.4.0"
     },
     "author": "Ingo Bürk",
     "license": "MIT",
