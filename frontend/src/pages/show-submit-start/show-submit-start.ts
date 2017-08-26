@@ -4,6 +4,7 @@ import moment, { Moment } from 'moment';
 import { ShowSubmitCastPage } from '../show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../../providers/productions/productions';
 import { Production } from '../../models/models';
+import { ShowsProvider } from '../../providers/shows/shows';
 
 @IonicPage({
     segment: 'shows/submit'
@@ -26,6 +27,7 @@ export class ShowSubmitStartPage {
         public navCtrl: NavController,
         public navParams: NavParams,
         public toastCtrl: ToastController,
+        public showsProvider: ShowsProvider,
         public productionsProvider: ProductionsProvider) {
     }
 
@@ -98,10 +100,19 @@ export class ShowSubmitStartPage {
         const [year, month, day, time] = this.convertShowDate()
             .format('YYYY MM DD HHmm').split(' ');
 
-        this.navCtrl.push(ShowSubmitCastPage, {
-            location: this.production.location,
-            year, month, day, time
-        });
+        const location = this.production.location;
+        this.showsProvider.fetchShow(this.convertShowDate(), location).subscribe(
+            show => {
+                if (show) {
+                    this.showErrorToast('Diese Vorstellung wurde bereits eingetragen.');
+                } else {
+                    this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time });
+                }
+            },
+            err => {
+                this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time });
+            }
+        );
     }
 
     convertShowDate(): Moment {
