@@ -8,6 +8,7 @@ import { ShowDetailPage } from '../show-detail/show-detail';
 import { ShowDateSearchPage } from '../show-date-search/show-date-search';
 import moment from 'moment';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ShowSubmitStartPage } from '../show-submit-start/show-submit-start';
 
 interface Section<T> {
     title: string;
@@ -93,6 +94,10 @@ export class ShowListPage implements OnInit {
                 this.pushShowsForMonth(response);
                 infiniteScroll.complete();
             });
+    }
+
+    gotoShowSubmit(): void {
+        this.navCtrl.push(ShowSubmitStartPage);
     }
 
     gotoShowDetail(show: Show): void {
