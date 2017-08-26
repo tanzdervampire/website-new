@@ -7,7 +7,9 @@
         "start": "concurrently \"npm run frontend\" \"npm run backend\"",
         "frontend": "cd frontend && ionic serve",
         "backend": "cd backend && npm run start",
-        "heroku-postbuild": "cd frontend/ && npm install && npm run build --prod"
+        "heroku-frontend": "cd frontend/ && npm install && npm run build --prod && cd ../",
+        "heroku-backend": "cd backend/ && npm install && cd ../",
+        "heroku-postbuild": "npm run heroku-frontend && npm run heroku-backend"
     },
     "engines": {
         "node": "8.4.0"
