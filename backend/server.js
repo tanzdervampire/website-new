@@ -39,6 +39,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use('/api', apiRouter);
 
+/* In the browser, we don't need this file. Avoid redirecting it to index.html. */
+app.get('cordova.js', (req, res) => {
+    res.send('');
+});
+
 app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '..', 'frontend', 'www', 'index.html'));
 });
