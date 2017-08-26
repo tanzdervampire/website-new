@@ -5,6 +5,20 @@ const Show = require('../models/show');
 const Production = require('../models/production');
 require('../models/person');
 
+const postShow = async document => {
+    const show = new Show(document);
+
+    const err = show.validateSync();
+    if (!err) {
+        return show.save();
+    } else {
+        throw {
+            status: 400,
+            message: err,
+        };
+    }
+};
+
 const queryShowsBefore = async opts => {
     const before = opts.before ? moment(opts.before, 'YYYY-MM-DD', true).startOf('month') : moment();
     const latest = await Show.findOne().lean()
@@ -96,4 +110,4 @@ const queryShows = async opts => {
     return query;
 };
 
-module.exports = { queryShows, queryShowBefore, queryShowsBefore };
+module.exports = { postShow, queryShows, queryShowBefore, queryShowsBefore };

@@ -1,11 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { AlertController, Content, IonicPage, NavController, NavParams, Searchbar } from 'ionic-angular';
+import {
+    AlertController, Content, IonicPage, LoadingController, NavController, NavParams, Searchbar,
+    ToastController
+} from 'ionic-angular';
 import { RolesProvider } from '../../providers/roles/roles';
-import { Actor } from '../../models/models';
+import { Actor, CastItem, Show } from '../../models/models';
 import { ActorsProvider } from '../../providers/actors/actors';
 import levenshtein from 'fast-levenshtein';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
+import { ProductionsProvider } from '../../providers/productions/productions';
 
 @IonicPage({
     segment: 'shows/:location/:year/:month/:day/:time/submit'
@@ -36,8 +40,11 @@ export class ShowSubmitCastPage {
     constructor(public navCtrl: NavController,
                 public navParams: NavParams,
                 public alertCtrl: AlertController,
+                public loadingCtrl: LoadingController,
+                public toastCtrl: ToastController,
                 public rolesProvider: RolesProvider,
                 public actorsProvider: ActorsProvider,
+                public productionsProvider: ProductionsProvider,
                 public showsProvider: ShowsProvider) {
 
         this.roles = [ ...this.rolesProvider.getRoles() ];
@@ -267,6 +274,63 @@ export class ShowSubmitCastPage {
         });
 
         confirm.present();
+    }
+
+    submitShow(): void {
+        const castItems: CastItem[] = this.cast
+            .map((group, i) => {
+                const role = this.roles[ i ];
+                return group.map((person: Actor): CastItem => {
+                    return { role, person };
+                });
+            })
+            .reduce((acc, value) => {
+                return [...acc, ...value];
+            }, []);
+
+        const loader = this.loadingCtrl.create({ content: 'Bitte warten…' });
+        loader.present();
+
+        const date = this.getDateFromParams();
+        this.productionsProvider.getProduction(date, this.navParams.data.location).subscribe(
+            production => {
+                const show: Show = { date, production, cast: castItems };
+
+                // TODO also send to Github or email
+
+                this.showsProvider.postShow(show).subscribe(
+                    response => {
+                        this.showToast('Die Vorstellung wurde erfogreich eingetragen.');
+                        this.navCtrl.popToRoot();
+
+                        loader.dismiss();
+                    }, err => {
+                        console.error(err);
+
+                        loader.dismiss();
+                        this.showToast('Ein Fehler ist aufgetreten.');
+                    });
+            },
+            err => {
+                console.error(err);
+
+                loader.dismiss();
+                this.showToast('Ein Fehler ist aufgetreten.');
+            }
+        );
+    }
+
+    showToast(message: string): void {
+        const toast = this.toastCtrl.create({
+            message,
+            duration: 3000,
+            position: 'bottom',
+            showCloseButton: true,
+            closeButtonText: 'OK',
+            dismissOnPageChange: false,
+        });
+
+        toast.present();
     }
 
 }

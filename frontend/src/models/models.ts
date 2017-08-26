@@ -14,7 +14,7 @@ export interface CastItem {
 }
 
 export interface ShowBase {
-    _id: string;
+    _id?: string;
     date: Moment;
 }
 

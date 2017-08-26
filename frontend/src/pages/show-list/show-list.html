@@ -15,7 +15,7 @@
 </ion-header>
 
 <ion-content (ionScroll)="onScroll($event)">
-    <spinner *ngIf="!shows"></spinner>
+    <spinner *ngIf="!shows || shows.length === 0"></spinner>
 
     <ion-grid fixed no-padding>
         <div *ngFor="let monthSection of shows">

@@ -53,10 +53,30 @@ import { ProductionsProvider } from '../providers/productions/productions';
         }, {
             links: [
                 { component: ShowListPage, name: 'ShowListPage', segment: 'shows' },
-                { component: ShowDateSearchPage, name: 'ShowDateSearchPage', segment: 'shows/:year/:month/:day', defaultHistory: [ShowListPage] },
-                { component: ShowSubmitStartPage, name: 'ShowSubmitStartPage', segment: 'shows/submit', defaultHistory: [ShowListPage] },
-                { component: ShowSubmitCastPage, name: 'ShowSubmitCastPage', segment: 'shows/:location/:year/:month/:day/:time/submit', defaultHistory: [ShowListPage] },
-                { component: ShowDetailPage, name: 'ShowDetailPage', segment: 'shows/:location/:year/:month/:day/:time', defaultHistory: [ShowListPage] },
+                {
+                    component: ShowDateSearchPage,
+                    name: 'ShowDateSearchPage',
+                    segment: 'shows/:year/:month/:day',
+                    defaultHistory: [ ShowListPage ]
+                },
+                {
+                    component: ShowSubmitStartPage,
+                    name: 'ShowSubmitStartPage',
+                    segment: 'shows/submit',
+                    defaultHistory: [ ShowListPage ]
+                },
+                {
+                    component: ShowSubmitCastPage,
+                    name: 'ShowSubmitCastPage',
+                    segment: 'shows/:location/:year/:month/:day/:time/submit',
+                    defaultHistory: [ ShowListPage ]
+                },
+                {
+                    component: ShowDetailPage,
+                    name: 'ShowDetailPage',
+                    segment: 'shows/:location/:year/:month/:day/:time',
+                    defaultHistory: [ ShowListPage ]
+                },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },
             ],
         }),
@@ -77,9 +97,9 @@ import { ProductionsProvider } from '../providers/productions/productions';
         SplashScreen,
         { provide: ErrorHandler, useClass: IonicErrorHandler },
         ActorsProvider,
-    RolesProvider,
-    ShowsProvider,
-    ProductionsProvider,
+        RolesProvider,
+        ShowsProvider,
+        ProductionsProvider,
     ],
 })
 export class AppModule {

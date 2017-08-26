@@ -99,6 +99,11 @@ export class ShowsProvider {
         return url;
     }
 
+    postShow(show: Show): Observable<any> {
+        return this.http.post('/api/shows', show)
+            .map(response => response.json());
+    }
+
     momentify(rawShows: any[]): Show[] {
         return rawShows.map(rawShow => {
             const show = { ...rawShow };

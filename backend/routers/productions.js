@@ -18,7 +18,13 @@ router.route('/')
             const documents = await queryProductions();
             return res.json(documents);
         } catch (err) {
-            return res.status(500).send('Internal error.');
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
+            return res.send('Internal error.');
         }
     });
 

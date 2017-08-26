@@ -71,7 +71,7 @@
     </div>
 
     <ion-fab bottom right *ngIf="roleIndex === roles.length - 1">
-        <button ion-fab>
+        <button ion-fab (click)="submitShow()">
             <ion-icon name="send"></ion-icon>
         </button>
     </ion-fab>

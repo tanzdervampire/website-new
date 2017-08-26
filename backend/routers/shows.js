@@ -1,7 +1,30 @@
 // @flow
 
 const router = require('express').Router();
-const { queryShows, queryShowBefore, queryShowsBefore } = require('../services/shows-service');
+const { postShow, queryShows, queryShowBefore, queryShowsBefore } = require('../services/shows-service');
+
+// TODO Allow overwriting the cast instead of rejecting.
+/**
+ * /
+ *
+ * POST
+ * Post a new show.
+ */
+router.route('/')
+    .post(async (req, res) => {
+        try {
+            const result = await postShow(req.body);
+            return res.json(result);
+        } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
+            return res.send(err);
+        }
+    });
 
 /**
  * /by-month/latest
@@ -35,6 +58,12 @@ router.route('/by-month/latest')
 
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });
@@ -68,6 +97,12 @@ router.route('/:year/:month')
 
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });
@@ -102,6 +137,12 @@ router.route('/:year/:month/:day')
 
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });
@@ -135,6 +176,12 @@ router.route('/:year/:month/:day/previous')
 
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });

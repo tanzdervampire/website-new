@@ -28,6 +28,12 @@ router.route('/')
             const documents = await findRoles(req);
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });
@@ -49,6 +55,12 @@ router.route('/:role')
             const documents = await findRoles(req);
             return res.json(documents);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });

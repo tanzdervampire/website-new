@@ -1,4 +1,4 @@
-import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { ShowsProvider } from '../../providers/shows/shows';
 import { Moment } from 'moment';
 import 'moment/locale/de';
@@ -38,7 +38,7 @@ interface MonthSection extends Section<DaySection> {
         ]),
     ],
 })
-export class ShowListPage implements OnInit {
+export class ShowListPage {
 
     @ViewChild('datePicker') datePicker: DateTime;
     @ViewChild(Content) content: Content;
@@ -53,9 +53,13 @@ export class ShowListPage implements OnInit {
         public zone: NgZone) {
     }
 
-    ngOnInit(): void {
+    ionViewWillEnter(): void {
         this.showsProvider.fetchLatestMonth()
             .subscribe(this.pushShowsForMonth.bind(this));
+    }
+
+    ionViewWillLeave(): void {
+        this.shows = [];
     }
 
     onScroll(event: ScrollEvent): void {

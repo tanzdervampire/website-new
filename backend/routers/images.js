@@ -32,6 +32,12 @@ router.route('/analysis')
             const result = await analyzeImageBuffer(req.file.buffer);
             return res.json(result);
         } catch (err) {
+            if (err && err.status) {
+                res.status(err.status);
+            } else {
+                res.status(500);
+            }
+
             return res.send(err);
         }
     });

@@ -39,6 +39,15 @@ export class ProductionsProvider {
             });
     }
 
+    getProduction(date: Moment, location: string): Observable<Production> {
+        return this.getProductionsFor(date)
+            .map((productions: Production[]): Production => {
+                return productions
+                    .filter(production => production.location === location)
+                    [0];
+            });
+    }
+
     momentify(rawProductions: any[]): Production[] {
         return rawProductions.map(rawProduction => {
             const production = { ...rawProduction };
