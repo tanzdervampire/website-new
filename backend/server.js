@@ -40,7 +40,7 @@ app.use(bodyParser.json());
 app.use('/api', apiRouter);
 
 /* In the browser, we don't need this file. Avoid redirecting it to index.html. */
-app.get('cordova.js', (req, res) => {
+app.get('/cordova.js', (req, res) => {
     res.send('');
 });
 
