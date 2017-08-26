@@ -10,9 +10,12 @@ import levenshtein from 'fast-levenshtein';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
 import { ProductionsProvider } from '../../providers/productions/productions';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/mergeMap';
+import { ShowListPage } from '../show-list/show-list';
 
 @IonicPage({
-    segment: 'shows/:location/:year/:month/:day/:time/submit'
+    segment: 'shows/:location/:year/:month/:day/:time/submit',
 })
 @Component({
     selector: 'page-show-submit-cast',
@@ -260,23 +263,22 @@ export class ShowSubmitCastPage {
     }
 
     requestNavPop(): void {
-        const confirm = this.alertCtrl.create({
+        this.alertCtrl.create({
             title: 'Eintrag abbrechen?',
             message: 'Möchtest du den Eintrag wirklich abbrechen und die eingegebenen Daten verwerfen?',
             buttons: [ { text: 'Nein' },
                 {
                     text: 'Ja',
                     handler: () => {
-                        this.navCtrl.pop();
+                        this.navCtrl.popToRoot();
+                        this.navCtrl.setRoot(ShowListPage);
                     }
                 }
             ]
-        });
-
-        confirm.present();
+        }).present();
     }
 
-    submitShow(): void {
+    convertInputToShow(): Observable<Show> {
         const castItems: CastItem[] = this.cast
             .map((group, i) => {
                 const role = this.roles[ i ];
@@ -288,36 +290,33 @@ export class ShowSubmitCastPage {
                 return [...acc, ...value];
             }, []);
 
+        const date = this.getDateFromParams();
+        return this.productionsProvider
+            .getProduction(date, this.navParams.data.location)
+            .map(production => {
+                return { date, production, cast: castItems };
+            });
+    }
+
+    submitShow(): void {
         const loader = this.loadingCtrl.create({ content: 'Bitte warten…' });
         loader.present();
 
-        const date = this.getDateFromParams();
-        this.productionsProvider.getProduction(date, this.navParams.data.location).subscribe(
-            production => {
-                const show: Show = { date, production, cast: castItems };
+        this.convertInputToShow()
+            .mergeMap(show => this.showsProvider.postShow(show))
+            .subscribe(
+                response => {
+                    loader.dismiss();
 
-                // TODO also send to Github or email
+                    this.showToast('Vorstellung eingetragen.');
+                    this.navCtrl.popToRoot();
+                },
+                err => {
+                    console.error(err);
 
-                this.showsProvider.postShow(show).subscribe(
-                    response => {
-                        this.showToast('Die Vorstellung wurde erfogreich eingetragen.');
-                        this.navCtrl.popToRoot();
-
-                        loader.dismiss();
-                    }, err => {
-                        console.error(err);
-
-                        loader.dismiss();
-                        this.showToast('Ein Fehler ist aufgetreten.');
-                    });
-            },
-            err => {
-                console.error(err);
-
-                loader.dismiss();
-                this.showToast('Ein Fehler ist aufgetreten.');
-            }
-        );
+                    loader.dismiss();
+                    this.showToast('Ein Fehler ist aufgetreten.');
+                });
     }
 
     showToast(message: string): void {
