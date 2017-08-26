@@ -1,0 +1,2 @@
+* Set MONGODB_URI
+* heroku config:set NPM_CONFIG_PRODUCTION=false
