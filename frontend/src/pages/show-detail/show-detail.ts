@@ -1,5 +1,5 @@
-import { Component, NgZone, ViewChild } from '@angular/core';
-import { Content, IonicPage, NavParams, ScrollEvent } from 'ionic-angular';
+import { Component, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Content, IonicPage, NavParams, Platform, ScrollEvent } from 'ionic-angular';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
 import { CastItem, Show } from '../../models/models';
@@ -25,7 +25,7 @@ import { animate, style, transition, trigger } from '@angular/animations';
         ]),
     ],
 })
-export class ShowDetailPage {
+export class ShowDetailPage implements OnInit {
 
     show: Show;
     @ViewChild(Content) content: Content;
@@ -33,11 +33,18 @@ export class ShowDetailPage {
 
     constructor(private navParams: NavParams,
                 public zone: NgZone,
+                private platform: Platform,
                 private showsProvider: ShowsProvider,
                 public rolesProvider: RolesProvider) {
     }
 
-    ionViewDidLoad() {
+    ngOnInit(): void {
+        if (this.platform.is('mobileweb') && this.platform.is('ios')) {
+            this.content.enableJsScroll();
+        }
+    }
+
+    ionViewWillEnter(): void {
         /* If we get the already loaded show passed in, use it instead. */
         if (this.navParams.data.show) {
             this.show = this.navParams.data.show;
