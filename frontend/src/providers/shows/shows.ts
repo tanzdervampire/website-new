@@ -15,6 +15,7 @@ interface ShowEndpointParameters {
     year: string;
     month: string;
     day?: string;
+    previous?: boolean;
     params?: QueryParameters;
 }
 
@@ -48,6 +49,15 @@ export class ShowsProvider {
         return this.fetchShows({ year, month, day, params });
     }
 
+    fetchShowBefore(date: Moment, location: string): Observable<Show[]> {
+        const year = date.format('YYYY');
+        const month = date.format('MM');
+        const day = date.format('DD');
+
+        const params: QueryParameters = { location, fields: ['production', 'cast'] };
+        return this.fetchShows({ year, month, day, previous: true, params });
+    }
+
     fetchShow(date: Moment, location?: string): Observable<Show> {
         return this.fetchShowsForDay(date, location)
             .map((shows: Show[]): Show => {
@@ -59,6 +69,10 @@ export class ShowsProvider {
         let url = `/api/shows/${args.year}/${args.month}`;
         if (args.day) {
             url += `/${args.day}`;
+        }
+
+        if (args.previous) {
+            url += '/previous';
         }
 
         if (args.params) {

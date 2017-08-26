@@ -1,8 +1,7 @@
 <ion-header>
     <ion-toolbar no-border>
         <ion-buttons left>
-            <!-- TODO Confirmation -->
-            <button ion-button navPop icon-only>
+            <button ion-button icon-only (click)="requestNavPop()">
                 <ion-icon name="close"></ion-icon>
             </button>
         </ion-buttons>
@@ -22,7 +21,7 @@
             showCancelButton="true"
             spellcheck="false"
             [(ngModel)]="searchText"
-            (ionInput)="updateCurrentSuggestions()"
+            (ionInput)="updateFilter()"
             (search)="onSearch($event)"
         ></ion-searchbar>
     </ion-toolbar>
@@ -41,18 +40,34 @@
 </ion-header>
 
 <ion-content>
-    <spinner *ngIf="!suggestions"></spinner>
+    <spinner *ngIf="!actors"></spinner>
 
-    <div *ngIf="currentSuggestions">
-        <ion-list-header *ngIf="currentSuggestions.length === 0 && searchText?.length > 0">
+    <ion-item-group *ngIf="showSuggestionsList()">
+        <ion-item-divider>
+            <ion-icon item-start name="star" color="secondary"></ion-icon>
+            Vorgeschlagen
+        </ion-item-divider>
+        <ion-item *ngFor="let actor of filteredSuggestions" (click)="toggleActor(actor)">
+            <h2>{{ actor.name }}</h2>
+        </ion-item>
+    </ion-item-group>
+
+    <div *ngIf="actors">
+        <ion-list-header *ngIf="showEmptyFilterResultHeader()">
             Kein Darsteller mit diesem Namen gefunden.
         </ion-list-header>
 
-        <ion-list *ngIf="currentSuggestions">
-            <ion-item *ngFor="let actor of currentSuggestions" (click)="toggleActor(actor)">
+        <ion-item-group>
+            <ion-item-divider *ngIf="showActorsHeader()">
+                <ion-icon item-start name="people" color="secondary"></ion-icon>
+                Personen
+            </ion-item-divider>
+
+            <ion-item *ngFor="let actor of filteredActors" (click)="toggleActor(actor)">
                 <h2>{{ actor.name }}</h2>
+                <ion-badge *ngIf="showRoleBadge(actor)" color="light" item-end>{{ actor.roles[0] }}</ion-badge>
             </ion-item>
-        </ion-list>
+        </ion-item-group>
     </div>
 
     <ion-fab bottom right *ngIf="roleIndex === roles.length - 1">
