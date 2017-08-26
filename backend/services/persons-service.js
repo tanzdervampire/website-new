@@ -20,7 +20,7 @@ const queryPersonsWithRoles = async () => {
         },
 
         /* Sort by the number of shows. */
-        { $sort: { _id: 1, count: -1 } },
+        { $sort: { count: -1 } },
 
         /* Roll up further to get one entry per person with an ordered roles array. */
         {
