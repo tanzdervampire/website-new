@@ -15,7 +15,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AutoFocusDirective } from '../directives/auto-focus/auto-focus';
 import { ActorListFilter } from '../pages/actor-list/actor-list-filter';
 import { RolesProvider } from '../providers/roles/roles';
-import { IonTextAvatar } from 'ionic-text-avatar';
 import { ShowsProvider } from '../providers/shows/shows';
 import { SpinnerComponent } from '../components/spinner/spinner';
 import { ShowDetailPage } from '../pages/show-detail/show-detail';
@@ -25,6 +24,7 @@ import { ShowDateSearchPage } from '../pages/show-date-search/show-date-search';
 import { ShowSubmitStartPage } from '../pages/show-submit-start/show-submit-start';
 import { ShowSubmitCastPage } from '../pages/show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../providers/productions/productions';
+import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
 
 @NgModule({
     declarations: [
