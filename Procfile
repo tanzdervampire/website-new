@@ -1,1 +1,1 @@
-web: npm run backend
+web: NODE_ENV=production npm run backend
