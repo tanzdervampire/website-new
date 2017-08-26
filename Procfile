@@ -1,1 +1,1 @@
-web: NODE_ENV=production npm run backend
+web: NODE_ENV=production node backend/server.js
