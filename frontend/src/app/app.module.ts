@@ -46,6 +46,7 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
         BrowserAnimationsModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {
+            mode: 'md',
             monthNames: moment.localeData('de').months(),
             monthShortNames: moment.localeData('de').monthsShort(),
             dayNames: moment.localeData('de').weekdays(),

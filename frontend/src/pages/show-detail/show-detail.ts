@@ -40,7 +40,7 @@ export class ShowDetailPage implements OnInit {
 
     ngOnInit(): void {
         if (this.platform.is('mobileweb') && this.platform.is('ios')) {
-            this.content.enableJsScroll();
+            //this.content.enableJsScroll();
         }
     }
 
