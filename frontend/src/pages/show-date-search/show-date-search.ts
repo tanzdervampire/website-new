@@ -43,7 +43,8 @@ export class ShowDateSearchPage {
         return moment(`${day}.${month}.${year}`, 'DD.MM.YYYY');
     }
 
-    gotoShowDetail(show: Show): void {
+    gotoShowDetail(event: any, show: Show): void {
+        event.preventDefault();
         const [year, month, day, time] = show.date.format('YYYY MM DD HHmm').split(' ');
 
         this.navCtrl.push(ShowDetailPage, {

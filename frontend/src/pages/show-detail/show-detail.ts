@@ -69,7 +69,8 @@ export class ShowDetailPage {
         });
     }
 
-    onScrollToTop(): void {
+    onScrollToTop(event: any): void {
+        event.preventDefault();
         this.content.scrollToTop(250);
     }
 

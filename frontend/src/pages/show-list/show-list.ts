@@ -87,7 +87,7 @@ export class ShowListPage {
                 /* If there's only one show on that day, jump to it directly. */
                 if (shows.length === 1) {
                     const [ show ] = shows;
-                    this.gotoShowDetail(show);
+                    this.gotoShowDetail(null, show);
                 } else {
                     this.navCtrl.push(ShowDateSearchPage, { year, month, day, shows });
                 }
@@ -103,7 +103,8 @@ export class ShowListPage {
         );
     }
 
-    onScrollToTop(): void {
+    onScrollToTop(event: any): void {
+        event.preventDefault();
         this.content.scrollToTop(250);
     }
 
@@ -120,11 +121,16 @@ export class ShowListPage {
             });
     }
 
-    gotoShowSubmit(): void {
+    gotoShowSubmit(event: any): void {
+        event.preventDefault();
         this.navCtrl.push(ShowSubmitStartPage);
     }
 
-    gotoShowDetail(show: Show): void {
+    gotoShowDetail(event: any, show: Show): void {
+        if (event) {
+            event.preventDefault();
+        }
+
         const [year, month, day, time] = show.date.format('YYYY MM DD HHmm').split(' ');
 
         this.navCtrl.push(ShowDetailPage, {

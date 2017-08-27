@@ -15,7 +15,7 @@
         <show-item
             *ngFor="let show of shows"
             [show]="show"
-            (click)="gotoShowDetail(show)"
+            (click)="gotoShowDetail($event, show)"
         ></show-item>
     </ion-list>
 </ion-content>

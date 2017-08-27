@@ -7,7 +7,7 @@
         <ion-title>Vorstellungen</ion-title>
 
         <ion-buttons end>
-            <button ion-button icon-only (click)="gotoShowSubmit()">
+            <button ion-button icon-only (click)="gotoShowSubmit($event)">
                 <ion-icon name="add"></ion-icon>
             </button>
         </ion-buttons>
@@ -33,7 +33,7 @@
                 <show-item
                     *ngFor="let show of daySection.items"
                     [show]="show"
-                    (click)="gotoShowDetail(show)"
+                    (click)="gotoShowDetail($event, show)"
                 ></show-item>
             </ion-item-group>
         </div>
@@ -50,7 +50,7 @@
     </ion-fab>
 
     <ion-fab bottom right *ngIf="showScrollToTop" [@fab]>
-        <button ion-fab color="light" (click)="onScrollToTop()">
+        <button ion-fab color="light" (click)="onScrollToTop($event)">
             <ion-icon name="ios-arrow-up"></ion-icon>
         </button>
     </ion-fab>

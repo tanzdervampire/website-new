@@ -40,7 +40,11 @@ export class ActorListPage {
         this.updateActors();
     }
 
-    toggleSearchBar(show:boolean = undefined) {
+    toggleSearchBar(event?: any, show:boolean = undefined) {
+        if (event) {
+            event.preventDefault();
+        }
+
         this.showSearchBar = (typeof show === 'undefined') ? !this.showSearchBar : show;
 
         if (!this.showSearchBar) {
@@ -54,10 +58,11 @@ export class ActorListPage {
             return;
         }
 
-        this.toggleSearchBar(false);
+        this.toggleSearchBar(null, false);
     }
 
     onShowFilter(event: any) {
+        event.preventDefault();
         const modal = this.popoverCtrl.create(ActorListFilter, {
             selectedRoles: [...this.rolesFilter],
             onChange: (selectedRoles) => {
@@ -69,7 +74,9 @@ export class ActorListPage {
         modal.present({ ev: event });
     }
 
-    onAddNewPerson() {}
+    onAddNewPerson(event: any) {
+        event.preventDefault();
+    }
 
     updateActors(refresher?: Refresher) {
         /* Force a refresh from the database if the user pulled to refresh. */

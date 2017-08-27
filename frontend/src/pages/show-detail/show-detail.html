@@ -38,7 +38,7 @@
     </div>
 
     <ion-fab bottom right *ngIf="showScrollToTop" [@fab]>
-        <button ion-fab color="light" (click)="onScrollToTop()">
+        <button ion-fab color="light" (click)="onScrollToTop($event)">
             <ion-icon name="ios-arrow-up"></ion-icon>
         </button>
     </ion-fab>

@@ -10,13 +10,13 @@
         <ion-content>
             <ion-list no-lines>
                 <div *ngFor="let page of pages">
-                    <button menuClose ion-item (click)="openPage(page)">
+                    <button menuClose ion-item (click)="openPage($event, page)">
                         <ion-icon *ngIf="page.icon" [name]="page.icon" [color]="isActive(page)" item-start></ion-icon>
                         {{page.title}}
                     </button>
 
                     <ion-list no-lines no-margin margin-left>
-                    <button menuClose ion-item *ngFor="let subPage of page?.subPages" (click)="openSubPage(subPage)">
+                    <button menuClose ion-item *ngFor="let subPage of page?.subPages" (click)="openSubPage($event, subPage)">
                         <ion-icon *ngIf="subPage.icon" [name]="subPage.icon" item-start></ion-icon>
                         {{subPage.title}}
                     </button>

@@ -57,12 +57,14 @@ export class MyApp {
         });
     }
 
-    openPage(page: MainPageInterface): void {
+    openPage(event: any, page: MainPageInterface): void {
+        event.preventDefault();
         this.activePage = page;
         this.nav.setRoot(page.component);
     }
 
-    openSubPage(page: PageInterface): void {
+    openSubPage(event: any, page: PageInterface): void {
+        event.preventDefault();
         this.nav.push(page.component);
     }
 

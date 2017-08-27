@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar no-border>
         <ion-buttons left>
-            <button ion-button icon-only (click)="requestNavPop()">
+            <button ion-button icon-only (click)="requestNavPop($event)">
                 <ion-icon name="close"></ion-icon>
             </button>
         </ion-buttons>
@@ -32,7 +32,7 @@
                 <ion-text-avatar color="secondary">{{ actor.name.charAt(0).toUpperCase() }}</ion-text-avatar>
             </ion-avatar>
             <ion-label>{{ actor.name.split(' ').pop() }}</ion-label>
-            <button ion-button clear color="dark" (click)="toggleActor(actor)">
+            <button ion-button clear color="dark" (click)="toggleActor($event, actor)">
                 <ion-icon name="close"></ion-icon>
             </button>
         </ion-chip>
@@ -47,7 +47,7 @@
             <ion-icon item-start name="star" color="secondary"></ion-icon>
             Vorgeschlagen
         </ion-item-divider>
-        <ion-item *ngFor="let actor of filteredSuggestions" (click)="toggleActor(actor)">
+        <ion-item *ngFor="let actor of filteredSuggestions" (click)="toggleActor($event, actor)">
             <h2>{{ actor.name }}</h2>
         </ion-item>
     </ion-item-group>
@@ -63,7 +63,7 @@
                 Personen
             </ion-item-divider>
 
-            <ion-item *ngFor="let actor of filteredActors" (click)="toggleActor(actor)">
+            <ion-item *ngFor="let actor of filteredActors" (click)="toggleActor($event, actor)">
                 <h2>{{ actor.name }}</h2>
                 <ion-badge *ngIf="showRoleBadge(actor)" color="light" item-end>{{ actor.roles[0] }}</ion-badge>
             </ion-item>
@@ -71,7 +71,7 @@
     </div>
 
     <ion-fab bottom right *ngIf="roleIndex === roles.length - 1">
-        <button ion-fab (click)="submitShow()">
+        <button ion-fab (click)="submitShow($event)">
             <ion-icon name="send"></ion-icon>
         </button>
     </ion-fab>

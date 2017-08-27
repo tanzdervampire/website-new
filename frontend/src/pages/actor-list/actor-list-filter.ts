@@ -32,7 +32,8 @@ export class ActorListFilter {
             });
     }
 
-    selectAll(): void {
+    selectAll(event: any): void {
+        event.preventDefault();
         this.roles = this.roles.map(entry => {
             return { ...entry, selected: true };
         });
@@ -40,7 +41,8 @@ export class ActorListFilter {
         this.triggerChange();
     }
 
-    selectNone(): void {
+    selectNone(event: any): void {
+        event.preventDefault();
         this.roles = this.roles.map(entry => {
             return { ...entry, selected: false };
         });

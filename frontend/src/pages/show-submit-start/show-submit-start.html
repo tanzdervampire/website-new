@@ -6,7 +6,7 @@
 
 <ion-content padding no-bounce>
     <ion-fab bottom right>
-        <button ion-fab (click)="gotoCastSelection()" [color]="showDate && showTime && production ? null : 'light'">
+        <button ion-fab (click)="gotoCastSelection($event)" [color]="showDate && showTime && production ? null : 'light'">
             <ion-icon name="arrow-forward"></ion-icon>
         </button>
     </ion-fab>
@@ -32,7 +32,7 @@
                     (swipe)="onSwipeShowDate($event)"
                 ></ion-datetime>
 
-                <button ion-button small clear icon-only item-end *ngIf="!showDate" (click)="selectToday()">
+                <button ion-button small clear icon-only item-end *ngIf="!showDate" (click)="selectToday($event)">
                     <ion-icon name="refresh" color="secondary"></ion-icon>
                 </button>
             </ion-item>
@@ -61,7 +61,7 @@
                 <!-- Displayed if the request has failed. -->
                 <button ion-button small outline item-end
                         *ngIf="hadRequestError"
-                        (click)="onShowDateChange(showDate)"
+                        (click)="onShowDateChange($event, showDate)"
                 >Erneut versuchen</button>
 
                 <!-- Displayed if request was successful and there is only one production. -->

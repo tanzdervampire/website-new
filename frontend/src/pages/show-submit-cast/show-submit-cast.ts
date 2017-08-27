@@ -90,7 +90,11 @@ export class ShowSubmitCastPage {
         this.content.resize();
     }
 
-    toggleActor(actor: Actor): void {
+    toggleActor(event: any, actor: Actor): void {
+        if (event) {
+            event.preventDefault();
+        }
+
         const idx = this.roleIndex;
         const selected = this.cast[ idx ] = this.cast[ idx ] || [];
 
@@ -199,7 +203,7 @@ export class ShowSubmitCastPage {
             return;
         }
 
-        this.toggleActor(this.filteredActors[ 0 ]);
+        this.toggleActor(null, this.filteredActors[ 0 ]);
         this.resetSearchBar();
     }
 
@@ -256,7 +260,8 @@ export class ShowSubmitCastPage {
         return actor.roles && actor.roles.length > 0;
     }
 
-    requestNavPop(): void {
+    requestNavPop(event: any): void {
+        event.preventDefault();
         this.alertCtrl.create({
             title: 'Eintrag abbrechen?',
             message: 'Möchtest du den Eintrag wirklich abbrechen und die eingegebenen Daten verwerfen?',
@@ -292,7 +297,8 @@ export class ShowSubmitCastPage {
             });
     }
 
-    submitShow(): void {
+    submitShow(event: any): void {
+        event.preventDefault();
         const loader = this.loadingCtrl.create({ content: 'Bitte warten…' });
         loader.present();
 

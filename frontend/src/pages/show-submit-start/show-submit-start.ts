@@ -40,21 +40,26 @@ export class ShowSubmitStartPage {
         switch (direction) {
             case /* LEFT */ 2:
                 this.showDate = currentDate.add(1, 'day').toISOString();
-                this.onShowDateChange(this.showDate);
+                this.onShowDateChange(null, this.showDate);
                 break;
             case /* RIGHT */ 4:
                 this.showDate = currentDate.subtract(1, 'day').toISOString();
-                this.onShowDateChange(this.showDate);
+                this.onShowDateChange(null, this.showDate);
                 break;
         }
     }
 
-    selectToday(): void {
+    selectToday(event: any): void {
+        event.preventDefault();
         this.showDate = moment().toISOString();
-        this.onShowDateChange(this.showDate);
+        this.onShowDateChange(null, this.showDate);
     }
 
-    onShowDateChange(date: string): void {
+    onShowDateChange(event: any, date: string): void {
+        if (event) {
+            event.preventDefault();
+        }
+
         this.production = undefined;
         this.productions = undefined;
         this.hadRequestError = false;
@@ -79,7 +84,8 @@ export class ShowSubmitStartPage {
         });
     }
 
-    gotoCastSelection(): void {
+    gotoCastSelection(event: any): void {
+        event.preventDefault();
         if (!this.showDate) {
             this.showErrorToast('Bitte gib das Datum der Vorstellung an.');
             return;
