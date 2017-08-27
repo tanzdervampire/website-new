@@ -50,9 +50,9 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
             mode: 'md',
             /* If the browser respects it, try to prevent it from allowing swipe-to-go-back. */
             swipeBackEnabled: false,
-            /* Removes the hashtag in deep links.
-             * We do this only in production because it doesn't work with ionic serve. */
-            locationStrategy: process.env.NODE_ENV === 'production' ? 'path' : undefined,
+            /* Removes the hashtag in deep links. */
+            /* !!! Will be changed during deployment */
+            locationStrategy: null,
             monthNames: moment.localeData('de').months(),
             monthShortNames: moment.localeData('de').monthsShort(),
             dayNames: moment.localeData('de').weekdays(),

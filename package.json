@@ -7,9 +7,10 @@
         "start": "concurrently \"npm run frontend\" \"npm run backend\"",
         "frontend": "cd frontend && ionic serve",
         "backend": "cd backend && npm run start",
-        "heroku-frontend": "cd frontend/ && npm install && NODE_ENV=production npm run build --prod && cd ../",
+        "heroku-location-strategy": "sed -i 's,locationStrategy: null,locationStrategy: \"push\",' frontend/src/app/app.module.ts",
+        "heroku-frontend": "cd frontend/ && npm install && npm run build --prod && cd ../",
         "heroku-backend": "cd backend/ && npm install && cd ../",
-        "heroku-postbuild": "npm run heroku-frontend && npm run heroku-backend"
+        "heroku-postbuild": "npm run heroku-location-strategy && npm run heroku-frontend && npm run heroku-backend"
     },
     "engines": {
         "node": "8.4.0"
