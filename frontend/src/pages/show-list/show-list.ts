@@ -3,7 +3,10 @@ import { ShowsProvider } from '../../providers/shows/shows';
 import { Moment } from 'moment';
 import 'moment/locale/de';
 import { Show } from '../../models/models';
-import { Content, DateTime, InfiniteScroll, NavController, ScrollEvent } from 'ionic-angular';
+import {
+    Content, DateTime, InfiniteScroll, LoadingController, NavController, ScrollEvent,
+    ToastController
+} from 'ionic-angular';
 import { ShowDetailPage } from '../show-detail/show-detail';
 import { ShowDateSearchPage } from '../show-date-search/show-date-search';
 import moment from 'moment';
@@ -49,6 +52,8 @@ export class ShowListPage {
 
     constructor(
         private navCtrl: NavController,
+        public loadingCtrl: LoadingController,
+        public toastCtrl: ToastController,
         private showsProvider: ShowsProvider,
         public zone: NgZone) {
     }
@@ -72,15 +77,30 @@ export class ShowListPage {
         const date = moment(`${event.day}.${event.month}.${event.year}`, 'DD.MM.YYYY');
         const [year, month, day] = date.format('YYYY MM DD HHmm').split(' ');
 
-        this.showsProvider.fetchShowsForDay(date).subscribe(shows => {
-            /* If there's only one show on that day, jump to it directly. */
-            if (shows.length === 1) {
-                const [show] = shows;
-                this.gotoShowDetail(show);
-            } else {
-                this.navCtrl.push(ShowDateSearchPage, { year, month, day, shows });
+        const loading = this.loadingCtrl.create({ content: 'Vorstellungen werden gesucht…' });
+        loading.present();
+
+        this.showsProvider.fetchShowsForDay(date).subscribe(
+            shows => {
+                loading.dismiss();
+
+                /* If there's only one show on that day, jump to it directly. */
+                if (shows.length === 1) {
+                    const [ show ] = shows;
+                    this.gotoShowDetail(show);
+                } else {
+                    this.navCtrl.push(ShowDateSearchPage, { year, month, day, shows });
+                }
+            },
+            err => {
+                console.error(err);
+                loading.dismiss();
+                this.toastCtrl.create({
+                    message: 'Die Suche konnte nicht durchgeführt werden.',
+                    position: 'middle',
+                }).present();
             }
-        });
+        );
     }
 
     onScrollToTop(): void {

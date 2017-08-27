@@ -46,9 +46,13 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
         BrowserAnimationsModule,
         HttpModule,
         IonicModule.forRoot(MyApp, {
+            /* We force material design on all platforms to avoid some issues. */
             mode: 'md',
+            /* If the browser respects it, try to prevent it from allowing swipe-to-go-back. */
             swipeBackEnabled: false,
-            locationStrategy: 'path',
+            /* Removes the hashtag in deep links. */
+            // TODO Doesn't work correctly with ionic serve
+            // locationStrategy: 'path',
             monthNames: moment.localeData('de').months(),
             monthShortNames: moment.localeData('de').monthsShort(),
             dayNames: moment.localeData('de').weekdays(),
