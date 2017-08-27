@@ -3,13 +3,7 @@
         <ion-title>Vorstellung</ion-title>
     </ion-navbar>
 
-    <ion-item *ngIf="show" color="primary">
-        <ion-avatar item-start>
-            <ion-text-avatar color="light">{{ show.date.locale('de').format('dddd').substr(0,2) }}</ion-text-avatar>
-        </ion-avatar>
-        <h2>{{ show.date.format('DD. MMMM YYYY') }} um {{ show.date.format('HH:mm') }} Uhr</h2>
-        <p>{{ show.production.theater }}, {{ show.production.location }}</p>
-    </ion-item>
+    <show-header [show]="show" *ngIf="show"></show-header>
 </ion-header>
 
 <ion-content (ionScroll)="onScroll($event)" no-bounce>

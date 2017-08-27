@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar no-border>
+        <ion-title>Vorstellung eintragen</ion-title>
+    </ion-navbar>
+
+    <show-header [show]="show"></show-header>
+</ion-header>
+
+<ion-content no-bounce>
+    <ion-card *ngIf="showDisclaimer" [@disclaimer]>
+        <ion-item>
+            <ion-icon name="information-circle" color="secondary" item-start></ion-icon>
+            <ion-label>Zusammenfassung</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+            <p>Bitte überprüfe nochmal alle Angaben auf Korrektheit. Wenn alles stimmt, kannst du die Vorstellung einreichen.</p>
+            <p>Vielen Dank!</p>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col>
+                <button ion-button clear small color="secondary" (click)="onConfirmDisclaimer($event)">OK</button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <cast-list [show]="show"></cast-list>
+
+    <ion-fab bottom right>
+        <button ion-fab (click)="submitShow($event)">
+            <ion-icon name="send"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

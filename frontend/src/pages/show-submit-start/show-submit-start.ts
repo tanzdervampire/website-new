@@ -56,7 +56,7 @@ export class ShowSubmitStartPage {
     }
 
     onShowDateChange(event: any, date: string): void {
-        if (event) {
+        if (event && event.preventDefault) {
             event.preventDefault();
         }
 

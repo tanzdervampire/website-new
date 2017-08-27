@@ -13,6 +13,7 @@ import { ProductionsProvider } from '../../providers/productions/productions';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import { ShowListPage } from '../show-list/show-list';
+import { ShowSubmitReviewPage } from '../show-submit-review/show-submit-review';
 
 @IonicPage({
     segment: 'shows/:location/:day/:month/:year/:time/submit',
@@ -297,25 +298,22 @@ export class ShowSubmitCastPage {
             });
     }
 
-    submitShow(event: any): void {
+    gotoReviewPage(event: any): void {
         event.preventDefault();
         const loader = this.loadingCtrl.create({ content: 'Bitte warten…' });
         loader.present();
 
         this.convertInputToShow()
-            .mergeMap(show => this.showsProvider.postShow(show))
             .subscribe(
-                response => {
+                show => {
                     loader.dismiss();
-
-                    this.showToast('Vorstellung eingetragen.');
-                    this.navCtrl.popToRoot();
+                    this.navCtrl.push(ShowSubmitReviewPage, { show });
                 },
                 err => {
                     console.error(err);
 
                     loader.dismiss();
-                    this.showToast('Ein Fehler ist aufgetreten.');
+                    this.showToast('Ups! Ein Fehler ist aufgetreten.');
                 });
     }
 

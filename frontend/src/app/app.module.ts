@@ -26,6 +26,8 @@ import { ShowSubmitCastPage } from '../pages/show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../providers/productions/productions';
 import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
 import { CastListComponent } from '../components/cast-list/cast-list';
+import { ShowSubmitReviewPage } from '../pages/show-submit-review/show-submit-review';
+import { ShowHeaderComponent } from '../components/show-header/show-header';
 
 @NgModule({
     declarations: [
@@ -35,6 +37,7 @@ import { CastListComponent } from '../components/cast-list/cast-list';
         ShowDateSearchPage,
         ShowSubmitStartPage,
         ShowSubmitCastPage,
+        ShowSubmitReviewPage,
         ActorListPage,
         ActorListFilter,
         AutoFocusDirective,
@@ -42,6 +45,7 @@ import { CastListComponent } from '../components/cast-list/cast-list';
         SpinnerComponent,
         ShowItemComponent,
         CastListComponent,
+        ShowHeaderComponent,
     ],
     imports: [
         BrowserModule,
@@ -98,6 +102,7 @@ import { CastListComponent } from '../components/cast-list/cast-list';
         ShowDateSearchPage,
         ShowSubmitStartPage,
         ShowSubmitCastPage,
+        ShowSubmitReviewPage,
         ActorListPage,
         ActorListFilter,
     ],

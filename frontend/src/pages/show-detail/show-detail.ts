@@ -2,7 +2,7 @@ import { Component, NgZone, ViewChild } from '@angular/core';
 import { Content, IonicPage, NavParams, ScrollEvent, ToastController } from 'ionic-angular';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
-import { CastItem, Show } from '../../models/models';
+import { Show } from '../../models/models';
 import { RolesProvider } from '../../providers/roles/roles';
 import { animate, style, transition, trigger } from '@angular/animations';
 
