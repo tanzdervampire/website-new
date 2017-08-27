@@ -109,13 +109,6 @@ export class ShowSubmitCastPage {
         } else {
             /* Resize the content since the list of selected names an change appearance. */
             this.content.resize();
-
-            /* If we are currently filtering, the user used the search bar before. In case he clicked the item
-             * manually, re-set the focus. */
-            if (this.searchText && this.searchText.length > 0) {
-                this.focusSearchBar();
-            }
-
             /* Ensure to empty the current search text and re-filter. */
             this.resetSearchBar();
         }
@@ -213,18 +206,6 @@ export class ShowSubmitCastPage {
     resetSearchBar(): void {
         this.searchText = '';
         this.updateFilter();
-    }
-
-    focusSearchBar(): void {
-        if (!this.searchBar) {
-            return;
-        }
-
-        try {
-            // TODO
-            //this.searchBar.setFocus();
-        } catch (err) {
-        }
     }
 
     getDateFromParams(): Moment {
