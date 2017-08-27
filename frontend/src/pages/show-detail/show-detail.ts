@@ -1,5 +1,5 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
-import { Content, IonicPage, NavParams, ScrollEvent } from 'ionic-angular';
+import { Content, IonicPage, NavParams, ScrollEvent, ToastController } from 'ionic-angular';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
 import { CastItem, Show } from '../../models/models';
@@ -33,6 +33,7 @@ export class ShowDetailPage {
 
     constructor(private navParams: NavParams,
                 public zone: NgZone,
+                public toastCtrl: ToastController,
                 private showsProvider: ShowsProvider,
                 public rolesProvider: RolesProvider) {
     }
@@ -47,11 +48,19 @@ export class ShowDetailPage {
 
         const { location } = this.navParams.data;
         const date = this.getDateFromParams();
-        // TODO error handler
-        this.showsProvider.fetchShow(date, location).subscribe(show => {
-            this.show = show;
-            this.content.resize();
-        });
+        this.showsProvider.fetchShow(date, location).subscribe(
+            show => {
+                this.show = show;
+                this.content.resize();
+            },
+            err => {
+                console.error(err);
+                this.toastCtrl.create({
+                    message: 'Die Suche konnte nicht durchgeführt werden.',
+                    position: 'middle',
+                }).present();
+            }
+        );
     }
 
     onScroll(event: ScrollEvent): void {
