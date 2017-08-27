@@ -78,7 +78,6 @@ export class ShowSubmitCastPage {
 
     onPageFlip(): void {
         this.resetSearchBar();
-        this.focusSearchBar();
         this.content.scrollToTop(0);
         this.content.resize();
     }
@@ -102,10 +101,15 @@ export class ShowSubmitCastPage {
         } else {
             /* Resize the content since the list of selected names an change appearance. */
             this.content.resize();
+
+            /* If we are currently filtering, the user used the search bar before. In case he clicked the item
+             * manually, re-set the focus. */
+            if (this.searchText && this.searchText.length > 0) {
+                this.focusSearchBar();
+            }
+
             /* Ensure to empty the current search text and re-filter. */
             this.resetSearchBar();
-            /* Refocus in case the user clicked on the item by hand. */
-            this.focusSearchBar();
         }
     }
 
