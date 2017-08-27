@@ -221,7 +221,8 @@ export class ShowSubmitCastPage {
         }
 
         try {
-            this.searchBar.setFocus();
+            // TODO
+            //this.searchBar.setFocus();
         } catch (err) {
         }
     }
