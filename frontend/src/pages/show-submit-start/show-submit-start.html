@@ -6,7 +6,7 @@
 
 <ion-content padding no-bounce>
     <ion-fab bottom right>
-        <button ion-fab (click)="gotoCastSelection($event)" [color]="showDate && showTime && production ? null : 'light'">
+        <button ion-fab (click)="gotoCastSelection($event)" [color]="!validateInput() ? null : 'light'">
             <ion-icon name="arrow-forward"></ion-icon>
         </button>
     </ion-fab>
@@ -75,7 +75,7 @@
 
             <ion-row text-center>
                 <ion-col>
-                    <button ion-button full clear icon-left small color="secondary" disabled>
+                    <button ion-button full clear icon-left small color="secondary" [disabled]="!!validateInput()">
                         <ion-icon name="image"></ion-icon>
                         Foto importieren
                     </button>

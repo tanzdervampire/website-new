@@ -84,22 +84,29 @@ export class ShowSubmitStartPage {
         });
     }
 
-    gotoCastSelection(event: any): void {
-        event.preventDefault();
+    validateInput(): string {
         if (!this.showDate) {
-            this.showErrorToast('Bitte gib das Datum der Vorstellung an.');
-            return;
+            return 'Bitte gib das Datum der Vorstellung an.';
         }
         if (!this.showTime) {
-            this.showErrorToast('Bitte gib die Uhrzeit der Vorstellung an.');
-            return;
+            return 'Bitte gib die Uhrzeit der Vorstellung an.';
         }
         if (!this.productions || this.productions.length === 0) {
-            this.showErrorToast('Zu diesem Zeitpunkt wurde das Musical nicht aufgeführt.');
-            return;
+            return 'Zu diesem Zeitpunkt wurde das Musical nicht aufgeführt.';
         }
         if (!this.production) {
-            this.showErrorToast('Bitte gib den Ort der Vorstellung an.');
+            return 'Bitte gib den Ort der Vorstellung an.';
+        }
+
+        return null;
+    }
+
+    gotoCastSelection(event: any): void {
+        event.preventDefault();
+
+        const errorMessage = this.validateInput();
+        if (errorMessage) {
+            this.showErrorToast(errorMessage);
             return;
         }
 
