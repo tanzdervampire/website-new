@@ -1,7 +1,9 @@
 import { Moment } from 'moment';
 
+type MongoID = string;
+
 export interface Production {
-    _id: string;
+    _id?: MongoID;
     location: string;
     theater: string;
     start: Moment;
@@ -13,8 +15,13 @@ export interface CastItem {
     person: Actor;
 }
 
+export interface RawCastItem {
+    role: string;
+    person: MongoID;
+}
+
 export interface ShowBase {
-    _id?: string;
+    _id?: MongoID;
     date: Moment;
 }
 
@@ -23,8 +30,13 @@ export interface Show extends ShowBase {
     cast: CastItem[];
 }
 
+export interface RawShow extends ShowBase {
+    production: MongoID;
+    cast: RawCastItem[];
+}
+
 export interface Actor {
-    _id: string;
+    _id?: MongoID;
     name: string;
     roles?: string[];
 }
