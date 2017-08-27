@@ -53,8 +53,18 @@ export class ShowSubmitCastPage {
 
         this.roles = [ ...this.rolesProvider.getRoles() ];
 
-        this.showsProvider.fetchShowBefore(this.getDateFromParams(), this.navParams.data.location).subscribe(previousShows => {
-            const [ previousShow ] = previousShows;
+        const date = this.getDateFromParams();
+        this.showsProvider.fetchShowBefore(date, this.navParams.data.location).subscribe(previousShows => {
+            const previousShow = (previousShows && previousShows.length > 0) ? previousShows[0] : null;
+
+            /* Let's not look too far into the past. */
+            if (!previousShow || previousShow.date.isBefore(date.clone().subtract(30, 'days'))) {
+                this.suggestions = [];
+                this.updateFilter();
+
+                return;
+            }
+
             this.suggestions = previousShow.cast.map(item => {
                 return { ...item.person, roles: [ item.role ] };
             });
