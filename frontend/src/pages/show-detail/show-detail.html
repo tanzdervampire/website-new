@@ -12,7 +12,7 @@
     </ion-item>
 </ion-header>
 
-<ion-content (ionScroll)="onScroll($event)">
+<ion-content (ionScroll)="onScroll($event)" no-bounce>
     <spinner *ngIf="!show"></spinner>
 
     <div *ngIf="show">

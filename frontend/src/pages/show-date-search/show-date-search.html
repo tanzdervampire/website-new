@@ -4,8 +4,7 @@
     </ion-navbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content no-bounce>
     <spinner *ngIf="!shows"></spinner>
 
     <ion-list-header *ngIf="shows && shows.length === 0">
@@ -19,5 +18,4 @@
             (click)="gotoShowDetail(show)"
         ></show-item>
     </ion-list>
-
 </ion-content>
