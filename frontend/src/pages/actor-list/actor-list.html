@@ -46,10 +46,10 @@
     </ion-list-header>
 
     <ion-list no-lines>
-        <ion-item *ngFor="let actor of actors">
+        <button ion-item *ngFor="let actor of actors">
             <h2>{{ actor.name }}</h2>
             <p>{{ actor.roles.join(', ') }}</p>
-        </ion-item>
+        </button>
     </ion-list>
 
     <ion-fab bottom right>

@@ -47,9 +47,9 @@
             <ion-icon item-start name="star" color="secondary"></ion-icon>
             Vorgeschlagen
         </ion-item-divider>
-        <ion-item *ngFor="let actor of filteredSuggestions" (click)="toggleActor($event, actor)">
+        <button ion-item *ngFor="let actor of filteredSuggestions" (click)="toggleActor($event, actor)">
             <h2>{{ actor.name }}</h2>
-        </ion-item>
+        </button>
     </ion-item-group>
 
     <div *ngIf="actors">
@@ -63,10 +63,10 @@
                 Personen
             </ion-item-divider>
 
-            <ion-item *ngFor="let actor of filteredActors" (click)="toggleActor($event, actor)">
+            <button ion-item *ngFor="let actor of filteredActors" (click)="toggleActor($event, actor)">
                 <h2>{{ actor.name }}</h2>
                 <ion-badge *ngIf="showRoleBadge(actor)" color="light" item-end>{{ actor.roles[0] }}</ion-badge>
-            </ion-item>
+            </button>
         </ion-item-group>
     </div>
 

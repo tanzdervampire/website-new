@@ -21,7 +21,7 @@
                 {{ category }}
             </ion-list-header>
 
-            <ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
+            <button ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
                 <ion-avatar item-start>
                     <ion-text-avatar color="light">{{ getLetterAvatar(castItem) }}</ion-text-avatar>
                 </ion-avatar>
@@ -33,7 +33,7 @@
                 <div *ngIf="!rolesProvider.isPrimary(castItem.role)">
                     <h2>{{ castItem.person.name }}</h2>
                 </div>
-            </ion-item>
+            </button>
         </ion-list>
     </div>
 
