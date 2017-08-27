@@ -7,7 +7,7 @@ import { RolesProvider } from '../../providers/roles/roles';
 import { animate, style, transition, trigger } from '@angular/animations';
 
 @IonicPage({
-    segment: 'shows/:location/:year/:month/:day/:time'
+    segment: 'shows/:location/:day/:month/:year/:time'
 })
 @Component({
     selector: 'page-show-detail',
@@ -82,7 +82,7 @@ export class ShowDetailPage {
 
     getDateFromParams(): Moment {
         const { year, month, day, time } = this.navParams.data;
-        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm', true);
+        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
     }
 
     getLetterAvatar(castItem: CastItem): string {

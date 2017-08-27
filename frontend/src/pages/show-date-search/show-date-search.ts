@@ -6,7 +6,7 @@ import moment, { Moment } from 'moment';
 import { ShowDetailPage } from '../show-detail/show-detail';
 
 @IonicPage({
-    segment: 'shows/:year/:month/:day'
+    segment: 'shows/:day/:month/:year'
 })
 @Component({
     selector: 'page-show-date-search',

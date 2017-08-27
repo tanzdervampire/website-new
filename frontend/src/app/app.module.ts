@@ -63,7 +63,7 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
                 {
                     component: ShowDateSearchPage,
                     name: 'ShowDateSearchPage',
-                    segment: 'shows/:year/:month/:day',
+                    segment: 'shows/:day/:month/:year',
                     defaultHistory: [ ShowListPage ]
                 },
                 {
@@ -75,13 +75,13 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
                 {
                     component: ShowSubmitCastPage,
                     name: 'ShowSubmitCastPage',
-                    segment: 'shows/:location/:year/:month/:day/:time/submit',
+                    segment: 'shows/:location/:day/:month/:year/:time/submit',
                     defaultHistory: [ ShowListPage ]
                 },
                 {
                     component: ShowDetailPage,
                     name: 'ShowDetailPage',
-                    segment: 'shows/:location/:year/:month/:day/:time',
+                    segment: 'shows/:location/:day/:month/:year/:time',
                     defaultHistory: [ ShowListPage ]
                 },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },

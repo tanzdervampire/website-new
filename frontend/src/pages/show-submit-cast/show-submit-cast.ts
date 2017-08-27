@@ -15,7 +15,7 @@ import 'rxjs/add/operator/mergeMap';
 import { ShowListPage } from '../show-list/show-list';
 
 @IonicPage({
-    segment: 'shows/:location/:year/:month/:day/:time/submit',
+    segment: 'shows/:location/:day/:month/:year/:time/submit',
 })
 @Component({
     selector: 'page-show-submit-cast',
@@ -214,7 +214,7 @@ export class ShowSubmitCastPage {
 
     getDateFromParams(): Moment {
         const { year, month, day, time } = this.navParams.data;
-        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm', true);
+        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
     }
 
     showSuggestionsList(): boolean {
