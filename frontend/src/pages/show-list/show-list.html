@@ -17,27 +17,25 @@
 <ion-content (ionScroll)="onScroll($event)" no-bounce>
     <spinner *ngIf="!shows || shows.length === 0"></spinner>
 
-    <ion-grid fixed no-padding>
-        <div *ngFor="let monthSection of shows">
-            <ion-item-group>
-                <ion-item-divider>
-                    <h1>{{ monthSection.title }}</h1>
-                </ion-item-divider>
-            </ion-item-group>
-            <ion-item-group *ngFor="let daySection of monthSection.items">
-                <ion-item-divider color="light" sticky>
-                    <h2 item-start>{{ daySection.title }}</h2>
-                    <ion-note item-end>{{ daySection.weekday }}</ion-note>
-                </ion-item-divider>
+    <div *ngFor="let monthSection of shows">
+        <ion-item-group>
+            <ion-item-divider>
+                <h1>{{ monthSection.title }}</h1>
+            </ion-item-divider>
+        </ion-item-group>
+        <ion-item-group *ngFor="let daySection of monthSection.items">
+            <ion-item-divider color="light" sticky>
+                <h2 item-start>{{ daySection.title }}</h2>
+                <ion-note item-end>{{ daySection.weekday }}</ion-note>
+            </ion-item-divider>
 
-                <show-item
-                    *ngFor="let show of daySection.items"
-                    [show]="show"
-                    (click)="gotoShowDetail($event, show)"
-                ></show-item>
-            </ion-item-group>
-        </div>
-    </ion-grid>
+            <show-item
+                *ngFor="let show of daySection.items"
+                [show]="show"
+                (click)="gotoShowDetail($event, show)"
+            ></show-item>
+        </ion-item-group>
+    </div>
 
     <ion-infinite-scroll (ionInfinite)="onInfiniteScroll($event)">
         <ion-infinite-scroll-content></ion-infinite-scroll-content>
