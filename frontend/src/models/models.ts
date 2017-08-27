@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 
-type MongoID = string;
+export type Role = 'Graf von Krolock' | 'Sarah' | 'Alfred' | 'Professor Abronsius' | 'Chagal' | 'Magda' | 'Herbert' | 'Rebecca' | 'Koukol' | 'Tanzsolisten' | 'Gesangssolisten' | 'Tanzensemble' | 'Gesangsensemble' | 'Dirigent';
+export type MongoID = string;
 
 export interface Production {
     _id?: MongoID;
@@ -11,12 +12,12 @@ export interface Production {
 }
 
 export interface CastItem {
-    role: string;
+    role: Role;
     person: Actor;
 }
 
 export interface RawCastItem {
-    role: string;
+    role: Role;
     person: MongoID;
 }
 
@@ -39,4 +40,9 @@ export interface Actor {
     _id?: MongoID;
     name: string;
     roles?: string[];
+}
+
+export interface OcrCastItem {
+    role: Role;
+    name: string;
 }

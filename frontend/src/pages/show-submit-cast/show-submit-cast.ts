@@ -4,7 +4,7 @@ import {
     ToastController
 } from 'ionic-angular';
 import { RolesProvider } from '../../providers/roles/roles';
-import { Actor, CastItem, Show } from '../../models/models';
+import { Role, Actor, CastItem, Show } from '../../models/models';
 import { ActorsProvider } from '../../providers/actors/actors';
 import levenshtein from 'fast-levenshtein';
 import { ShowsProvider } from '../../providers/shows/shows';
@@ -28,7 +28,7 @@ export class ShowSubmitCastPage {
     @ViewChild(Searchbar) searchBar: Searchbar;
 
     roleIndex: number = 0;
-    roles: string[];
+    roles: Role[];
 
     /* Currently selected cast. */
     cast: Actor[][] = [];

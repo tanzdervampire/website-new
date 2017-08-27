@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
-import { CastItem } from '../../models/models';
+import { CastItem, Role } from '../../models/models';
 
 interface RoleDefinition {
     name: string;
@@ -30,9 +30,9 @@ export class RolesProvider {
         { name: 'Dirigent', category: 'Dirigent', primary: false, index: 14, singular: true },
     ];
 
-    private _roles: string[];
-    private _primaryRoles: string[];
-    private _singularRoles: string[];
+    private _roles: Role[];
+    private _primaryRoles: Role[];
+    private _singularRoles: Role[];
     private _nameToIndex: any;
     private _categories: string[];
     private _nameToCategory: any;
@@ -44,15 +44,15 @@ export class RolesProvider {
             }, {});
 
         this._roles = this._config
-            .map(entry => entry.name)
+            .map(entry => <Role>entry.name)
             .sort(this.sortByRole.bind(this));
         this._primaryRoles = this._config
             .filter(entry => entry.primary)
-            .map(entry => entry.name)
+            .map(entry => <Role>entry.name)
             .sort(this.sortByRole.bind(this));
         this._singularRoles = this._config
             .filter(entry => entry.singular)
-            .map(entry => entry.name)
+            .map(entry => <Role>entry.name)
             .sort(this.sortByRole.bind(this));
 
         this._categories = this._config
@@ -66,11 +66,11 @@ export class RolesProvider {
             }, {});
     }
 
-    getRoles(): string[] {
+    getRoles(): Role[] {
         return [...this._roles];
     }
 
-    getPrimaryRoles(): string[] {
+    getPrimaryRoles(): Role[] {
         return [...this._primaryRoles];
     }
 
@@ -78,15 +78,15 @@ export class RolesProvider {
         return [...this._categories];
     }
 
-    getCategoryForRole(role: string): string {
+    getCategoryForRole(role: Role): string {
         return this._nameToCategory[role];
     }
 
-    isPrimary(role: string): boolean {
+    isPrimary(role: Role): boolean {
         return this._primaryRoles.indexOf(role) !== -1;
     }
 
-    isSingular(role: string): boolean {
+    isSingular(role: Role): boolean {
         return this._singularRoles.indexOf(role) !== -1;
     }
 
@@ -94,7 +94,7 @@ export class RolesProvider {
         return this.sortByRole(left.role, right.role);
     }
 
-    sortByRole(left: string, right: string): number {
+    sortByRole(left: Role, right: Role): number {
         return this._nameToIndex[left] - this._nameToIndex[right];
     }
 
