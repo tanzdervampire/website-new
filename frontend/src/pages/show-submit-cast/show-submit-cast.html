@@ -9,8 +9,8 @@
         <ion-title>{{ roles[roleIndex] }}</ion-title>
 
         <ion-buttons right>
-            <button ion-button clear *ngIf="roleIndex > 0" (click)="gotoPreviousRole()">Zurück</button>
-            <button ion-button clear [disabled]="roleIndex === roles.length - 1" (click)="gotoNextRole()">Weiter</button>
+            <button ion-button clear *ngIf="roleIndex > 0" (click)="gotoPreviousRole($event)">Zurück</button>
+            <button ion-button clear [disabled]="roleIndex === roles.length - 1" (click)="gotoNextRole($event)">Weiter</button>
         </ion-buttons>
     </ion-toolbar>
 

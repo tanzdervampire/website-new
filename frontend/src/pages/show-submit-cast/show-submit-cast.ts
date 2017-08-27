@@ -66,12 +66,20 @@ export class ShowSubmitCastPage {
         });
     }
 
-    gotoPreviousRole(): void {
+    gotoPreviousRole(event?: any): void {
+        if (event) {
+            event.preventDefault();
+        }
+
         this.roleIndex = Math.max(0, this.roleIndex - 1);
         this.onPageFlip();
     }
 
-    gotoNextRole(): void {
+    gotoNextRole(event?: any): void {
+        if (event) {
+            event.preventDefault();
+        }
+
         this.roleIndex = Math.min(this.roles.length - 1, this.roleIndex + 1);
         this.onPageFlip();
     }
