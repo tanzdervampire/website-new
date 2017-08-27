@@ -41,6 +41,10 @@
 
     <spinner *ngIf="!actors"></spinner>
 
+    <ion-list-header *ngIf="actors && actors.length === 0">
+        Kein Darsteller mit diesem Namen gefunden
+    </ion-list-header>
+
     <ion-list no-lines>
         <ion-item *ngFor="let actor of actors">
             <h2>{{ actor.name }}</h2>
