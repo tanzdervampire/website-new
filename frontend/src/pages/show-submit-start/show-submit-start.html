@@ -20,6 +20,7 @@
             <ion-item>
                 <ion-icon name="calendar" [color]="showDate ? null : 'danger'" item-start></ion-icon>
                 <ion-label>Datum</ion-label>
+
                 <ion-datetime
                     displayFormat="DD. MMMM YYYY"
                     min="1997-10-04"
@@ -32,7 +33,7 @@
                     (swipe)="onSwipeShowDate($event)"
                 ></ion-datetime>
 
-                <button ion-button small clear icon-only item-end *ngIf="!showDate" (click)="selectToday($event)">
+                <button ion-button small outline color="light" icon-only no-margin item-end *ngIf="!showDate" (click)="selectToday($event)">
                     <ion-icon name="refresh" color="secondary"></ion-icon>
                 </button>
             </ion-item>
@@ -40,14 +41,14 @@
             <ion-item>
                 <ion-icon name="time" [color]="showTime ? null : 'danger'" item-start></ion-icon>
                 <ion-label>Uhrzeit</ion-label>
-                <ion-select interface="popover" [(ngModel)]="showTime" cancelText="Abbrechen">
-                    <ion-option value="14:00">14:00 Uhr</ion-option>
-                    <ion-option value="14:30">14:30 Uhr</ion-option>
-                    <ion-option value="15:00">15:00 Uhr</ion-option>
-                    <ion-option value="18:30">18:30 Uhr</ion-option>
-                    <ion-option value="19:00">19:00 Uhr</ion-option>
-                    <ion-option value="19:30">19:30 Uhr</ion-option>
-                    <ion-option value="20:00">20:00 Uhr</ion-option>
+                <ion-select interface="popover" [(ngModel)]="showTime" cancelText="Abbrechen" placeholder="HH:MM">
+                    <ion-option value="14:00">14:00</ion-option>
+                    <ion-option value="14:30">14:30</ion-option>
+                    <ion-option value="15:00">15:00</ion-option>
+                    <ion-option value="18:30">18:30</ion-option>
+                    <ion-option value="19:00">19:00</ion-option>
+                    <ion-option value="19:30">19:30</ion-option>
+                    <ion-option value="20:00">20:00</ion-option>
                 </ion-select>
             </ion-item>
 
