@@ -25,6 +25,7 @@ import { ShowSubmitStartPage } from '../pages/show-submit-start/show-submit-star
 import { ShowSubmitCastPage } from '../pages/show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../providers/productions/productions';
 import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
+import { CastListComponent } from '../components/cast-list/cast-list';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
         IonTextAvatar,
         SpinnerComponent,
         ShowItemComponent,
+        CastListComponent,
     ],
     imports: [
         BrowserModule,

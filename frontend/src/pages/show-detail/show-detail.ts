@@ -74,19 +74,9 @@ export class ShowDetailPage {
         this.content.scrollToTop(250);
     }
 
-    getCastItemsForCategory(category: string): CastItem[] {
-        return this.show.cast
-            .filter(item => this.rolesProvider.getCategoryForRole(item.role) === category)
-            .sort(this.rolesProvider.sortCastItemByRole.bind(this.rolesProvider));
-    }
-
     getDateFromParams(): Moment {
         const { year, month, day, time } = this.navParams.data;
         return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
-    }
-
-    getLetterAvatar(castItem: CastItem): string {
-        return castItem.person.name.toUpperCase().charAt(0);
     }
 
 }

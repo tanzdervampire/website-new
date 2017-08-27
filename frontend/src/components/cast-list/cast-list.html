@@ -1,0 +1,19 @@
+<ion-list *ngFor="let category of categories">
+    <ion-list-header>
+        {{ category }}
+    </ion-list-header>
+
+    <button ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
+        <ion-avatar item-start>
+            <ion-text-avatar color="light">{{ getLetterAvatar(castItem) }}</ion-text-avatar>
+        </ion-avatar>
+
+        <div *ngIf="doesIncludeRole(castItem)">
+            <h2>{{ castItem.role }}</h2>
+            <p>{{ castItem.person.name }}</p>
+        </div>
+        <div *ngIf="!doesIncludeRole(castItem)">
+            <h2>{{ castItem.person.name }}</h2>
+        </div>
+    </button>
+</ion-list>

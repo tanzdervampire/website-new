@@ -15,27 +15,7 @@
 <ion-content (ionScroll)="onScroll($event)" no-bounce>
     <spinner *ngIf="!show"></spinner>
 
-    <div *ngIf="show">
-        <ion-list *ngFor="let category of rolesProvider.getRoleCategories()">
-            <ion-list-header>
-                {{ category }}
-            </ion-list-header>
-
-            <button ion-item *ngFor="let castItem of getCastItemsForCategory(category)">
-                <ion-avatar item-start>
-                    <ion-text-avatar color="light">{{ getLetterAvatar(castItem) }}</ion-text-avatar>
-                </ion-avatar>
-
-                <div *ngIf="rolesProvider.isPrimary(castItem.role)">
-                    <h2>{{ castItem.role }}</h2>
-                    <p>{{ castItem.person.name }}</p>
-                </div>
-                <div *ngIf="!rolesProvider.isPrimary(castItem.role)">
-                    <h2>{{ castItem.person.name }}</h2>
-                </div>
-            </button>
-        </ion-list>
-    </div>
+    <cast-list [show]="show" *ngIf="show"></cast-list>
 
     <ion-fab bottom right *ngIf="showScrollToTop" [@fab]>
         <button ion-fab color="light" (click)="onScrollToTop($event)">
