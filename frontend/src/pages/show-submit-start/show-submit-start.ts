@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, NavParams, ToastController } from 'ionic-angular';
 import moment, { Moment } from 'moment';
 import { ShowSubmitCastPage } from '../show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../../providers/productions/productions';
-import { Production } from '../../models/models';
+import { CastItem, Production } from '../../models/models';
 import { ShowsProvider } from '../../providers/shows/shows';
+import { ShowSubmitImportPage } from '../show-submit-import/show-submit-import';
 
 @IonicPage({
     segment: 'shows/submit'
@@ -18,6 +19,7 @@ export class ShowSubmitStartPage {
     showDate: string;
     showTime: string;
     production: Production;
+    cast: CastItem[];
 
     today = moment().toISOString();
     productions: Production[];
@@ -25,6 +27,7 @@ export class ShowSubmitStartPage {
 
     constructor(
         public navCtrl: NavController,
+        public modalCtrl: ModalController,
         public navParams: NavParams,
         public toastCtrl: ToastController,
         public showsProvider: ShowsProvider,
@@ -84,6 +87,16 @@ export class ShowSubmitStartPage {
         });
     }
 
+    onImportPicture(event: any): void {
+        event.preventDefault();
+        const modal = this.modalCtrl.create(ShowSubmitImportPage);
+        modal.onDidDismiss((cast: CastItem[]) => {
+            this.cast = cast;
+        });
+
+        modal.present();
+    }
+
     validateInput(): string {
         if (!this.showDate) {
             return 'Bitte gib das Datum der Vorstellung an.';
@@ -114,16 +127,17 @@ export class ShowSubmitStartPage {
             .format('YYYY MM DD HHmm').split(' ');
 
         const location = this.production.location;
+        const cast = this.cast;
         this.showsProvider.fetchShow(this.convertShowDate(), location).subscribe(
             show => {
                 if (show) {
                     this.showErrorToast('Diese Vorstellung wurde bereits eingetragen.');
                 } else {
-                    this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time });
+                    this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time, cast });
                 }
             },
             err => {
-                this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time });
+                this.showErrorToast('Ein Fehler ist aufgetreten.');
             }
         );
     }

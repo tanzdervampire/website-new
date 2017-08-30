@@ -76,24 +76,25 @@
 
             <ion-row text-center>
                 <ion-col>
-                    <button ion-button full clear icon-left small color="secondary" [disabled]="!!validateInput()">
-                        <ion-icon name="image"></ion-icon>
-                        Foto importieren
+                    <button ion-button full clear icon-left small color="secondary" (click)="onImportPicture($event)" [disabled]="!!validateInput()">
+                        <ion-icon name="image" *ngIf="!cast"></ion-icon>
+                        <ion-icon name="checkmark" *ngIf="cast"></ion-icon>
+                        Bild importieren
                     </button>
                 </ion-col>
             </ion-row>
         </ion-list>
     </ion-card>
 
-    <ion-card text-left>
+    <ion-card text-left *ngIf="!cast">
         <ion-item>
             <ion-icon name="md-bulb" item-start></ion-icon>
             <ion-label>Schon gewusst?</ion-label>
         </ion-item>
 
         <ion-card-content>
-            <p>Du kannst die Besetzung automatisch anhand eines Fotos der Castliste erkennen lassen.</p>
-            <p>Klicke hierzu einfach oben auf »Foto importieren« und wähle das Bild aus.</p>
+            <p>Du kannst die Besetzung automatisch anhand eines Bildes der Castliste erkennen lassen.</p>
+            <p>Klicke hierzu einfach oben auf »Bild importieren« und wähle das Bild aus.</p>
         </ion-card-content>
 
         <ion-row>

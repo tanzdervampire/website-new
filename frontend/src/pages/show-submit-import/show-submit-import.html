@@ -1,0 +1,60 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons left>
+            <button ion-button icon-only navPop>
+                <ion-icon name="close"></ion-icon>
+            </button>
+        </ion-buttons>
+
+        <ion-title>Bild importieren</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content no-bounce>
+    <ion-card *ngIf="!analyzedCast" text-left padding>
+        <ion-item>
+            <ion-icon name="information-circle" color="secondary" item-start></ion-icon>
+            <ion-label>Anleitung</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+            <p>Um ein bestmögliches Ergebnis zu erreichen, achte bitte darauf, dass…</p>
+            <ul>
+                <li>das Bild ausreichend und gleichmäßig ausgeleuchtet ist</li>
+                <li>die Liste größtmöglich, aber vollständig abgebildet wird</li>
+                <li>der Text richtig fokusiert ist</li>
+            </ul>
+        </ion-card-content>
+
+        <ion-row text-center>
+            <ion-col>
+                <input type="file" id="fileInput" accept=".jpg,.jpeg,.png,.gif" (change)="onFileSelected($event)" />
+                <label for="fileInput">
+                    <a ion-button icon-left outline color="primary">
+                        <ion-icon name="image"></ion-icon>
+                        OK, Bild hochladen
+                    </a>
+                </label>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+
+    <ion-card *ngIf="analyzedCast" text-left padding>
+        <ion-item>
+            <ion-icon name="alert" color="primary" item-start></ion-icon>
+            <ion-label>Ergebnis überprüfen</ion-label>
+        </ion-item>
+
+        <ion-card-content>
+            <p>Bitte überprüfe, ob du das Ergebnis übernehmen möchtest. Du kannst die erkannten Darsteller im Anschluss in jedem Falle noch ändern.</p>
+        </ion-card-content>
+    </ion-card>
+
+    <cast-list [cast]="analyzedCast" *ngIf="analyzedCast"></cast-list>
+
+    <ion-fab bottom right *ngIf="analyzedCast" (click)="onAccept($event)">
+        <button ion-fab color="primary">
+            <ion-icon name="checkmark"></ion-icon>
+        </button>
+    </ion-fab>
+</ion-content>

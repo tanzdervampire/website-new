@@ -53,6 +53,13 @@ export class ShowSubmitCastPage {
 
         this.roles = [ ...this.rolesProvider.getRoles() ];
 
+        if (this.navParams.data.cast) {
+            this.navParams.data.cast.forEach((castItem: CastItem) => {
+                const roleIndex = this.roles.findIndex(role => role === castItem.role);
+                (this.cast[roleIndex] = this.cast[roleIndex] || []).push(castItem.person);
+            });
+        }
+
         const date = this.getDateFromParams();
         this.showsProvider.fetchShowBefore(date, this.navParams.data.location).subscribe(previousShows => {
             const previousShow = (previousShows && previousShows.length > 0) ? previousShows[0] : null;

@@ -25,7 +25,7 @@
         </ion-row>
     </ion-card>
 
-    <cast-list [show]="show"></cast-list>
+    <cast-list [cast]="show.cast" *ngIf="show"></cast-list>
 
     <ion-fab bottom right>
         <button ion-fab (click)="submitShow($event)">

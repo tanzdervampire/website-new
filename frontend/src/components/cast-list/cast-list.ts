@@ -8,7 +8,7 @@ import { RolesProvider } from '../../providers/roles/roles';
 })
 export class CastListComponent {
 
-    @Input() show: Show;
+    @Input() cast: CastItem[];
     categories: string[];
 
     constructor(
@@ -18,7 +18,7 @@ export class CastListComponent {
     }
 
     getCastItemsForCategory(category: string): CastItem[] {
-        return this.show.cast
+        return this.cast
             .filter(item => this.filterByCategory(item, category))
             .sort(this.rolesProvider.sortCastItemByRole.bind(this.rolesProvider));
     }

@@ -28,6 +28,7 @@ import { IonTextAvatar } from '../directives/ion-text-avatar/ion-text-avatar';
 import { CastListComponent } from '../components/cast-list/cast-list';
 import { ShowSubmitReviewPage } from '../pages/show-submit-review/show-submit-review';
 import { ShowHeaderComponent } from '../components/show-header/show-header';
+import { ShowSubmitImportPage } from '../pages/show-submit-import/show-submit-import';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { ShowHeaderComponent } from '../components/show-header/show-header';
         ShowSubmitStartPage,
         ShowSubmitCastPage,
         ShowSubmitReviewPage,
+        ShowSubmitImportPage,
         ActorListPage,
         ActorListFilter,
         AutoFocusDirective,
@@ -103,6 +105,7 @@ import { ShowHeaderComponent } from '../components/show-header/show-header';
         ShowSubmitStartPage,
         ShowSubmitCastPage,
         ShowSubmitReviewPage,
+        ShowSubmitImportPage,
         ActorListPage,
         ActorListFilter,
     ],

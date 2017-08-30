@@ -9,7 +9,7 @@
 <ion-content (ionScroll)="onScroll($event)" no-bounce>
     <spinner *ngIf="!show"></spinner>
 
-    <cast-list [show]="show" *ngIf="show"></cast-list>
+    <cast-list [cast]="show.cast" *ngIf="show"></cast-list>
 
     <ion-fab bottom right *ngIf="showScrollToTop" [@fab]>
         <button ion-fab color="light" (click)="onScrollToTop($event)">

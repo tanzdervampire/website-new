@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import moment, { Moment } from 'moment';
 import { Observable } from 'rxjs/Observable';
-import { RawShow, Show } from '../../models/models';
+import { OcrCastItem, RawShow, Show } from '../../models/models';
 
 interface QueryParameters {
     location?: string;
@@ -101,6 +101,14 @@ export class ShowsProvider {
 
     postShow(show: RawShow): Observable<any> {
         return this.http.post('/api/shows', show)
+            .map(response => response.json());
+    }
+
+    analyzeImage(file: File): Observable<OcrCastItem[]> {
+        const formData = new FormData();
+        formData.append('image', file);
+
+        return this.http.post('/api/images/analysis', formData)
             .map(response => response.json());
     }
 
