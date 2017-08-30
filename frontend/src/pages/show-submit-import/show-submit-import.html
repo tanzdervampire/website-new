@@ -38,23 +38,4 @@
             </ion-col>
         </ion-row>
     </ion-card>
-
-    <ion-card *ngIf="analyzedCast" text-left padding>
-        <ion-item>
-            <ion-icon name="alert" color="primary" item-start></ion-icon>
-            <ion-label>Ergebnis überprüfen</ion-label>
-        </ion-item>
-
-        <ion-card-content>
-            <p>Bitte überprüfe, ob du das Ergebnis übernehmen möchtest. Du kannst die erkannten Darsteller im Anschluss in jedem Falle noch ändern.</p>
-        </ion-card-content>
-    </ion-card>
-
-    <cast-list [cast]="analyzedCast" *ngIf="analyzedCast"></cast-list>
-
-    <ion-fab bottom right *ngIf="analyzedCast" (click)="onAccept($event)">
-        <button ion-fab color="primary">
-            <ion-icon name="checkmark"></ion-icon>
-        </button>
-    </ion-fab>
 </ion-content>

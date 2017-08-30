@@ -13,8 +13,6 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ShowSubmitImportPage {
 
-    analyzedCast: CastItem[];
-
     constructor(
         private viewCtrl: ViewController,
         private loadingCtrl: LoadingController,
@@ -38,13 +36,19 @@ export class ShowSubmitImportPage {
             .subscribe(
             castItems => {
                 loading.dismiss();
-                this.analyzedCast = castItems;
+                this.toastCtrl.create({
+                    message: `Es wurden ${castItems.length} Darsteller erkannt.`,
+                    dismissOnPageChange: false,
+                    showCloseButton: true,
+                    closeButtonText: 'OK',
+                }).present();
+                this.viewCtrl.dismiss(castItems);
             },
             err => {
                 console.error(err);
 
                 loading.dismiss();
-                this.toastCtrl.create({ message: 'Das Bild konnte nicht analysiert werden.' });
+                this.toastCtrl.create({ message: 'Das Bild konnte nicht analysiert werden.' }).present();
             }
         );
     }
@@ -58,11 +62,6 @@ export class ShowSubmitImportPage {
                 };
             });
         });
-    }
-
-    onAccept(event: Event): void {
-        event.preventDefault();
-        this.viewCtrl.dismiss(this.analyzedCast);
     }
 
 }
