@@ -4,9 +4,18 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 var ProductionSchema = new Schema({
-    location: String,
-    theater: String,
-    start: Date,
+    location: {
+        type: String,
+        required: true,
+    },
+    theater: {
+        type: String,
+        required: true,
+    },
+    start: {
+        type: Date,
+        required: true,
+    },
     end: Date,
 });
 
