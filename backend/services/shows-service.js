@@ -25,6 +25,13 @@ ${JSON.stringify(document, null, 4)}
             throw err;
         }
 
+        if (process.env.MAINTENANCE_MODE) {
+            throw {
+                status: 503,
+                message: 'Maintenance mode',
+            };
+        }
+
         return show.save();
     } else {
         throw {

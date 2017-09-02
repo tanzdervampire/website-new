@@ -59,6 +59,12 @@ export class ShowSubmitReviewPage {
             err => {
                 console.error(err);
                 loader.dismiss();
+
+                if (err.status && err.status === 503) {
+                    this.showMaintenanceModeError();
+                    return;
+                }
+
                 this.showRetryErrorDialog();
             }
         );
@@ -76,6 +82,19 @@ export class ShowSubmitReviewPage {
             production: show.production._id,
             cast: rawCast,
         };
+    }
+
+    showMaintenanceModeError(): void {
+        this.alertCtrl.create({
+            title: 'Außer Betrieb!',
+            message: 'Das Einreichen von Vorstellungen ist aktuell deaktiviert. Wir haben deine Vorstellung aber erhalten und tragen sie schnellstmöglich ein.',
+            buttons: [
+                {
+                    text: 'OK',
+                    role: 'cancel',
+                },
+            ],
+        }).present();
     }
 
     showRetryErrorDialog(): void {
