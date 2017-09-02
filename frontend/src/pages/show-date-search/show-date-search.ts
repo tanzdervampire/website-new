@@ -4,6 +4,7 @@ import { Show } from '../../models/models';
 import { ShowsProvider } from '../../providers/shows/shows';
 import moment, { Moment } from 'moment';
 import { ShowDetailPage } from '../show-detail/show-detail';
+import { ShowSubmitStartPage } from '../show-submit-start/show-submit-start';
 
 @IonicPage({
     segment: 'shows/:day/:month/:year'
@@ -40,10 +41,17 @@ export class ShowDateSearchPage {
 
     getDateFromParams(): Moment {
         const { year, month, day } = this.navParams.data;
-        return moment(`${day}.${month}.${year}`, 'DD.MM.YYYY');
+        return moment.utc(`${day}.${month}.${year}`, 'DD.MM.YYYY');
     }
 
-    gotoShowDetail(event: any, show: Show): void {
+    gotoShowSubmit(event: Event): void {
+        event.preventDefault();
+
+        const { year, month, day } = this.navParams.data;
+        this.navCtrl.push(ShowSubmitStartPage, { year, month, day });
+    }
+
+    gotoShowDetail(event: Event, show: Show): void {
         event.preventDefault();
         const [year, month, day, time] = show.date.format('YYYY MM DD HHmm').split(' ');
 

@@ -1,6 +1,6 @@
 import { Component, NgZone, ViewChild } from '@angular/core';
 import { ShowsProvider } from '../../providers/shows/shows';
-import { Moment } from 'moment';
+import moment, { Moment } from 'moment';
 import 'moment/locale/de';
 import { Show } from '../../models/models';
 import {
@@ -9,7 +9,6 @@ import {
 } from 'ionic-angular';
 import { ShowDetailPage } from '../show-detail/show-detail';
 import { ShowDateSearchPage } from '../show-date-search/show-date-search';
-import moment from 'moment';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ShowSubmitStartPage } from '../show-submit-start/show-submit-start';
 
@@ -46,8 +45,8 @@ export class ShowListPage {
     @ViewChild('datePicker') datePicker: DateTime;
     @ViewChild(Content) content: Content;
     shows: MonthSection[] = [];
-    selectedDate: string = moment().toISOString();
-    maxDate: string = moment().format('YYYY-MM-DD');
+    selectedDate: string = moment.utc().toISOString();
+    maxDate: string = moment.utc().format('YYYY-MM-DD');
     showScrollToTop: boolean = false;
 
     constructor(
@@ -74,7 +73,7 @@ export class ShowListPage {
     }
 
     onDatePickerChange(event: any): void {
-        const date = moment(`${event.day}.${event.month}.${event.year}`, 'DD.MM.YYYY');
+        const date = moment.utc(`${event.day}.${event.month}.${event.year}`, 'DD.MM.YYYY');
         const [year, month, day] = date.format('YYYY MM DD HHmm').split(' ');
 
         const loading = this.loadingCtrl.create({ content: 'Vorstellungen werden gesucht…' });

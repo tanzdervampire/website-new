@@ -1,15 +1,25 @@
 <ion-header>
     <ion-navbar>
         <ion-title>{{ formatDate() }}</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="gotoShowSubmit($event)">
+                <ion-icon name="add"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
 <ion-content no-bounce>
     <spinner *ngIf="!shows"></spinner>
 
-    <ion-list-header *ngIf="shows && shows.length === 0">
-        Für diesen Tag liegt leider kein Eintrag vor.
-    </ion-list-header>
+    <div text-center *ngIf="shows && shows.length === 0">
+        <ion-list-header>
+            Für diesen Tag liegt leider kein Eintrag vor.
+        </ion-list-header>
+
+        <button ion-button outline color="primary" (click)="gotoShowSubmit($event)">Vorstellung eintragen</button>
+    </div>
 
     <ion-list *ngIf="shows">
         <show-item

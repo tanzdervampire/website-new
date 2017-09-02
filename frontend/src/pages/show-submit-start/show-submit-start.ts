@@ -21,7 +21,7 @@ export class ShowSubmitStartPage {
     production: Production;
     cast: CastItem[];
 
-    today = moment().toISOString();
+    today = moment.utc().toISOString();
     productions: Production[];
     hadRequestError: boolean = false;
 
@@ -32,6 +32,12 @@ export class ShowSubmitStartPage {
         public toastCtrl: ToastController,
         public showsProvider: ShowsProvider,
         public productionsProvider: ProductionsProvider) {
+
+        const { year, month, day } = this.navParams.data;
+        if (year && month && day) {
+            this.showDate = moment.utc(`${day}.${month}.${year}`, 'DD.MM.YYYY').toISOString();
+            this.onShowDateChange(null, this.showDate);
+        }
     }
 
     onSwipeShowDate({ direction }): void {
@@ -39,7 +45,7 @@ export class ShowSubmitStartPage {
             return;
         }
 
-        const currentDate = moment(this.showDate);
+        const currentDate = moment.utc(this.showDate);
         switch (direction) {
             case /* LEFT */ 2:
                 this.showDate = currentDate.add(1, 'day').toISOString();
@@ -54,7 +60,7 @@ export class ShowSubmitStartPage {
 
     selectToday(event: any): void {
         event.preventDefault();
-        this.showDate = moment().toISOString();
+        this.showDate = moment.utc().toISOString();
         this.onShowDateChange(null, this.showDate);
     }
 
@@ -67,7 +73,7 @@ export class ShowSubmitStartPage {
         this.productions = undefined;
         this.hadRequestError = false;
 
-        this.productionsProvider.getProductionsFor(moment(date)).subscribe(productions => {
+        this.productionsProvider.getProductionsFor(moment.utc(date)).subscribe(productions => {
             this.productions = productions;
 
             switch (productions.length) {
@@ -143,7 +149,7 @@ export class ShowSubmitStartPage {
     }
 
     convertShowDate(): Moment {
-        const date = moment(this.showDate).format('DD.MM.YYYY');
+        const date = moment.utc(this.showDate).format('DD.MM.YYYY');
         return moment.utc(`${date} ${this.showTime}`, 'DD.MM.YYYY HH:mm');
     }
 
@@ -154,7 +160,7 @@ export class ShowSubmitStartPage {
             position: 'bottom',
             showCloseButton: true,
             closeButtonText: 'OK',
-            dismissOnPageChange: true,
+            dismissOnPageChange: false,
         });
 
         toast.present();

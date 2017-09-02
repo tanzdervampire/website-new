@@ -76,7 +76,7 @@ export class ShowDetailPage {
 
     getDateFromParams(): Moment {
         const { year, month, day, time } = this.navParams.data;
-        return moment(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
+        return moment.utc(`${day}.${month}.${year} ${time}`, 'DD.MM.YYYY HHmm');
     }
 
 }
