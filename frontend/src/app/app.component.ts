@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ShowListPage } from '../pages/show-list/show-list';
 import { ActorListPage } from '../pages/actor-list/actor-list';
 import { ShowSubmitStartPage } from '../pages/show-submit-start/show-submit-start';
+import { LegalPage } from '../pages/legal/legal';
 
 interface PageInterface {
     title: string;
@@ -43,6 +44,7 @@ export class MyApp {
         this.pages = [
             { title: 'Vorstellungen', icon: 'film', component: ShowListPage, name: 'ShowListPage', subPages: showSubPages },
             { title: 'Darsteller', icon: 'people', component: ActorListPage, name: 'ActorListPage' },
+            { title: 'Impressum', icon: null, component: LegalPage, name: 'LegalPage' },
         ];
 
         this.activePage = this.pages[0];

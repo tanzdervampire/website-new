@@ -29,10 +29,12 @@ import { CastListComponent } from '../components/cast-list/cast-list';
 import { ShowSubmitReviewPage } from '../pages/show-submit-review/show-submit-review';
 import { ShowHeaderComponent } from '../components/show-header/show-header';
 import { ShowSubmitImportPage } from '../pages/show-submit-import/show-submit-import';
+import { LegalPage } from '../pages/legal/legal';
 
 @NgModule({
     declarations: [
         MyApp,
+        LegalPage,
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,
@@ -93,12 +95,14 @@ import { ShowSubmitImportPage } from '../pages/show-submit-import/show-submit-im
                     defaultHistory: [ ShowListPage ]
                 },
                 { component: ActorListPage, name: 'ActorListPage', segment: 'actors' },
+                { component: LegalPage, name: 'LegalPage', segment: 'legal' },
             ],
         }),
     ],
     bootstrap: [ IonicApp ],
     entryComponents: [
         MyApp,
+        LegalPage,
         ShowListPage,
         ShowDetailPage,
         ShowDateSearchPage,
