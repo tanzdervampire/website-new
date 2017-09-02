@@ -32,7 +32,7 @@
                 <ion-text-avatar color="secondary">{{ actor.name.charAt(0).toUpperCase() }}</ion-text-avatar>
             </ion-avatar>
             <ion-label>{{ actor.name.split(' ').pop() }}</ion-label>
-            <button ion-button clear color="dark" (click)="toggleActor($event, actor)">
+            <button ion-button clear color="dark" (click)="toggleActor($event, actor, true)">
                 <ion-icon name="close"></ion-icon>
             </button>
         </ion-chip>

@@ -121,7 +121,7 @@ export class ShowSubmitCastPage {
         this.content.resize();
     }
 
-    toggleActor(event: any, actor: Actor): void {
+    toggleActor(event: any, actor: Actor, isRemoval = false): void {
         if (event) {
             event.preventDefault();
         }
@@ -139,7 +139,7 @@ export class ShowSubmitCastPage {
         /* Updat the selected names. */
         this.cast[ idx ] = [ ...selected ];
 
-        if (this.rolesProvider.isSingular(this.roles[ idx ]) && this.cast[ idx ].length === 1) {
+        if (!isRemoval && this.rolesProvider.isSingular(this.roles[ idx ]) && this.cast[ idx ].length === 1) {
             this.gotoNextRole();
         } else {
             /* Resize the content since the list of selected names an change appearance. */
