@@ -1,6 +1,7 @@
 // @flow
 
 const moment = require('moment');
+const { sendNotificationEmail } = require('./email-service');
 const Show = require('../models/show');
 const Production = require('../models/production');
 require('../models/person');
@@ -10,6 +11,15 @@ const postShow = async document => {
 
     const err = show.validateSync();
     if (!err) {
+        sendNotificationEmail(
+            '[tanzdervampire.info] Show has been submitted',
+            `
+The following show has been submitted:
+
+${JSON.stringify(document)}
+            `
+        );
+
         return show.save();
     } else {
         throw {
