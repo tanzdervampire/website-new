@@ -16,7 +16,7 @@
 
     <ion-toolbar no-border>
         <ion-searchbar
-            placeholder="Suchen"
+            [placeholder]="roles[roleIndex]"
             showCancelButton="true"
             cancelButtonText="Abbrechen"
             spellcheck="false"
@@ -42,7 +42,7 @@
 <ion-content no-bounce>
     <spinner *ngIf="!actors"></spinner>
 
-    <ion-item-group *ngIf="showSuggestionsList()">
+    <ion-item-group *ngIf="showSuggestionsList()" [@page-flip]="roleIndex">
         <ion-item-divider>
             <ion-icon item-start name="star" color="secondary"></ion-icon>
             Vorgeschlagen
@@ -52,7 +52,7 @@
         </button>
     </ion-item-group>
 
-    <div *ngIf="actors">
+    <div *ngIf="actors" [@page-flip]="roleIndex">
         <ion-list-header *ngIf="showEmptyFilterResultHeader()">
             Kein Darsteller mit diesem Namen gefunden.
         </ion-list-header>

@@ -14,6 +14,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/mergeMap';
 import { ShowListPage } from '../show-list/show-list';
 import { ShowSubmitReviewPage } from '../show-submit-review/show-submit-review';
+import { transition, trigger, animate, keyframes, style } from '@angular/animations';
 
 @IonicPage({
     segment: 'shows/:location/:day/:month/:year/:time/submit',
@@ -21,6 +22,18 @@ import { ShowSubmitReviewPage } from '../show-submit-review/show-submit-review';
 @Component({
     selector: 'page-show-submit-cast',
     templateUrl: 'show-submit-cast.html',
+    animations: [
+        trigger('page-flip', [
+            transition('void => *', []),
+            transition('* => *', [
+                animate('.225s', keyframes([
+                    style({ transform: 'rotateY(0deg)', offset: 0.0 }),
+                    style({ transform: 'rotateY(90deg)', offset: 0.5 }),
+                    style({ transform: 'rotateY(0deg)', offset: 1.0 }),
+                ])),
+            ]),
+        ]),
+    ],
 })
 export class ShowSubmitCastPage {
 
