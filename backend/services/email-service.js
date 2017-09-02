@@ -13,7 +13,7 @@ const sendNotificationEmail = (subject, text) => {
         }
     };
 
-    if (!transporterOpts.host || !transporterOpts.port || !transporterOpts.user || !transporterOpts.pass) {
+    if (!transporterOpts.host || !transporterOpts.port || !transporterOpts.auth.user || !transporterOpts.auth.pass) {
         console.log('Cannot send email: ' + subject);
         return;
     }
