@@ -25,6 +25,7 @@ import { transition, trigger, animate, keyframes, style } from '@angular/animati
     animations: [
         trigger('page-flip', [
             transition('void => *', []),
+            transition('* => void', []),
             transition('* => *', [
                 animate('.225s', keyframes([
                     style({ transform: 'rotateY(0deg)', offset: 0.0 }),
