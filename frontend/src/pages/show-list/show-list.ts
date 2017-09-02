@@ -11,6 +11,7 @@ import { ShowDetailPage } from '../show-detail/show-detail';
 import { ShowDateSearchPage } from '../show-date-search/show-date-search';
 import { animate, style, transition, trigger } from '@angular/animations';
 import { ShowSubmitStartPage } from '../show-submit-start/show-submit-start';
+import { Observable } from 'rxjs/Observable';
 
 interface Section<T> {
     title: string;
@@ -58,8 +59,7 @@ export class ShowListPage {
     }
 
     ionViewWillEnter(): void {
-        this.showsProvider.fetchLatestMonth()
-            .subscribe(this.pushShowsForMonth.bind(this));
+        this.fetchNextMonth();
     }
 
     ionViewWillLeave(): void {
@@ -112,12 +112,27 @@ export class ShowListPage {
             return;
         }
 
-        const before = this.shows.slice(-1)[0].items.slice(-1)[0].items[0].date;
-        this.showsProvider.fetchLatestMonth(before)
-            .subscribe(response => {
-                this.pushShowsForMonth(response);
+        this.fetchNextMonth().subscribe(
+            () => {
                 infiniteScroll.complete();
-            });
+            }
+        );
+    }
+
+    fetchNextMonth(): Observable<Show[]> {
+        const before = (this.shows && this.shows.length !== 0)
+            ? this.shows.slice(-1)[0].items.slice(-1)[0].items[0].date
+            : null;
+
+        const request = this.showsProvider.fetchLatestMonth(before);
+        request.subscribe(shows => {
+            this.pushShowsForMonth(shows);
+            if (shows.length < 10) {
+                this.fetchNextMonth();
+            }
+        });
+
+        return request;
     }
 
     gotoShowSubmit(event: any): void {
