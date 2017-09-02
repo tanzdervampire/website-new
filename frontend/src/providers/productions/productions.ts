@@ -51,8 +51,8 @@ export class ProductionsProvider {
     momentify(rawProductions: any[]): Production[] {
         return rawProductions.map(rawProduction => {
             const production = { ...rawProduction };
-            production.start = moment(production.start);
-            production.end = moment(production.end);
+            production.start = moment.utc(production.start);
+            production.end = moment.utc(production.end);
             return production;
         });
     }

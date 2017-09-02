@@ -53,8 +53,8 @@ const migrateProductions = db => {
         return {
             location: production.location,
             theater: production.theater,
-            start: moment(production.start, 'YYYY-MM-DD').startOf('day').toDate(),
-            end: moment(production.end, 'YYYY-MM-DD').endOf('day').toDate(),
+            start: moment.utc(production.start, 'YYYY-MM-DD').startOf('day').toDate(),
+            end: moment.utc(production.end, 'YYYY-MM-DD').endOf('day').toDate(),
         };
     }));
 };
@@ -64,14 +64,14 @@ const migratePersons = db => {
 };
 
 const migrateShows = db => {
-    const fnToDate = fn => moment(fn.replace(/\.json$/, ''), 'DD.MM.YYYY-HHmm');
+    const fnToDate = fn => moment.utc(fn.replace(/\.json$/, ''), 'DD.MM.YYYY-HHmm');
     return fs.readdirSync(`${path}/data/`)
         .map(location => fs.readdirSync(`${path}/data/${location}/`).map(fn => { return { 'fn': fn, 'location': location }; }))
         .reduce((a,b) => [...a, ...b])
         .sort((a,b) => fnToDate(a.fn).diff(fnToDate(b.fn)))
         .map(async show => {
             const data = slurpJson(`${path}/data/${show.location}/${show.fn}`);
-            const date = moment(`${data.day} ${data.time}`, 'DD.MM.YYYY HH:mm');
+            const date = moment.utc(`${data.day} ${data.time}`, 'DD.MM.YYYY HH:mm');
 
             const entry = await db.collection('productions').findOne({
                 location: data.location,

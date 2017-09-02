@@ -115,9 +115,9 @@ export class ShowsProvider {
     momentify(rawShows: any[]): Show[] {
         return rawShows.map(rawShow => {
             const show = { ...rawShow };
-            show.date = moment(show.date);
-            show.production.start = moment(show.production.start);
-            show.production.end = moment(show.production.end);
+            show.date = moment.utc(show.date);
+            show.production.start = moment.utc(show.production.start);
+            show.production.end = moment.utc(show.production.end);
             return show;
         });
     }

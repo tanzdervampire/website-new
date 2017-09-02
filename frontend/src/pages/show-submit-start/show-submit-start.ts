@@ -144,7 +144,7 @@ export class ShowSubmitStartPage {
 
     convertShowDate(): Moment {
         const date = moment(this.showDate).format('DD.MM.YYYY');
-        return moment(`${date} ${this.showTime}`, 'DD.MM.YYYY HH:mm');
+        return moment.utc(`${date} ${this.showTime}`, 'DD.MM.YYYY HH:mm');
     }
 
     showErrorToast(message: string): void {
