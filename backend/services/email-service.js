@@ -25,7 +25,7 @@ const sendNotificationEmail = (subject, text) => {
     };
 
     const transporter = nodemailer.createTransport(transporterOpts);
-    transporter.sendMail(mailOptions, (error, info) => {
+    transporter.sendMail(options, (error, info) => {
         if (error) {
             return console.log(error);
         }

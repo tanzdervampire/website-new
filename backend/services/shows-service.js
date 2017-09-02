@@ -11,14 +11,19 @@ const postShow = async document => {
 
     const err = show.validateSync();
     if (!err) {
-        sendNotificationEmail(
-            '[tanzdervampire.info] Show has been submitted',
-            `
+        try {
+            sendNotificationEmail(
+                '[tanzdervampire.info] Show has been submitted',
+                `
 The following show has been submitted:
 
-${JSON.stringify(document)}
+${JSON.stringify(document, null, 4)}
             `
-        );
+            );
+        } catch (err) {
+            console.error(err);
+            throw err;
+        }
 
         return show.save();
     } else {
@@ -73,7 +78,7 @@ const queryShowBefore = async opts => {
     }));
 
     /* Only return the latest one. */
-    return [documents.pop()];
+    return [ documents.pop() ];
 };
 
 const queryShows = async opts => {
