@@ -86,8 +86,8 @@ export class ShowSubmitReviewPage {
 
     showMaintenanceModeError(): void {
         this.alertCtrl.create({
-            title: 'Außer Betrieb!',
-            message: 'Das Einreichen von Vorstellungen ist aktuell deaktiviert. Wir haben deine Vorstellung aber erhalten und tragen sie schnellstmöglich ein.',
+            title: 'Keine Sorge!',
+            message: 'Vielen Dank für deinen Eintrag! Im Moment kontrollieren wir jeden neuen Eintrag bevor er sichtbar wird und bitten daher um etwas Geduld.',
             buttons: [
                 {
                     text: 'OK',
