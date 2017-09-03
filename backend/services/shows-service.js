@@ -23,7 +23,7 @@ const postShow = async document => {
         if (existingShow) {
             sendNotificationEmail(
                 `[tanzdervampire.info][update] ${moment(show.date).format('DD.MM.YYYY HH:mm')}`,
-                `The following show has been updated: \r\n${JSON.stringify(existingShow, null, 4)}\r\n\r\n${JSON.stringify(document, null, 4)}`
+                `The following show has been updated: \r\n\r\n${JSON.stringify(existingShow, null, 4)}\r\n\r\n${JSON.stringify(document, null, 4)}`
             );
         } else {
             sendNotificationEmail(

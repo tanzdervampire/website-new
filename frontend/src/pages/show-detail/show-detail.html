@@ -1,6 +1,12 @@
 <ion-header>
     <ion-navbar>
         <ion-title>Vorstellung</ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="gotoEditShow($event)" *ngIf="show">
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 
     <show-header [show]="show" *ngIf="show"></show-header>
