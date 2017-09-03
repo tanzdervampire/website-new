@@ -14,11 +14,23 @@ const postShow = async document => {
         throw { status: 400, message: err };
     }
 
+    const existingShow = await Show.findOne({
+        'date': show.date,
+        'production': show.production
+    }).lean();
+
     try {
-        sendNotificationEmail(
-            `[tanzdervampire.info][new] ${moment(show.date).format('DD.MM.YYYY HH:mm')}`,
-            `The following show has been submitted: \r\n\r\n${JSON.stringify(document, null, 4)}`
-        );
+        if (existingShow) {
+            sendNotificationEmail(
+                `[tanzdervampire.info][update] ${moment(show.date).format('DD.MM.YYYY HH:mm')}`,
+                `The following show has been updated: \r\n${JSON.stringify(existingShow, null, 4)}\r\n\r\n${JSON.stringify(document, null, 4)}`
+            );
+        } else {
+            sendNotificationEmail(
+                `[tanzdervampire.info][new] ${moment(show.date).format('DD.MM.YYYY HH:mm')}`,
+                `The following show has been submitted: \r\n\r\n${JSON.stringify(document, null, 4)}`
+            );
+        }
     } catch (err) {
         console.error(err);
         throw err;
@@ -28,7 +40,11 @@ const postShow = async document => {
         throw { status: 503, message: 'Maintenance mode' };
     }
 
-    return show.save();
+    if (existingShow) {
+        return Show.findByIdAndUpdate(existingShow._id, document);
+    } else {
+        return show.save();
+    }
 };
 
 const queryShowsBefore = async opts => {

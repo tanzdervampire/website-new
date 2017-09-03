@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController, NavParams, ToastController } from 'ionic-angular';
+import { AlertController, IonicPage, ModalController, NavController, NavParams, ToastController } from 'ionic-angular';
 import moment, { Moment } from 'moment';
 import { ShowSubmitCastPage } from '../show-submit-cast/show-submit-cast';
 import { ProductionsProvider } from '../../providers/productions/productions';
@@ -25,13 +25,13 @@ export class ShowSubmitStartPage {
     productions: Production[];
     hadRequestError: boolean = false;
 
-    constructor(
-        public navCtrl: NavController,
-        public modalCtrl: ModalController,
-        public navParams: NavParams,
-        public toastCtrl: ToastController,
-        public showsProvider: ShowsProvider,
-        public productionsProvider: ProductionsProvider) {
+    constructor(private navCtrl: NavController,
+                private modalCtrl: ModalController,
+                private alertCtrl: AlertController,
+                private navParams: NavParams,
+                private toastCtrl: ToastController,
+                private showsProvider: ShowsProvider,
+                private productionsProvider: ProductionsProvider) {
 
         const { year, month, day } = this.navParams.data;
         if (year && month && day) {
@@ -47,11 +47,13 @@ export class ShowSubmitStartPage {
 
         const currentDate = moment.utc(this.showDate);
         switch (direction) {
-            case /* LEFT */ 2:
+            case /* LEFT */
+            2:
                 this.showDate = currentDate.add(1, 'day').toISOString();
                 this.onShowDateChange(null, this.showDate);
                 break;
-            case /* RIGHT */ 4:
+            case /* RIGHT */
+            4:
                 this.showDate = currentDate.subtract(1, 'day').toISOString();
                 this.onShowDateChange(null, this.showDate);
                 break;
@@ -78,10 +80,10 @@ export class ShowSubmitStartPage {
 
             switch (productions.length) {
                 case 0:
-                    this.showErrorToast('Zu diesem Zeitpunkt wurde das Musical nicht aufgeführt.')
+                    this.showErrorToast('Zu diesem Zeitpunkt wurde das Musical nicht aufgeführt.');
                     break;
                 case 1:
-                    this.production = productions[0];
+                    this.production = productions[ 0 ];
                     break;
                 default:
                     break;
@@ -129,23 +131,43 @@ export class ShowSubmitStartPage {
             return;
         }
 
-        const [year, month, day, time] = this.convertShowDate()
+        const [ year, month, day, time ] = this.convertShowDate()
             .format('YYYY MM DD HHmm').split(' ');
 
         const location = this.production.location;
         const cast = this.cast;
         this.showsProvider.fetchShow(this.convertShowDate(), location).subscribe(
             show => {
-                if (show) {
-                    this.showErrorToast('Diese Vorstellung wurde bereits eingetragen.');
-                } else {
+                if (!show) {
                     this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time, cast });
+                    return;
                 }
+
+                this.confirmUpdateExistingShow(
+                    () => {
+                        this.navCtrl.push(ShowSubmitCastPage, { location, year, month, day, time, cast: show.cast });
+                    },
+                    () => {
+                        this.navCtrl.popToRoot();
+                    }
+                );
             },
             err => {
                 this.showErrorToast('Ein Fehler ist aufgetreten.');
             }
         );
+    }
+
+    confirmUpdateExistingShow(onAccept: () => void, onCancel: () => void): void {
+        this.alertCtrl
+            .create({
+                title: 'Vorstellung bereits eingetragen',
+                message: 'Diese Vorstellung wurde bereits eingetragen. Möchtest du den bestehenden Eintrag korrigieren?',
+                buttons: [
+                    { text: 'Nein', role: 'cancel', handler: onCancel },
+                    { text: 'Ja', handler: onAccept }
+                ]
+            }).present();
     }
 
     convertShowDate(): Moment {
