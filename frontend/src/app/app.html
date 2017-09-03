@@ -16,19 +16,20 @@
                     </button>
 
                     <ion-list no-lines no-margin margin-left>
-                    <button menuClose ion-item *ngFor="let subPage of page?.subPages" (click)="openSubPage($event, subPage)">
-                        <ion-icon *ngIf="subPage.icon" [name]="subPage.icon" item-start></ion-icon>
-                        {{subPage.title}}
-                    </button>
+                        <button menuClose ion-item *ngFor="let subPage of page?.subPages" (click)="openSubPage($event, subPage)">
+                            <ion-icon *ngIf="subPage.icon" [name]="subPage.icon" item-start></ion-icon>
+                            {{subPage.title}}
+                        </button>
                     </ion-list>
                 </div>
+            </ion-list>
 
+            <ion-list no-lines>
                 <a ion-item href="http://www.github.com/tanzdervampire" target="_blank">
-                    Github
+                    <ion-icon name="logo-github" item-start></ion-icon>
                 </a>
             </ion-list>
         </ion-content>
-
     </ion-menu>
 
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main name="app"></ion-nav>
