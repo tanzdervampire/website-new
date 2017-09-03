@@ -10,35 +10,25 @@ const postShow = async document => {
     const show = new Show(document);
 
     const err = show.validateSync();
-    if (!err) {
-        try {
-            sendNotificationEmail(
-                '[tanzdervampire.info] Show has been submitted',
-                `
-The following show has been submitted:
-
-${JSON.stringify(document, null, 4)}
-            `
-            );
-        } catch (err) {
-            console.error(err);
-            throw err;
-        }
-
-        if (process.env.MAINTENANCE_MODE) {
-            throw {
-                status: 503,
-                message: 'Maintenance mode',
-            };
-        }
-
-        return show.save();
-    } else {
-        throw {
-            status: 400,
-            message: err,
-        };
+    if (err) {
+        throw { status: 400, message: err };
     }
+
+    try {
+        sendNotificationEmail(
+            `[tanzdervampire.info][new] ${moment(show.date).format('DD.MM.YYYY HH:mm')}`,
+            `The following show has been submitted: \r\n\r\n${JSON.stringify(document, null, 4)}`
+        );
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+
+    if (process.env.MAINTENANCE_MODE) {
+        throw { status: 503, message: 'Maintenance mode' };
+    }
+
+    return show.save();
 };
 
 const queryShowsBefore = async opts => {
