@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CastItem, Show } from '../../models/models';
+import { CastItem } from '../../models/models';
 import { RolesProvider } from '../../providers/roles/roles';
 
 @Component({

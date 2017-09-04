@@ -21,7 +21,8 @@ const sendNotificationEmail = (subject, text) => {
     const options = {
         from: '"tanzdervampire.info" <tanzdervampire@airblader.de>',
         to: 'admin@airblader.de',
-        subject, text
+        subject: `[${process.env.SUBMIT_EMAIL_ENV}]${subject}`,
+        text: text,
     };
 
     const transporter = nodemailer.createTransport(transporterOpts);
