@@ -3,7 +3,7 @@ import {
     AlertController, IonicPage, LoadingController, NavController, NavParams,
     ToastController
 } from 'ionic-angular';
-import { RawShow, Show } from '../../models/models';
+import { Show } from '../../models/models';
 import { ShowsProvider } from '../../providers/shows/shows';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -49,7 +49,7 @@ export class ShowSubmitReviewPage {
         const loader = this.loadingCtrl.create({ content: 'Bitte warten…' });
         loader.present();
 
-        const show = this.depopulate(this.show);
+        const show = this.show;
         this.showsProvider.postShow(show).subscribe(
             response => {
                 loader.dismiss();
@@ -68,20 +68,6 @@ export class ShowSubmitReviewPage {
                 this.showRetryErrorDialog();
             }
         );
-    }
-
-    depopulate(show: Show): RawShow {
-        const rawCast = show.cast.map(item => {
-            return {
-                role: item.role,
-                person: item.person._id,
-            };
-        });
-
-        return { ...show,
-            production: show.production._id,
-            cast: rawCast,
-        };
     }
 
     showMaintenanceModeError(): void {

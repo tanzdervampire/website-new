@@ -16,11 +16,6 @@ export interface CastItem {
     person: Actor;
 }
 
-export interface RawCastItem {
-    role: Role;
-    person: MongoID;
-}
-
 export interface ShowBase {
     _id?: MongoID;
     date: Moment;
@@ -29,11 +24,6 @@ export interface ShowBase {
 export interface Show extends ShowBase {
     production: Production;
     cast: CastItem[];
-}
-
-export interface RawShow extends ShowBase {
-    production: MongoID;
-    cast: RawCastItem[];
 }
 
 export interface Actor {

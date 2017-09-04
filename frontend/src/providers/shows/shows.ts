@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import moment, { Moment } from 'moment';
 import { Observable } from 'rxjs/Observable';
-import { OcrCastItem, RawShow, Show } from '../../models/models';
+import { OcrCastItem, Show } from '../../models/models';
 
 interface QueryParameters {
     location?: string;
@@ -99,7 +99,7 @@ export class ShowsProvider {
         return url;
     }
 
-    postShow(show: RawShow): Observable<any> {
+    postShow(show: Show): Observable<any> {
         return this.http.post('/api/shows', show)
             .map(response => response.json());
     }

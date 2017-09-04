@@ -17,7 +17,7 @@ const postShow = async document => {
     const existingShow = await Show.findOne({
         'date': show.date,
         'production': show.production
-    }).lean();
+    }).lean().populate('cast.person');
 
     try {
         if (existingShow) {
