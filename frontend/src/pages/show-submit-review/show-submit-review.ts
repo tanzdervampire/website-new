@@ -92,6 +92,9 @@ export class ShowSubmitReviewPage {
                 {
                     text: 'OK',
                     role: 'cancel',
+                    handler: () => {
+                        this.navCtrl.popToRoot();
+                    },
                 },
             ],
         }).present();
