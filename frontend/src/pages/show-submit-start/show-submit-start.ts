@@ -36,7 +36,7 @@ export class ShowSubmitStartPage {
         const { year, month, day } = this.navParams.data;
         if (year && month && day) {
             this.showDate = moment.utc(`${day}.${month}.${year}`, 'DD.MM.YYYY').toISOString();
-            this.onShowDateChange(null, this.showDate);
+            this.onShowDateChange(null);
         }
     }
 
@@ -50,12 +50,12 @@ export class ShowSubmitStartPage {
             case /* LEFT */
             2:
                 this.showDate = currentDate.add(1, 'day').toISOString();
-                this.onShowDateChange(null, this.showDate);
+                this.onShowDateChange(null);
                 break;
             case /* RIGHT */
             4:
                 this.showDate = currentDate.subtract(1, 'day').toISOString();
-                this.onShowDateChange(null, this.showDate);
+                this.onShowDateChange(null);
                 break;
         }
     }
@@ -63,10 +63,10 @@ export class ShowSubmitStartPage {
     selectToday(event: any): void {
         event.preventDefault();
         this.showDate = moment.utc().toISOString();
-        this.onShowDateChange(null, this.showDate);
+        this.onShowDateChange(null);
     }
 
-    onShowDateChange(event: any, date: string): void {
+    onShowDateChange(event: any): void {
         if (event && event.preventDefault) {
             event.preventDefault();
         }
@@ -75,7 +75,7 @@ export class ShowSubmitStartPage {
         this.productions = undefined;
         this.hadRequestError = false;
 
-        this.productionsProvider.getProductionsFor(moment.utc(date)).subscribe(productions => {
+        this.productionsProvider.getProductionsFor(moment.utc(this.showDate)).subscribe(productions => {
             this.productions = productions;
 
             switch (productions.length) {
