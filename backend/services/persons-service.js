@@ -52,7 +52,7 @@ const queryPersonsWithRoles = async () => {
 
         /* Lastly, let's sort the list. */
         { $sort: { name: 1 } }
-    ]);
+    ], { cursor: {} });
 
     const namesWithRole = personsWithRole.map(p => p.name);
     const result = [];
