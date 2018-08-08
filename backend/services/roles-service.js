@@ -86,7 +86,7 @@ const queryRoles = opts => {
     /* Rename _id into role again. */
     stages.push({ $project: { persons: 1, role: '$_id', _id: 0 } });
 
-    return Show.aggregate(stages);
+    return Show.aggregate(stages).cursor();
 };
 
 module.exports = { queryRoles };
