@@ -5,7 +5,7 @@ const Show = require('../models/show');
 
 const queryPersonsWithRoles = async () => {
     const allPersons = await Person.find({}).lean().sort({ name: 1 });
-    const personsWithRole = await Show.aggregate([
+    const cursor = Show.aggregate([
         /* We need one entry per cast member. */
         { $unwind: '$cast' },
 
@@ -53,6 +53,12 @@ const queryPersonsWithRoles = async () => {
         /* Lastly, let's sort the list. */
         { $sort: { name: 1 } }
     ]).cursor();
+
+    const personsWithRole = [];
+    let doc;
+    while ((doc = await cursor.next())) {
+        personsWithRole.push(doc);
+    }
 
     const namesWithRole = personsWithRole.map(p => p.name);
     const result = [];
