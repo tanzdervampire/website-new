@@ -4,6 +4,7 @@ const Person = require('../models/person');
 const Show = require('../models/show');
 
 const queryPersonsWithRoles = async () => {
+try {
     const allPersons = await Person.find({}).lean().sort({ name: 1 });
     const personsWithRole = await Show.aggregate([
         /* We need one entry per cast member. */
@@ -66,6 +67,7 @@ const queryPersonsWithRoles = async () => {
     });
 
     return result;
+    } catch (err) {console.error(err);}
 };
 
 // TODO FIXME Get rid of the shortcut and instead make aggregate() smarter.
