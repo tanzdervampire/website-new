@@ -2,7 +2,7 @@
 
 const Show = require('../models/show');
 
-const queryRoles = opts => {
+const queryRoles = async (opts) => {
     let stages = [];
 
     /* We need one entry per cast member. */
