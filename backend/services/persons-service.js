@@ -53,7 +53,7 @@ try {
 
         /* Lastly, let's sort the list. */
         { $sort: { name: 1 } }
-    ]).cursor();
+    ]).cursor().exec();
 
     const personsWithRole = [];
     let doc;
